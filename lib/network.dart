@@ -6,9 +6,14 @@ Future<PageData> getPageData(String aim) async {
   final response = await http.get(
     'https://mp.innenu.com/page/',
   );
-  final responseJson = json.decode(response.body);
 
-  return PageData.fromJson(responseJson);
+  if (response.statusCode == 200) {
+    // If server returns an OK response, parse the JSON.
+    return PageData.fromJson(json.decode(response.body));
+  } else {
+    // If that response was not OK, throw an error.
+    throw Exception('Failed to load post');
+  }
 }
 
 class PageData {

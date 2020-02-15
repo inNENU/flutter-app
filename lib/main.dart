@@ -56,11 +56,14 @@ class _MyHomeState extends State<MyHome> {
 
   static List<NavigationBarConfig> _config = [
     NavigationBarConfig(
-      MyParagraph(text: '主页'),
-      // Text(
-      //   '主页',
-      //   style: optionStyle,
-      // ),
+      Column(children: [
+        // MyHead('主页'),
+        MyTitle('主页'),
+        MyParagraph('主页段落'),
+        MyImage('https://mp.innenu.com/img/check/check1.jpg'),
+        MyList([MyListConfig(text: 'aa', desc: 'aaa')]),
+        MyGrid([MyGridConfig(text: 'aa')]),
+      ]),
       title: '主页',
       icon: Icon(Icons.home),
     ),
@@ -98,7 +101,6 @@ class _MyHomeState extends State<MyHome> {
             IconButton(
               icon: Icon(
                 Icons.settings,
-                color: Colors.white,
               ),
               onPressed: () {
                 // TODO: Make Setting Page

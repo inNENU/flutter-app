@@ -4,7 +4,8 @@ class MyHead extends StatelessWidget {
   /// 页面标题
   final String title;
 
-  MyHead({@required this.title});
+  MyHead(this.title);
+  MyHead.fromJson(config) : title = config.title;
 
   @override
   Widget build(BuildContext context) => AppBar(

@@ -1,4 +1,3 @@
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
 class MyParagraph extends StatelessWidget {
@@ -8,7 +7,10 @@ class MyParagraph extends StatelessWidget {
   /// 文字对齐方式
   final String align;
 
-  MyParagraph({@required this.text, this.align = 'justify'});
+  MyParagraph(this.text, {this.align = 'justify'});
+  MyParagraph.fromJson(config)
+      : text = config.text ?? '',
+        align = config.align ?? 'justify';
 
   /// 获得对齐方式
   TextAlign _getAlign() {

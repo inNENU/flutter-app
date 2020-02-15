@@ -4,7 +4,9 @@ class MyTitle extends StatelessWidget {
   /// 标题文字
   final String text;
 
-  MyTitle({@required this.text});
+  MyTitle(this.text);
+
+  MyTitle.fromJson(config) : text = config.text ?? '';
 
   @override
   Widget build(BuildContext context) {
@@ -12,7 +14,10 @@ class MyTitle extends StatelessWidget {
       Expanded(
           child: Padding(
               padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 8),
-              child: SelectableText(this.text)))
+              child: SelectableText(
+                this.text,
+                style: Theme.of(context).textTheme.title,
+              )))
     ]);
   }
 }
