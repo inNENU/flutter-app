@@ -6,7 +6,7 @@ class MyImage extends StatefulWidget {
   final String src;
 
   MyImage(this.src);
-  MyImage.fromJson(config) : src = config.src;
+  MyImage.fromJson(Map<String, String> config) : src = config['src'];
 
   @override
   _MyImageState createState() => _MyImageState();
@@ -14,11 +14,17 @@ class MyImage extends StatefulWidget {
 
 class _MyImageState extends State<MyImage> {
   @override
-  Widget build(BuildContext context) => CachedNetworkImage(
-        placeholder: (context, url) => Container(
-          padding: EdgeInsets.symmetric(horizontal: 20),
-          child: CircularProgressIndicator(),
+  Widget build(BuildContext context) => Container(
+        margin: EdgeInsets.symmetric(horizontal: 15),
+        child: CachedNetworkImage(
+          placeholder: (context, url) => Column(
+            children: [
+              SizedBox(height: 20),
+              CircularProgressIndicator(),
+              SizedBox(height: 20),
+            ],
+          ),
+          imageUrl: widget.src,
         ),
-        imageUrl: widget.src,
       );
 }

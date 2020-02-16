@@ -15,12 +15,12 @@ class MyGridConfig {
   /// 跳转地址
   String url;
 
-  MyGridConfig({this.text, this.icon, this.aim, this.url});
-  MyGridConfig.fromJson(config)
-      : text = config.text,
-        icon = config.icon,
-        aim = config.aim,
-        url = config.url;
+  MyGridConfig({@required this.text, @required this.icon, this.aim, this.url});
+  MyGridConfig.fromJson(Map<String, String> config)
+      : text = config['text'],
+        icon = config['icon'],
+        aim = config['aim'],
+        url = config['url'];
 }
 
 class MyGrid extends StatelessWidget {
@@ -34,21 +34,25 @@ class MyGrid extends StatelessWidget {
   final dynamic foot;
 
   MyGrid(this.content, {this.head, this.foot});
-  MyGrid.fromJson(config)
-      : content = List.generate(config.content.length,
-            (index) => MyGridConfig.fromJson(config.content[index])),
-        head = config.head,
-        foot = config.foot;
+  MyGrid.fromJson(Map<String, dynamic> config)
+      : content = List.generate(
+            (config['content'] as List<Map<String, String>>).length,
+            (index) => MyGridConfig.fromJson(
+                (config['content'] as List<Map<String, String>>)[index])),
+        head = config['head'],
+        foot = config['foot'];
 
   /// 获取渲染的项
-  Widget _getGridTile(num index) {
+  Widget _getGridTile(int index) {
     MyGridConfig config = this.content[index];
 
-    return GridTile(
-        child: Column(children: [
-      config.icon == null ? null : CachedNetworkImage(imageUrl: config.icon),
-      Text(config.text),
-    ]));
+    List<Widget> children = [Text(config.text)];
+
+    if (config.icon != null) {
+      children.insert(0, CachedNetworkImage(imageUrl: config.icon));
+    }
+
+    return GridTile(child: Column(children: children));
   }
 
   /// 渲染的列表

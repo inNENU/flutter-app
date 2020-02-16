@@ -5,7 +5,8 @@ class MyHead extends StatelessWidget {
   final String title;
 
   MyHead(this.title);
-  MyHead.fromJson(config) : title = config.title;
+  MyHead.fromJson(Map<String, dynamic> config)
+      : title = config['title'] as String;
 
   @override
   Widget build(BuildContext context) => AppBar(

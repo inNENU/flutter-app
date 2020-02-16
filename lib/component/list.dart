@@ -19,12 +19,12 @@ class MyListConfig {
   String url;
 
   MyListConfig({this.text, this.icon, this.desc, this.aim, this.url});
-  MyListConfig.fromJson(config)
-      : text = config.text,
-        icon = config.icon,
-        desc = config.desc,
-        aim = config.aim,
-        url = config.url;
+  MyListConfig.fromJson(Map<String, String> config)
+      : text = config['text'],
+        icon = config['icon'],
+        desc = config['desc'],
+        aim = config['aim'],
+        url = config['url'];
 }
 
 class MyList extends StatelessWidget {
@@ -38,14 +38,16 @@ class MyList extends StatelessWidget {
   final dynamic foot;
 
   MyList(this.content, {this.head, this.foot});
-  MyList.fromJson(config)
-      : content = List.generate(config.content.length,
-            (index) => MyListConfig.fromJson(config.content[index])),
-        head = config.head,
-        foot = config.foot;
+  MyList.fromJson(Map<String, dynamic> config)
+      : content = List.generate(
+            (config['content'] as List<Map<String, String>>).length,
+            (index) => MyListConfig.fromJson(
+                (config['content'] as List<Map<String, String>>)[index])),
+        head = config['head'],
+        foot = config['foot'];
 
   /// 获取渲染的列表项
-  Widget _getListTile(num index) {
+  Widget _getListTile(int index) {
     MyListConfig config = this.content[index];
 
     return ListTile(
@@ -64,5 +66,7 @@ class MyList extends StatelessWidget {
       List.generate(this.content.length, (index) => _getListTile(index));
 
   @override
-  Widget build(BuildContext context) => Card(child: Column(children: _getList()));
+  Widget build(BuildContext context) => Card(
+      margin: EdgeInsets.symmetric(horizontal: 15, vertical: 8),
+      child: Column(children: _getList()));
 }

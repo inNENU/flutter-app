@@ -9,7 +9,7 @@ Future<PageData> getPageData(String aim) async {
 
   if (response.statusCode == 200) {
     // If server returns an OK response, parse the JSON.
-    return PageData.fromJson(json.decode(response.body));
+    return PageData.fromJson(json.decode(response.body) as List<dynamic>);
   } else {
     // If that response was not OK, throw an error.
     throw Exception('Failed to load post');

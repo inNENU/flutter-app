@@ -6,7 +6,7 @@ class MyTitle extends StatelessWidget {
 
   MyTitle(this.text);
 
-  MyTitle.fromJson(config) : text = config.text ?? '';
+  MyTitle.fromJson(Map<String, String> config) : text = config['text'] ?? '';
 
   @override
   Widget build(BuildContext context) {

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import './jsonTools.dart';
 
 class MyParagraph extends StatelessWidget {
   /// 段落文字
@@ -8,20 +9,10 @@ class MyParagraph extends StatelessWidget {
   final String align;
 
   MyParagraph(this.text, {this.align = 'justify'});
-  MyParagraph.fromJson(config)
-      : text = config.text ?? '',
-        align = config.align ?? 'justify';
-
-  /// 获得对齐方式
-  TextAlign _getAlign() {
-    Map<String, TextAlign> alignMap = Map();
-
-    TextAlign.values.forEach((item) {
-      alignMap[item.toString()] = item;
-    });
-
-    return alignMap[this.align];
-  }
+  MyParagraph.fromJson(Map<String, String> config)
+      : assert(config['text'] != null),
+        text = config['text'],
+        align = config['align'] ?? 'justify';
 
   @override
   Widget build(BuildContext context) => Padding(
@@ -31,7 +22,7 @@ class MyParagraph extends StatelessWidget {
             child: SelectableText(
           this.text,
           style: Theme.of(context).textTheme.body1,
-          textAlign: _getAlign(),
+          textAlign: JSONTools.getAlign(this.align),
         ))
       ]));
 }
