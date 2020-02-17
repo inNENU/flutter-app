@@ -1,6 +1,6 @@
-export './grid.dart';
-export './head.dart';
-export './image.dart';
-export './list.dart';
-export './paragraph.dart';
-export './title.dart';
+export './grid/grid.dart';
+export './head/head.dart';
+export './image/image.dart';
+export './list/list.dart';
+export './paragraph/paragraph.dart';
+export './title/title.dart';

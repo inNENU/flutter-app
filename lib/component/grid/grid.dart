@@ -1,30 +1,37 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:json_annotation/json_annotation.dart';
+
+part 'grid.g.dart';
 
 /// 列表配置
+@JsonSerializable()
 class MyGridConfig {
   /// 列表文字
-  String text;
+  @JsonKey(required: true)
+  final String text;
 
   /// 列表图标
-  String icon;
+  @JsonKey(required: true)
+  final String icon;
 
   /// 列表目标
-  String aim;
+  final String aim;
 
   /// 跳转地址
-  String url;
+  final String url;
 
   MyGridConfig({@required this.text, @required this.icon, this.aim, this.url});
-  MyGridConfig.fromJson(Map<String, String> config)
-      : text = config['text'],
-        icon = config['icon'],
-        aim = config['aim'],
-        url = config['url'];
+  factory MyGridConfig.fromJson(Map<String, dynamic> json) =>
+      _$MyGridConfigFromJson(json);
+
+  Map<String, dynamic> toJson() => _$MyGridConfigToJson(this);
 }
 
+@JsonSerializable()
 class MyGrid extends StatelessWidget {
   /// 段落内容
+  @JsonKey(fromJson: _getContentFromJson)
   final List<MyGridConfig> content;
 
   /// 列表标题
@@ -34,13 +41,15 @@ class MyGrid extends StatelessWidget {
   final dynamic foot;
 
   MyGrid(this.content, {this.head, this.foot});
-  MyGrid.fromJson(Map<String, dynamic> config)
-      : content = List.generate(
-            (config['content'] as List<Map<String, String>>).length,
-            (index) => MyGridConfig.fromJson(
-                (config['content'] as List<Map<String, String>>)[index])),
-        head = config['head'],
-        foot = config['foot'];
+  factory MyGrid.fromJson(Map<String, dynamic> json) => _$MyGridFromJson(json);
+
+  Map<String, dynamic> toJson() => _$MyGridToJson(this);
+
+  /// 从 JSON 生成 content
+  static List<MyGridConfig> _getContentFromJson(
+          List<Map<String, String>> content) =>
+      List.generate(
+          content.length, (index) => MyGridConfig.fromJson(content[index]));
 
   /// 获取渲染的项
   Widget _getGridTile(int index) {

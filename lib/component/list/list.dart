@@ -1,34 +1,40 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:json_annotation/json_annotation.dart';
+
+part 'list.g.dart';
 
 /// 列表配置
+@JsonSerializable()
 class MyListConfig {
   /// 列表文字
-  String text;
+  @JsonKey(required: true)
+  final String text;
 
   /// 列表图标
-  String icon;
+  final String icon;
 
   /// 列表详情
-  String desc;
+  final String desc;
 
   /// 列表目标
-  String aim;
+  final String aim;
 
   /// 跳转地址
-  String url;
+  final String url;
 
   MyListConfig({this.text, this.icon, this.desc, this.aim, this.url});
-  MyListConfig.fromJson(Map<String, String> config)
-      : text = config['text'],
-        icon = config['icon'],
-        desc = config['desc'],
-        aim = config['aim'],
-        url = config['url'];
+  factory MyListConfig.fromJson(Map<String, String> json) =>
+      _$MyListConfigFromJson(json);
+
+  Map<String, dynamic> toJson() => _$MyListConfigToJson(this);
 }
 
+/// 列表组件
+@JsonSerializable()
 class MyList extends StatelessWidget {
   /// 段落内容
+  @JsonKey(fromJson: _getContentFromJson)
   final List<MyListConfig> content;
 
   /// 列表标题
@@ -38,13 +44,15 @@ class MyList extends StatelessWidget {
   final dynamic foot;
 
   MyList(this.content, {this.head, this.foot});
-  MyList.fromJson(Map<String, dynamic> config)
-      : content = List.generate(
-            (config['content'] as List<Map<String, String>>).length,
-            (index) => MyListConfig.fromJson(
-                (config['content'] as List<Map<String, String>>)[index])),
-        head = config['head'],
-        foot = config['foot'];
+  factory MyList.fromJson(Map<String, dynamic> json) => _$MyListFromJson(json);
+
+  Map<String, dynamic> toJson() => _$MyListToJson(this);
+
+  /// 从 JSON 生成 content
+  static List<MyListConfig> _getContentFromJson(
+          List<Map<String, String>> content) =>
+      List.generate(
+          content.length, (index) => MyListConfig.fromJson(content[index]));
 
   /// 获取渲染的列表项
   Widget _getListTile(int index) {

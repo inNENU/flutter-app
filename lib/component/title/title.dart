@@ -1,12 +1,23 @@
 import 'package:flutter/material.dart';
+import 'package:json_annotation/json_annotation.dart';
 
+part 'title.g.dart';
+
+@JsonSerializable()
 class MyTitle extends StatelessWidget {
   /// 标题文字
+  @JsonKey(required: true)
   final String text;
 
-  MyTitle(this.text);
+  /// 段落标题
+  final dynamic head;
 
-  MyTitle.fromJson(Map<String, String> config) : text = config['text'] ?? '';
+  MyTitle(this.text, {this.head});
+  factory MyTitle.fromJson(Map<String, dynamic> json) =>
+      _$MyTitleFromJson(json);
+  Map<String, dynamic> toJson() => _$MyTitleToJson(this);
+
+  // MyTitle.fromJson(Map<String, String> config) : text = config['text'] ?? '';
 
   @override
   Widget build(BuildContext context) {
