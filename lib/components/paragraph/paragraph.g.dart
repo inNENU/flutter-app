@@ -8,7 +8,7 @@ part of 'paragraph.dart';
 
 MyParagraph _$MyParagraphFromJson(Map<String, dynamic> json) {
   return MyParagraph(
-    json['text'] as String ?? '',
+    json['text'] ?? '',
     align: json['align'] as String ?? 'justify',
   );
 }

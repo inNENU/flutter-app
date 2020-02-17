@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:logging/logging.dart';
+
+final log = Logger('JSONTools');
 
 class JSONTools {
   /// 获得对齐方式
@@ -12,9 +15,12 @@ class JSONTools {
         return TextAlign.center;
       case 'justify':
         return TextAlign.justify;
-    }
 
-    /// 非法 Align 值
-    throw ErrorDescription('Align value illegal: $align');
+      /// 非法 Align 值
+      default:
+        log.warning('Align value illegal: $align');
+
+        return TextAlign.justify;
+    }
   }
 }

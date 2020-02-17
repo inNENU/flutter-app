@@ -26,7 +26,7 @@ class MyTitle extends StatelessWidget {
           child: Padding(
               padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 8),
               child: SelectableText(
-                this.text,
+                text,
                 style: Theme.of(context).textTheme.title,
               )))
     ]);

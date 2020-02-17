@@ -56,7 +56,7 @@ class MyList extends StatelessWidget {
 
   /// 获取渲染的列表项
   Widget _getListTile(int index) {
-    MyListConfig config = this.content[index];
+    final config = content[index];
 
     return ListTile(
         leading: config.icon == null
@@ -70,11 +70,10 @@ class MyList extends StatelessWidget {
   }
 
   /// 渲染的列表
-  List<Widget> _getList() =>
-      List.generate(this.content.length, (index) => _getListTile(index));
+  List<Widget> _getList() => List.generate(content.length, _getListTile);
 
   @override
   Widget build(BuildContext context) => Card(
-      margin: EdgeInsets.symmetric(horizontal: 15, vertical: 8),
+      margin: const EdgeInsets.symmetric(horizontal: 15, vertical: 8),
       child: Column(children: _getList()));
 }

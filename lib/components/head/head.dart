@@ -15,6 +15,6 @@ class MyHead extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) => AppBar(
-        title: Text(this.title),
+        title: Text(title),
       );
 }

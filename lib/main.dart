@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:innenu/component/index.dart';
+
+import 'package:innenu/components/index.dart';
+import 'package:innenu/pages/setting.dart';
 
 void main() => runApp(MyApp());
 
@@ -41,8 +43,8 @@ class NavigationBarConfig {
 
   NavigationBarConfig(this.widget, {String title, this.icon}) {
     this.title = Text(title);
-    this.bottomNavigationBarItem = BottomNavigationBarItem(
-      icon: this.icon,
+    bottomNavigationBarItem = BottomNavigationBarItem(
+      icon: icon,
       title: this.title,
     );
   }
@@ -54,12 +56,18 @@ class _MyHomeState extends State<MyHome> {
   static const TextStyle optionStyle =
       TextStyle(fontSize: 30, fontWeight: FontWeight.bold);
 
-  static List<NavigationBarConfig> _config = [
+  static final List<NavigationBarConfig> _config = [
     NavigationBarConfig(
       ListView(children: [
         // MyHead('主页'),
         MyTitle('主页'),
         MyParagraph('主页段落'),
+        MyParagraph('非常非常非常非常非常非常非常非常非常非常非常非常非常非常非常非常非常非常非常非常非常非常非常非常非常长的主页段落'),
+        MyParagraph([
+          '   主页段落',
+          '   主页段落2',
+          '   非常非常非常非常非常非常非常非常非常非常非常非常非常非常非常非常非常非常非常非常非常非常非常非常非常长的主页段落'
+        ]),
         MyImage('https://mp.innenu.com/img/check/check1.jpg'),
         MyList([
           MyListConfig(text: 'aa', desc: 'aaa'),
@@ -73,7 +81,7 @@ class _MyHomeState extends State<MyHome> {
       icon: Icon(Icons.home),
     ),
     NavigationBarConfig(
-      Text(
+      const Text(
         '指南',
         style: optionStyle,
       ),
@@ -81,7 +89,7 @@ class _MyHomeState extends State<MyHome> {
       icon: Icon(Icons.lightbulb_outline),
     ),
     NavigationBarConfig(
-      Text(
+      const Text(
         '功能',
         style: optionStyle,
       ),
@@ -108,7 +116,8 @@ class _MyHomeState extends State<MyHome> {
                 Icons.tune,
               ),
               onPressed: () {
-                // TODO: Make Setting Page
+                Navigator.of(context).push(MaterialPageRoute<void>(
+                    builder: (context) => SettingsPage()));
               },
             )
           ]),

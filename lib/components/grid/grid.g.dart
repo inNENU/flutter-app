@@ -7,10 +7,9 @@ part of 'grid.dart';
 // **************************************************************************
 
 MyGridConfig _$MyGridConfigFromJson(Map<String, dynamic> json) {
-  $checkKeys(json, requiredKeys: const ['text', 'icon']);
   return MyGridConfig(
-    text: json['text'] as String,
-    icon: json['icon'] as String,
+    text: json['text'] as String ?? '',
+    icon: json['icon'] as String ?? '',
     aim: json['aim'] as String,
     url: json['url'] as String,
   );

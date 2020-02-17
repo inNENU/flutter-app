@@ -8,11 +8,11 @@ part 'grid.g.dart';
 @JsonSerializable()
 class MyGridConfig {
   /// 列表文字
-  @JsonKey(required: true)
+  @JsonKey(defaultValue: '')
   final String text;
 
   /// 列表图标
-  @JsonKey(required: true)
+  @JsonKey(defaultValue: '')
   final String icon;
 
   /// 列表目标
@@ -53,20 +53,31 @@ class MyGrid extends StatelessWidget {
 
   /// 获取渲染的项
   Widget _getGridTile(int index) {
-    MyGridConfig config = this.content[index];
+    final config = content[index];
 
-    List<Widget> children = [Text(config.text)];
+    return GridTile(
+        child: Column(children: [
+      // 图标
+      Container(
+        margin: const EdgeInsets.only(top: 8, bottom: 4),
+        width: 40,
+        height: 40,
+        child: CachedNetworkImage(
+          imageUrl: config.icon,
+          errorWidget: (context, url, error) => Icon(Icons.error),
+        ),
+      ),
 
-    if (config.icon != null) {
-      children.insert(0, CachedNetworkImage(imageUrl: config.icon));
-    }
-
-    return GridTile(child: Column(children: children));
+      // 文字
+      Padding(
+        padding: const EdgeInsets.only(bottom: 8),
+        child: Text(config.text),
+      ),
+    ]));
   }
 
   /// 渲染的列表
-  List<Widget> _getGrid() =>
-      List.generate(this.content.length, (index) => _getGridTile(index));
+  List<Widget> _getGrid() => List.generate(content.length, _getGridTile);
 
   @override
   Widget build(BuildContext context) => GridView.count(
