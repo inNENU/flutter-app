@@ -29,17 +29,25 @@ class MyImage extends StatelessWidget {
       );
 
   /// 错误组件
-  Widget get _errorWidget => Column(
+  Widget _errorWidget(BuildContext context) => Column(
         children: [
           const SizedBox(height: 20),
-          Icon(
-            Icons.error,
-            color: Colors.red,
-            size: 24,
-          ),
-          const Text(
-            '图片加载失败',
-            style: TextStyle(fontSize: 12),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Icon(
+                Icons.warning,
+                color: Colors.yellow,
+                size: 24,
+              ),
+              Padding(
+                padding: const EdgeInsets.only(left: 8),
+                child: Text(
+                  '图片加载失败',
+                  style: Theme.of(context).textTheme.caption,
+                ),
+              ),
+            ],
           ),
           const SizedBox(height: 20),
         ],
@@ -51,10 +59,12 @@ class MyImage extends StatelessWidget {
         child: ClipRRect(
           borderRadius: const BorderRadius.all(Radius.circular(8)),
           child: CachedNetworkImage(
-            imageUrl: src,
-            placeholder: (context, url) => _placeHolderWidget,
-            errorWidget: (context, url, error) => _errorWidget,
-          ),
+              imageUrl: src,
+              placeholder: (context, url) => _placeHolderWidget,
+              errorWidget: (context, url, error) {
+                // TODO: Error log here
+                return _errorWidget(context);
+              }),
         ),
       );
 }

@@ -11,5 +11,7 @@ class ImageTest extends StatelessWidget {
       body: ListView(children: [
         MyParagraph('普通图片'),
         MyImage('https://mp.innenu.com/img/check/check1.jpg'),
+        MyParagraph('加载失败图片'),
+        MyImage('https://mp.innenu.com/img/check/acheck1.jpg'),
       ]));
 }

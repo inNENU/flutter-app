@@ -3,11 +3,11 @@ import 'package:flutter/material.dart';
 import 'components/index.dart';
 import 'pages/index.dart';
 import 'tests/index.dart';
+import 'utils/index.dart';
 
 part 'route.dart';
 
 void main() => runApp(MyApp());
-
 
 class MyApp extends StatelessWidget {
   /// App 标题
@@ -127,20 +127,34 @@ class _MyHomeState extends State<MyHome> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-          title: _config.elementAt(_selectedIndex).title,
-          automaticallyImplyLeading: false,
-          actions: [
-            IconButton(
-              icon: Icon(
-                Icons.tune,
-              ),
-              onPressed: () {
-                Navigator.pushNamed(context, '/setting');
-                // Navigator.of(context).push(MaterialPageRoute<void>(
-                //     builder: (context) => SettingsPage()));
-              },
-            )
-          ]),
+        title: _config.elementAt(_selectedIndex).title,
+      ),
+      drawer: Drawer(
+          child: ListView(
+        children: [
+          DrawerHeader(
+            padding: const EdgeInsets.symmetric(horizontal: 0, vertical: 16),
+            child: Column(
+                crossAxisAlignment: CrossAxisAlignment.stretch,
+                children: [
+                  Padding(
+                    padding:
+                        const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+                    child: Text(
+                      'in东师',
+                      style: Theme.of(context).textTheme.display1,
+                    ),
+                  ),
+                  ListTile(
+                      leading: Icon(Icons.tune),
+                      title: const Text('设置'),
+                      onTap: () {
+                        Navigator.pushNamed(context, '/setting');
+                      })
+                ]),
+          ),
+        ],
+      )),
       body: _config.elementAt(_selectedIndex).widget,
       bottomNavigationBar: BottomNavigationBar(
         items: List.generate(
