@@ -7,14 +7,11 @@ part of 'title.dart';
 // **************************************************************************
 
 MyTitle _$MyTitleFromJson(Map<String, dynamic> json) {
-  $checkKeys(json, requiredKeys: const ['text']);
   return MyTitle(
-    json['text'] as String,
-    head: json['head'],
+    json['text'] as String ?? '',
   );
 }
 
 Map<String, dynamic> _$MyTitleToJson(MyTitle instance) => <String, dynamic>{
       'text': instance.text,
-      'head': instance.head,
     };

@@ -52,7 +52,7 @@ class MyGrid extends StatelessWidget {
           content.length, (index) => MyGridConfig.fromJson(content[index]));
 
   /// 获取渲染的项
-  Widget _getGridTile(int index) {
+  Widget _gridTile(int index) {
     final config = content[index];
 
     return GridTile(
@@ -77,11 +77,11 @@ class MyGrid extends StatelessWidget {
   }
 
   /// 渲染的列表
-  List<Widget> _getGrid() => List.generate(content.length, _getGridTile);
+  List<Widget> get _getGrid => List.generate(content.length, _gridTile);
 
   @override
   Widget build(BuildContext context) => GridView.count(
         crossAxisCount: 3,
-        children: _getGrid(),
+        children: _getGrid,
       );
 }

@@ -2,10 +2,10 @@ import 'package:flutter/material.dart';
 
 import '../components/index.dart';
 
-class SettingsPage extends StatelessWidget {
+class ComponentPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) => Scaffold(
       body: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
-          children: [MyHead('设置'), MyParagraph('设置页')]));
+          children: [MyHead('组件页'), MyParagraph('组件页')]));
 }

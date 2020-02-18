@@ -1,21 +1,27 @@
 import 'package:flutter/material.dart';
 
-import 'package:innenu/components/index.dart';
-import 'package:innenu/pages/setting.dart';
+import 'components/index.dart';
+import 'pages/index.dart';
+import 'tests/index.dart';
+
+part 'route.dart';
 
 void main() => runApp(MyApp());
 
+
 class MyApp extends StatelessWidget {
+  /// App 标题
   static const String _title = 'in东师';
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       title: _title,
+      initialRoute: '/',
+      routes: routeConfig(context),
       theme: ThemeData(
         primaryColor: Colors.greenAccent[400],
       ),
-      home: MyHome(),
     );
   }
 }
@@ -53,6 +59,23 @@ class NavigationBarConfig {
 class _MyHomeState extends State<MyHome> {
   int _selectedIndex = 0;
 
+  /// 设置页码
+  set page(String page) {
+    switch (page) {
+      case 'main':
+        _selectedIndex = 0;
+        break;
+      case 'function':
+        _selectedIndex = 1;
+        break;
+      case 'guide':
+        _selectedIndex = 2;
+        break;
+      default:
+      // TODO: Error log here
+    }
+  }
+
   static const TextStyle optionStyle =
       TextStyle(fontSize: 30, fontWeight: FontWeight.bold);
 
@@ -61,17 +84,13 @@ class _MyHomeState extends State<MyHome> {
       ListView(children: [
         // MyHead('主页'),
         MyTitle('主页'),
-        MyParagraph('主页段落'),
-        MyParagraph('非常非常非常非常非常非常非常非常非常非常非常非常非常非常非常非常非常非常非常非常非常非常非常非常非常长的主页段落'),
-        MyParagraph([
-          '   主页段落',
-          '   主页段落2',
-          '   非常非常非常非常非常非常非常非常非常非常非常非常非常非常非常非常非常非常非常非常非常非常非常非常非常长的主页段落'
-        ]),
-        MyImage('https://mp.innenu.com/img/check/check1.jpg'),
         MyList([
-          MyListConfig(text: 'aa', desc: 'aaa'),
-          MyListConfig(text: 'aa', desc: 'aaa'),
+          MyListConfig(
+              text: 'textTheme 测试', desc: 'aaa', url: '/test/textTheme'),
+          MyListConfig(text: 'title 测试', desc: 'aaa', url: '/test/title'),
+          MyListConfig(
+              text: 'paragraph 测试', desc: 'aaa', url: '/test/paragraph'),
+          MyListConfig(text: 'image 测试', desc: 'aaa', url: '/test/image'),
           MyListConfig(text: 'aa', desc: 'aaa'),
           MyListConfig(text: 'aa', desc: 'aaa'),
         ]),
@@ -116,8 +135,9 @@ class _MyHomeState extends State<MyHome> {
                 Icons.tune,
               ),
               onPressed: () {
-                Navigator.of(context).push(MaterialPageRoute<void>(
-                    builder: (context) => SettingsPage()));
+                Navigator.pushNamed(context, '/setting');
+                // Navigator.of(context).push(MaterialPageRoute<void>(
+                //     builder: (context) => SettingsPage()));
               },
             )
           ]),

@@ -23,6 +23,16 @@ class MyListConfig {
   /// 跳转地址
   final String url;
 
+  /// 是否可点击
+  bool get isTapable => aim != null || url != null;
+
+  /// 点击动作
+  void Function() tapAction(BuildContext context) => () {
+        if (aim != null) {
+          Navigator.pushNamed(context, '/page');
+        } else if (url != null) Navigator.pushNamed(context, url);
+      };
+
   MyListConfig({this.text, this.icon, this.desc, this.aim, this.url});
   factory MyListConfig.fromJson(Map<String, String> json) =>
       _$MyListConfigFromJson(json);
@@ -55,25 +65,25 @@ class MyList extends StatelessWidget {
           content.length, (index) => MyListConfig.fromJson(content[index]));
 
   /// 获取渲染的列表项
-  Widget _getListTile(int index) {
+  Widget _listTile(BuildContext context, int index) {
     final config = content[index];
 
     return ListTile(
+        onTap: config.isTapable ? config.tapAction(context) : null,
         leading: config.icon == null
             ? null
             : CachedNetworkImage(imageUrl: config.icon),
         title: Text(config.text),
         subtitle: config.desc == null ? null : Text(config.desc),
-        trailing: config.url == null && config.aim == null
-            ? null
-            : Icon(Icons.accessible));
+        trailing: config.isTapable ? const Icon(Icons.chevron_right) : null);
   }
 
   /// 渲染的列表
-  List<Widget> _getList() => List.generate(content.length, _getListTile);
+  List<Widget> _getList(BuildContext context) =>
+      List.generate(content.length, (index) => _listTile(context, index));
 
   @override
   Widget build(BuildContext context) => Card(
       margin: const EdgeInsets.symmetric(horizontal: 15, vertical: 8),
-      child: Column(children: _getList()));
+      child: Column(children: _getList(context)));
 }

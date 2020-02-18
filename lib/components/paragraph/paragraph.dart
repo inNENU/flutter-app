@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:json_annotation/json_annotation.dart';
 
-import 'package:innenu/components/jsonTools.dart';
+import '../image/image.dart';
+import '../jsonTools.dart';
 
 part 'paragraph.g.dart';
 
@@ -20,35 +21,37 @@ class _ParagraphWidget extends StatelessWidget {
   final bool selectable;
 
   _ParagraphWidget(this.text,
-      {this.align = 'justify',
-      this.verticalPadding = 4,
-      this.selectable = true});
+      {this.align, this.verticalPadding = 4, this.selectable = true});
+
+  /// 文字组件
+  Widget _textWidget(BuildContext context) => selectable
+      ? SelectableText(
+          text,
+          style: Theme.of(context).textTheme.body1,
+          textAlign: JSONTools.getAlign(align),
+        )
+      : Text(
+          text,
+          style: Theme.of(context).textTheme.body1,
+          textAlign: JSONTools.getAlign(align),
+        );
 
   @override
   Widget build(BuildContext context) => Padding(
-      padding: const EdgeInsets.symmetric(vertical: 4),
-      child: selectable
-          ? SelectableText(
-              text,
-              style: Theme.of(context).textTheme.body1,
-              textAlign: JSONTools.getAlign(align),
-            )
-          : Text(
-              text,
-              style: Theme.of(context).textTheme.body1,
-              textAlign: JSONTools.getAlign(align),
-            ));
+      padding: EdgeInsets.symmetric(vertical: verticalPadding),
+      child: _textWidget(context));
 }
 
+/// 段落组件
 @JsonSerializable()
 class MyParagraph extends StatelessWidget {
-  /// 段落文字
+  /// 文字
   ///
   /// 可以是 `String` 或 `List<String>`。后者会显示多个段落。
   @JsonKey(defaultValue: '')
   final dynamic text;
 
-  /// 段落标题
+  /// 标题
   ///
   /// 可以是 `String` 或 `true`，后者会在段落面前留白。
   final dynamic head;
@@ -63,32 +66,81 @@ class MyParagraph extends StatelessWidget {
   @JsonKey(defaultValue: true)
   final bool selectable;
 
+  /// 图片地址
+  final String src;
+
+  /// 图片描述文字
+  final String desc;
+
   MyParagraph(this.text,
-      {this.head, this.align = 'justify', this.selectable = true});
+      {this.head,
+      this.align = 'justify',
+      this.selectable = true,
+      this.src,
+      this.desc});
   factory MyParagraph.fromJson(Map<String, dynamic> json) =>
       _$MyParagraphFromJson(json);
 
   Map<String, dynamic> toJson() => _$MyParagraphToJson(this);
 
+  /// 标题组件
+  Widget _headWidget(BuildContext context) => selectable
+      ? SelectableText(
+          head as String,
+          style: Theme.of(context).textTheme.subhead,
+        )
+      : Text(
+          head as String,
+          style: Theme.of(context).textTheme.subhead,
+        );
+
+  /// 渲染内容
+  List<Widget> _renderContents(BuildContext context) {
+    final content = <Widget>[];
+
+    // 处理标题部分
+    if (head != null) {
+      if (head == true) {
+        content.add(const SizedBox(
+          height: 12,
+        ));
+      } else if (head is String && (head as String).isNotEmpty) {
+        content.add(_headWidget(context));
+      } else {
+        // TODO: Error log here
+      }
+    }
+
+    // 处理段落部分
+    if (text is String) {
+      // 单个段落
+      content.add(_ParagraphWidget(
+        text as String,
+        align: align,
+        verticalPadding: 8,
+        selectable: selectable,
+      ));
+    } else {
+      // 多个段落
+      content.addAll(List.generate(
+          (text as List<String>).length,
+          (index) => _ParagraphWidget(
+                (text as List<String>)[index],
+                align: align,
+                selectable: selectable,
+              )));
+    }
+
+    // 处理图片部分
+    if (src != null && src.isNotEmpty) content.add(MyImage(src));
+
+    return content;
+  }
+
   @override
   Widget build(BuildContext context) => Padding(
       padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 4),
-      child: text is String
-          // 单个段落
-          ? _ParagraphWidget(
-              text as String,
-              align: align,
-              verticalPadding: 8,
-              selectable: selectable,
-            )
-          // 多个段落
-          : Column(
-              crossAxisAlignment: CrossAxisAlignment.stretch,
-              children: List.generate(
-                  (text as List<String>).length,
-                  (index) => _ParagraphWidget(
-                        (text as List<String>)[index],
-                        align: align,
-                        selectable: selectable,
-                      ))));
+      child: Column(
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          children: _renderContents(context)));
 }
