@@ -28,7 +28,10 @@ class MyApp extends StatelessWidget {
         const Locale('en', 'US'),
       ],
       initialRoute: '/',
-      routes: routeConfig(context),
+      onGenerateRoute: (settings) => settings.name == '/'
+          ? PageRouteBuilder<dynamic>(
+              pageBuilder: (context, animation1, animation2) => MyHome())
+          : SlidePageRoute<dynamic>(routeMap[settings.name]),
       theme: ThemeData(
         primaryColor: Colors.greenAccent[400],
       ),
