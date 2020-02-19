@@ -12,7 +12,7 @@ class _ParagraphWidget extends StatelessWidget {
   final String text;
 
   /// 段落文字对齐方式
-  final String align;
+  final TextAlign textAlign;
 
   /// 段落竖直边距
   final double verticalPadding;
@@ -20,20 +20,24 @@ class _ParagraphWidget extends StatelessWidget {
   /// 段落文字是否可选中
   final bool selectable;
 
-  _ParagraphWidget(this.text,
-      {this.align, this.verticalPadding = 4, this.selectable = true});
+  _ParagraphWidget(
+    this.text,
+    this.textAlign, {
+    this.verticalPadding = 4,
+    this.selectable = true,
+  });
 
   /// 文字组件
   Widget _textWidget(BuildContext context) => selectable
       ? SelectableText(
           text,
           style: Theme.of(context).textTheme.body1,
-          textAlign: JSONTools.getAlign(align),
+          textAlign: textAlign,
         )
       : Text(
           text,
           style: Theme.of(context).textTheme.body1,
-          textAlign: JSONTools.getAlign(align),
+          textAlign: textAlign,
         );
 
   @override
@@ -59,8 +63,8 @@ class MyParagraph extends StatelessWidget {
   /// 文字对齐方式
   ///
   /// 只能是 `'left'`, `'right'`, `'center'` 或 `'justify'` 中的一种
-  @JsonKey(defaultValue: 'justify')
-  final String align;
+  @JsonKey(fromJson: JSONTools.getAlign)
+  final TextAlign align;
 
   /// 文字是否可以选中
   @JsonKey(defaultValue: true)
@@ -72,12 +76,14 @@ class MyParagraph extends StatelessWidget {
   /// 图片描述文字
   final String desc;
 
-  MyParagraph(this.text,
-      {this.head,
-      this.align = 'justify',
-      this.selectable = true,
-      this.src,
-      this.desc});
+  MyParagraph(
+    this.text, {
+    this.head,
+    this.align = TextAlign.justify,
+    this.selectable = true,
+    this.src,
+    this.desc,
+  });
   factory MyParagraph.fromJson(Map<String, dynamic> json) =>
       _$MyParagraphFromJson(json);
 
@@ -116,19 +122,22 @@ class MyParagraph extends StatelessWidget {
       // 单个段落
       content.add(_ParagraphWidget(
         text as String,
-        align: align,
+        align,
         verticalPadding: 8,
         selectable: selectable,
       ));
     } else {
       // 多个段落
-      content.addAll(List.generate(
+      content.addAll(
+        List.generate(
           (text as List<String>).length,
           (index) => _ParagraphWidget(
-                (text as List<String>)[index],
-                align: align,
-                selectable: selectable,
-              )));
+            (text as List<String>)[index],
+            align,
+            selectable: selectable,
+          ),
+        ),
+      );
     }
 
     // 处理图片部分
@@ -141,6 +150,7 @@ class MyParagraph extends StatelessWidget {
   Widget build(BuildContext context) => Padding(
       padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 4),
       child: Column(
-          crossAxisAlignment: CrossAxisAlignment.stretch,
-          children: _renderContents(context)));
+        crossAxisAlignment: CrossAxisAlignment.stretch,
+        children: _renderContents(context),
+      ));
 }

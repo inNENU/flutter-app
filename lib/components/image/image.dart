@@ -31,7 +31,7 @@ class MyImage extends StatelessWidget {
   /// 错误组件
   Widget _errorWidget(BuildContext context) => Column(
         children: [
-          const SizedBox(height: 20),
+          const SizedBox(height: 45),
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
@@ -44,27 +44,72 @@ class MyImage extends StatelessWidget {
                 padding: const EdgeInsets.only(left: 8),
                 child: Text(
                   '图片加载失败',
-                  style: Theme.of(context).textTheme.caption,
+                  style: Theme.of(context)
+                      .textTheme
+                      .caption
+                      .copyWith(color: Colors.white),
                 ),
               ),
             ],
           ),
-          const SizedBox(height: 20),
+          const SizedBox(height: 45),
         ],
+      );
+
+  /// 图片组件
+  Widget _imageWidget(BuildContext context) => ClipRRect(
+        borderRadius: const BorderRadius.all(Radius.circular(8)),
+        child: CachedNetworkImage(
+          imageUrl: src,
+          placeholder: (context, url) => _placeHolderWidget,
+          errorWidget: (context, url, error) {
+            // TODO: Error log here
+            return _errorWidget(context);
+          },
+        ),
+      );
+
+  /// 描述图片组件
+  Widget _descImageWidget(BuildContext context) => CachedNetworkImage(
+        imageUrl: src,
+        imageBuilder: (context, imageProvider) => Stack(
+          children: [
+            ClipRRect(
+              borderRadius: const BorderRadius.all(Radius.circular(8)),
+              child: Image(
+                image: imageProvider,
+              ),
+            ),
+            Container(
+              alignment: Alignment.bottomCenter,
+              decoration: BoxDecoration(
+                gradient: LinearGradient(
+                  begin: Alignment.topCenter,
+                  end: Alignment.bottomCenter,
+                  colors: <Color>[
+                    Colors.black.withAlpha(0),
+                    Colors.black12,
+                    Colors.black45
+                  ],
+                ),
+              ),
+              child: Text(
+                desc,
+                style: TextStyle(color: Colors.white),
+              ),
+            ),
+          ],
+        ),
+        placeholder: (context, url) => _placeHolderWidget,
+        errorWidget: (context, url, error) {
+          // TODO: Error log here
+          return _errorWidget(context);
+        },
       );
 
   @override
   Widget build(BuildContext context) => Container(
         margin: const EdgeInsets.symmetric(horizontal: 15),
-        child: ClipRRect(
-          borderRadius: const BorderRadius.all(Radius.circular(8)),
-          child: CachedNetworkImage(
-              imageUrl: src,
-              placeholder: (context, url) => _placeHolderWidget,
-              errorWidget: (context, url, error) {
-                // TODO: Error log here
-                return _errorWidget(context);
-              }),
-        ),
+        child: desc == null ? _imageWidget(context) : _descImageWidget(context),
       );
 }

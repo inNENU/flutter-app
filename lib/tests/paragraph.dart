@@ -25,15 +25,15 @@ class ParagraphTest extends StatelessWidget {
             ),
             MyParagraph(
               '左对齐的段落文字',
-              align: 'left',
+              align: TextAlign.left,
             ),
             MyParagraph(
               '右对齐的段落文字',
-              align: 'right',
+              align: TextAlign.right,
             ),
             MyParagraph(
               '居中的段落文字',
-              align: 'center',
+              align: TextAlign.center,
             ),
             MyParagraph(
                 '非常非常非常非常非常非常非常非常非常非常非常非常非常非常非常非常非常非常非常非常非常非常非常非常非常长的段落3'),
@@ -55,15 +55,12 @@ class ParagraphTest extends StatelessWidget {
               '   居中的多个段落a',
               '   居中的多个段落b',
               '   居中的非常非常非常非常非常非常非常非常非常非常非常非常非常非常非常非常非常非常非常非常非常非常非常非常非常长的多个段落c'
-            ], align: 'center'),
-            MyParagraph(
-              [
-                '右对齐的多个段落a',
-                '右对齐的多个段落b',
-                '右对齐的非常非常非常非常非常非常非常非常非常非常非常非常非常非常非常非常非常非常非常非常非常非常非常非常非常长的多个段落c'
-              ],
-              align: 'right',
-            ),
+            ], align: TextAlign.center),
+            MyParagraph([
+              '右对齐的多个段落a',
+              '右对齐的多个段落b',
+              '右对齐的非常非常非常非常非常非常非常非常非常非常非常非常非常非常非常非常非常非常非常非常非常非常非常非常非常长的多个段落c'
+            ], align: TextAlign.right),
             const SizedBox(
               height: 20,
             ),

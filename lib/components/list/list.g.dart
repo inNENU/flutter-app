@@ -7,9 +7,8 @@ part of 'list.dart';
 // **************************************************************************
 
 MyListConfig _$MyListConfigFromJson(Map<String, dynamic> json) {
-  $checkKeys(json, requiredKeys: const ['text']);
   return MyListConfig(
-    text: json['text'] as String,
+    json['text'] as String ?? '',
     icon: json['icon'] as String,
     desc: json['desc'] as String,
     aim: json['aim'] as String,

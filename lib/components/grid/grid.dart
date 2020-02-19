@@ -21,7 +21,12 @@ class MyGridConfig {
   /// 跳转地址
   final String url;
 
-  MyGridConfig({@required this.text, @required this.icon, this.aim, this.url});
+  MyGridConfig({
+    @required this.text,
+    @required this.icon,
+    this.aim,
+    this.url,
+  });
   factory MyGridConfig.fromJson(Map<String, dynamic> json) =>
       _$MyGridConfigFromJson(json);
 
@@ -56,24 +61,27 @@ class MyGrid extends StatelessWidget {
     final config = content[index];
 
     return GridTile(
-        child: Column(children: [
-      // 图标
-      Container(
-        margin: const EdgeInsets.only(top: 8, bottom: 4),
-        width: 40,
-        height: 40,
-        child: CachedNetworkImage(
-          imageUrl: config.icon,
-          errorWidget: (context, url, error) => Icon(Icons.error),
-        ),
-      ),
+      child: Column(
+        children: [
+          // 图标
+          Container(
+            margin: const EdgeInsets.only(top: 8, bottom: 4),
+            width: 40,
+            height: 40,
+            child: CachedNetworkImage(
+              imageUrl: config.icon,
+              errorWidget: (context, url, error) => Icon(Icons.error),
+            ),
+          ),
 
-      // 文字
-      Padding(
-        padding: const EdgeInsets.only(bottom: 8),
-        child: Text(config.text),
+          // 文字
+          Padding(
+            padding: const EdgeInsets.only(bottom: 8),
+            child: Text(config.text),
+          ),
+        ],
       ),
-    ]));
+    );
   }
 
   /// 渲染的列表

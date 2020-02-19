@@ -5,7 +5,12 @@ import '../components/index.dart';
 class ComponentPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) => Scaffold(
-      body: Column(
+        body: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
-          children: [MyHead('组件页'), MyParagraph('组件页')]));
+          children: [
+            MyHead('组件页'),
+            MyParagraph('组件页'),
+          ],
+        ),
+      );
 }

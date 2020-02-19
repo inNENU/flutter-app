@@ -6,6 +6,8 @@ final log = Logger('JSONTools');
 class JSONTools {
   /// 获得对齐方式
   static TextAlign getAlign(String align) {
+    if (align == null) return TextAlign.justify;
+
     switch (align) {
       case 'left':
         return TextAlign.left;

@@ -5,9 +5,10 @@ import '../components/index.dart';
 class TitleTest extends StatelessWidget {
   @override
   Widget build(BuildContext context) => Scaffold(
-          body:
-              Column(crossAxisAlignment: CrossAxisAlignment.stretch, children: [
-        MyHead('设置'),
+      appBar: AppBar(
+        title: const Text('Title 测试'),
+      ),
+      body: ListView(children: [
         MyTitle('标题测试'),
       ]));
 }

@@ -8,7 +8,7 @@ part 'list.g.dart';
 @JsonSerializable()
 class MyListConfig {
   /// 列表文字
-  @JsonKey(required: true)
+  @JsonKey(defaultValue: '')
   final String text;
 
   /// 列表图标
@@ -33,7 +33,7 @@ class MyListConfig {
         } else if (url != null) Navigator.pushNamed(context, url);
       };
 
-  MyListConfig({this.text, this.icon, this.desc, this.aim, this.url});
+  MyListConfig(this.text, {this.icon, this.desc, this.aim, this.url});
   factory MyListConfig.fromJson(Map<String, String> json) =>
       _$MyListConfigFromJson(json);
 
@@ -62,20 +62,23 @@ class MyList extends StatelessWidget {
   static List<MyListConfig> _getContentFromJson(
           List<Map<String, String>> content) =>
       List.generate(
-          content.length, (index) => MyListConfig.fromJson(content[index]));
+        content.length,
+        (index) => MyListConfig.fromJson(content[index]),
+      );
 
   /// 获取渲染的列表项
   Widget _listTile(BuildContext context, int index) {
     final config = content[index];
 
     return ListTile(
-        onTap: config.isTapable ? config.tapAction(context) : null,
-        leading: config.icon == null
-            ? null
-            : CachedNetworkImage(imageUrl: config.icon),
-        title: Text(config.text),
-        subtitle: config.desc == null ? null : Text(config.desc),
-        trailing: config.isTapable ? const Icon(Icons.chevron_right) : null);
+      onTap: config.isTapable ? config.tapAction(context) : null,
+      leading: config.icon == null
+          ? null
+          : CachedNetworkImage(imageUrl: config.icon),
+      title: Text(config.text),
+      subtitle: config.desc == null ? null : Text(config.desc),
+      trailing: config.isTapable ? const Icon(Icons.chevron_right) : null,
+    );
   }
 
   /// 渲染的列表
@@ -85,5 +88,7 @@ class MyList extends StatelessWidget {
   @override
   Widget build(BuildContext context) => Card(
       margin: const EdgeInsets.symmetric(horizontal: 15, vertical: 8),
-      child: Column(children: _getList(context)));
+      child: Column(
+        children: _getList(context),
+      ));
 }
