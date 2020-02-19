@@ -57,59 +57,78 @@ class MyImage extends StatelessWidget {
       );
 
   /// 图片组件
-  Widget _imageWidget(BuildContext context) => ClipRRect(
+  Widget _imageWidget(
+    BuildContext context,
+    ImageProvider<dynamic> imageProvider,
+  ) =>
+      ClipRRect(
         borderRadius: const BorderRadius.all(Radius.circular(8)),
+        child: Image(
+          image: imageProvider,
+        ),
+      );
+
+  /// 详情图片组件
+  Widget _descImageWidget(
+    BuildContext context,
+    ImageProvider<dynamic> imageProvider,
+    String desc,
+  ) =>
+      Stack(
+        alignment: Alignment.bottomCenter,
+        children: [
+          _imageWidget(context, imageProvider),
+          Positioned(
+            left: 0,
+            right: 0,
+            child: Container(
+              decoration: BoxDecoration(
+                gradient: LinearGradient(
+                  begin: Alignment.topCenter,
+                  end: Alignment.bottomCenter,
+                  colors: <Color>[
+                    Colors.black.withOpacity(0),
+                    Colors.black.withOpacity(0.3),
+                    Colors.black.withOpacity(0.8),
+                  ],
+                ),
+              ),
+              child: Container(
+                padding:
+                    const EdgeInsets.symmetric(horizontal: 20, vertical: 8),
+                child: Text(
+                  desc,
+                  textAlign: TextAlign.center,
+                  style: Theme.of(context)
+                      .textTheme
+                      .body1
+                      .copyWith(color: Colors.white.withOpacity(0.8)),
+                ),
+              ),
+            ),
+          ),
+        ],
+      );
+
+  /// Image Builder
+  Widget _imageBuilder(BuildContext context,
+          ImageProvider<dynamic> imageProvider, String desc) =>
+      desc == null
+          ? _imageWidget(context, imageProvider)
+          : _descImageWidget(context, imageProvider, desc);
+
+  @override
+  Widget build(BuildContext context) => Container(
+        margin: const EdgeInsets.symmetric(horizontal: 15),
         child: CachedNetworkImage(
           imageUrl: src,
+          imageBuilder: (context, imageBuilder) =>
+              _imageBuilder(context, imageBuilder, desc),
           placeholder: (context, url) => _placeHolderWidget,
           errorWidget: (context, url, error) {
             // TODO: Error log here
             return _errorWidget(context);
           },
         ),
-      );
-
-  /// 描述图片组件
-  Widget _descImageWidget(BuildContext context) => CachedNetworkImage(
-        imageUrl: src,
-        imageBuilder: (context, imageProvider) => Stack(
-          children: [
-            ClipRRect(
-              borderRadius: const BorderRadius.all(Radius.circular(8)),
-              child: Image(
-                image: imageProvider,
-              ),
-            ),
-            Container(
-              alignment: Alignment.bottomCenter,
-              decoration: BoxDecoration(
-                gradient: LinearGradient(
-                  begin: Alignment.topCenter,
-                  end: Alignment.bottomCenter,
-                  colors: <Color>[
-                    Colors.black.withAlpha(0),
-                    Colors.black12,
-                    Colors.black45
-                  ],
-                ),
-              ),
-              child: Text(
-                desc,
-                style: TextStyle(color: Colors.white),
-              ),
-            ),
-          ],
-        ),
-        placeholder: (context, url) => _placeHolderWidget,
-        errorWidget: (context, url, error) {
-          // TODO: Error log here
-          return _errorWidget(context);
-        },
-      );
-
-  @override
-  Widget build(BuildContext context) => Container(
-        margin: const EdgeInsets.symmetric(horizontal: 15),
-        child: desc == null ? _imageWidget(context) : _descImageWidget(context),
       );
 }

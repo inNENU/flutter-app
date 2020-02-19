@@ -19,6 +19,10 @@ class ParagraphTest extends StatelessWidget {
               '带标题的段落文字',
               head: '标题文字',
             ),
+            MyParagraph([
+              '带有换行的段落文字\n'
+                  '带有换行的段落文字'
+            ]),
             MyParagraph(
               '段落前留空的的段落文字',
               head: true,
@@ -66,8 +70,8 @@ class ParagraphTest extends StatelessWidget {
             ),
             MyParagraph(
               [
-                '   包含图片的多个段落a'
-                    '   包含图片的多个段落b',
+                '   包含图片的多个段落a',
+                '   包含图片的多个段落b',
                 '   包含图片的非常非常非常非常非常非常非常非常非常非常非常非常非常非常'
                     '非常非常非常非常非常非常非常非常非常非常非常长的多个段落c'
               ],

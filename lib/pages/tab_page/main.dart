@@ -15,6 +15,7 @@ NavigationBarConfig mainPageWidget = NavigationBarConfig(
         MyListConfig('paragraph 测试', url: '/test/paragraph'),
         MyListConfig('image 测试', url: '/test/image'),
         MyListConfig('list 测试', url: '/test/list'),
+        MyListConfig('foot 测试', url: '/test/foot'),
       ]),
       // MyGrid([MyGridConfig(text: 'aa')]),
     ],

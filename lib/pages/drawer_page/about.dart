@@ -10,6 +10,11 @@ class AboutPage extends StatelessWidget {
         ),
         body: ListView(
           children: [
+            Text(
+              'in东师',
+              textAlign: TextAlign.center,
+              style: Theme.of(context).textTheme.display1,
+            ),
             MyParagraph(
               '制作者: Mr.Hope',
               align: TextAlign.center,

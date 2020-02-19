@@ -1,3 +1,4 @@
+export 'foot.dart';
 export 'head.dart';
 export 'image.dart';
 export 'list.dart';
