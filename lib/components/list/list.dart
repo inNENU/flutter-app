@@ -33,7 +33,13 @@ class MyListConfig {
         } else if (url != null) Navigator.pushNamed(context, url);
       };
 
-  MyListConfig(this.text, {this.icon, this.desc, this.aim, this.url});
+  MyListConfig(
+    this.text, {
+    this.icon,
+    this.desc,
+    this.aim,
+    this.url,
+  });
   factory MyListConfig.fromJson(Map<String, String> json) =>
       _$MyListConfigFromJson(json);
 

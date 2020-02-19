@@ -22,8 +22,8 @@ class MyGridConfig {
   final String url;
 
   MyGridConfig({
-    @required this.text,
-    @required this.icon,
+    this.text = '',
+    this.icon = '',
     this.aim,
     this.url,
   });
@@ -45,6 +45,9 @@ class MyGrid extends StatelessWidget {
   /// 列表页脚
   final dynamic foot;
 
+  /// 每行个数
+  final int itemsPerLine = 4;
+
   MyGrid(this.content, {this.head, this.foot});
   factory MyGrid.fromJson(Map<String, dynamic> json) => _$MyGridFromJson(json);
 
@@ -54,42 +57,74 @@ class MyGrid extends StatelessWidget {
   static List<MyGridConfig> _getContentFromJson(
           List<Map<String, String>> content) =>
       List.generate(
-          content.length, (index) => MyGridConfig.fromJson(content[index]));
+        content.length,
+        (index) => MyGridConfig.fromJson(content[index]),
+      );
 
   /// 获取渲染的项
-  Widget _gridTile(int index) {
+  Widget _gridTile(BuildContext context, int index) {
     final config = content[index];
 
-    return GridTile(
-      child: Column(
-        children: [
-          // 图标
-          Container(
-            margin: const EdgeInsets.only(top: 8, bottom: 4),
-            width: 40,
-            height: 40,
-            child: CachedNetworkImage(
-              imageUrl: config.icon,
-              errorWidget: (context, url, error) => Icon(Icons.error),
-            ),
+    return Column(
+      children: [
+        // 图标
+        Container(
+          margin: const EdgeInsets.only(top: 8, bottom: 4),
+          width: 40,
+          height: 40,
+          child: CachedNetworkImage(
+            fit: BoxFit.cover,
+            imageUrl: config.icon,
+            errorWidget: (context, url, error) => Icon(Icons.error),
           ),
+        ),
 
-          // 文字
-          Padding(
-            padding: const EdgeInsets.only(bottom: 8),
-            child: Text(config.text),
+        // 文字
+        Padding(
+          padding: const EdgeInsets.only(bottom: 8),
+          child: Text(
+            config.text,
+            textAlign: TextAlign.center,
+            style: Theme.of(context).textTheme.button,
           ),
-        ],
+        ),
+      ],
+    );
+  }
+
+  /// 渲染的行列表
+  Widget _rowWidget(BuildContext context, int startIndex, int length) => Row(
+        mainAxisAlignment: MainAxisAlignment.spaceAround,
+        children: List.generate(
+          length,
+          (index) => _gridTile(context, startIndex + index),
+        ),
+      );
+
+  /// 渲染的列表
+  List<Widget> _columnWidgets(BuildContext context) {
+    /// Grid 元素个数
+    final itemNumber = content.length;
+
+    /// 最后一行元素个数
+    final lastRowItemNumber = itemNumber % itemsPerLine;
+
+    /// 行数
+    final rowNumber = (itemNumber / itemsPerLine).ceil();
+
+    return List.generate(
+      rowNumber,
+      (index) => _rowWidget(
+        context,
+        index * itemsPerLine,
+        lastRowItemNumber != 0 && index == rowNumber - 1
+            ? lastRowItemNumber
+            : itemsPerLine,
       ),
     );
   }
 
-  /// 渲染的列表
-  List<Widget> get _getGrid => List.generate(content.length, _gridTile);
-
   @override
-  Widget build(BuildContext context) => GridView.count(
-        crossAxisCount: 3,
-        children: _getGrid,
-      );
+  Widget build(BuildContext context) =>
+      Column(children: _columnWidgets(context));
 }

@@ -8,6 +8,7 @@ Map<String, Widget> get routeMap => {
       '/setting': SettingsPage(),
       '/test/textTheme': TextThemeTest(),
       '/test/foot': FootTest(),
+      '/test/grid': GridTest(),
       '/test/head': HeadTest(),
       '/test/title': TitleTest(),
       '/test/paragraph': ParagraphTest(),
