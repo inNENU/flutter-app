@@ -17,7 +17,9 @@ class MyPage extends StatelessWidget {
 
   /// 从 JSON 生成 MyPage
   MyPage.fromJson(List<dynamic> pageWidgets)
-      : title = pageWidgets[0]['title'] as String ?? '详情',
+      : title = pageWidgets[0]['hidden'] as bool == true
+            ? ''
+            : pageWidgets[0]['title'] as String ?? '详情',
         pageWidgets = List<Widget>.generate(
             pageWidgets.length,
             (index) =>
@@ -49,16 +51,13 @@ class MyPage extends StatelessWidget {
     }
   }
 
-  // /// 页面组件
-  // List<Widget> _pageContents(BuildContext context) {
-  //   return [];
-  // }
-
   @override
   Widget build(BuildContext context) => Scaffold(
-      appBar: AppBar(
-        title: Text(title),
-      ),
+      appBar: title.isNotEmpty
+          ? AppBar(
+              title: Text(title),
+            )
+          : null,
       body: ListView(
         children: pageWidgets,
       ));

@@ -9,6 +9,7 @@ Map<String, Widget> get routeMap => {
       '/test/foot': FootTest(),
       '/test/footJSON': FootJSONTest(),
       '/test/grid': GridTest(),
+      '/test/gridJSON': GridJSONTest(),
       '/test/head': HeadTest(),
       '/test/headJSON': HeadJSONTest(),
       '/test/title': TitleTest(),

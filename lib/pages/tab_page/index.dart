@@ -1,4 +1,8 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
+import 'package:http/http.dart' as http;
+import 'package:innenu/components/getPage.dart';
 import 'package:logging/logging.dart';
 
 import 'config.dart';
@@ -25,8 +29,8 @@ class _MyHomeState extends State<MyHome> {
   /// Tab Bar 配置
   final List<NavigationBarConfig> _tabBarConfig = [
     mainPageWidget,
-    guidePageWidget,
     functionPageWidget,
+    guidePageWidget,
   ];
 
   /// 当前显示的页面名称
@@ -43,9 +47,11 @@ class _MyHomeState extends State<MyHome> {
     });
   }
 
-  void updatePage(String pageName, Widget page) {
-    setState(() {
-      _tabBarConfig[getIndexFromPageName(pageName)].update(page);
+  void updatePage(String base, String pageName) {
+    getPage('$base/$pageName.json').then((page) {
+      setState(() {
+        _tabBarConfig[getIndexFromPageName(pageName)].update(page);
+      });
     });
   }
 
@@ -83,6 +89,20 @@ class _MyHomeState extends State<MyHome> {
   void initState() {
     // TODO: implement initState
     super.initState();
+    final base = 'https://mp.innenu.com/config/wx33acb831ee1831a5';
+
+// 获取最新版本号
+    http.get('$base/version.json').then((response) {
+      if (response.statusCode == 200) {
+        final version = jsonDecode(response.body) as String;
+        final url = '$base/$version';
+
+        updatePage(url, 'main');
+        updatePage(url, 'guide');
+      } else {
+        _logger.shout('Get version fail');
+      }
+    });
   }
 
   /// 切换页面

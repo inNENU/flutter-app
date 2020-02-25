@@ -25,9 +25,9 @@ Map<String, dynamic> _$MyGridConfigToJson(MyGridConfig instance) =>
 
 MyGrid _$MyGridFromJson(Map<String, dynamic> json) {
   return MyGrid(
-    MyGrid._getContentFromJson(json['content'] as List<Map<String, String>>),
+    MyGrid._getContentFromJson(json['content'] as List),
     head: json['head'],
-    foot: json['foot'],
+    foot: json['foot'] as String ?? '',
   );
 }
 

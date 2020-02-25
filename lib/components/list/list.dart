@@ -1,10 +1,9 @@
-import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:json_annotation/json_annotation.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 
 import '../../utils/index.dart';
 import '../getPage.dart';
+import '../jsonTools.dart';
 
 part 'list.g.dart';
 
@@ -27,42 +26,6 @@ class MyListConfig {
 
   /// 跳转地址
   final String url;
-
-  /// 是否为在线资源
-  bool get _isOnlineResourse =>
-      icon.startsWith('https://') || icon.startsWith('http://');
-
-  bool get _isImage =>
-      icon.endsWith('.png') || icon.endsWith('.jpg') || icon.endsWith('jpeg');
-
-  /// 是否是在线图片
-  bool get isOnlineImage => _isOnlineResourse && _isImage;
-
-  bool get isLocalImage => _isImage && icon.startsWith('assets/');
-
-  /// 是否是在线 SVG
-  bool get isOnlineSVG => _isOnlineResourse && icon.endsWith('.svg');
-
-  /// 是否为合法本地资源
-  bool get isLocalSvg =>
-      (icon.startsWith('/module/icon/') || icon.startsWith('/icon/tabPage/')) &&
-      icon.endsWith('.svg');
-
-  /// 本地资源路径
-  String get localAssetPath => isLocalSvg
-      ? icon
-          .replaceFirst('/module/icon/', 'assets/icon/module/')
-          .replaceFirst('/icon/tabPage/', 'assets/icon/tab/')
-      : '';
-
-  /// 图片组件
-  Widget get iconWidget => isLocalSvg
-      ? SvgPicture.asset(localAssetPath)
-      : isOnlineSVG
-          ? SvgPicture.network(icon)
-          : isOnlineImage
-              ? CachedNetworkImage(imageUrl: icon)
-              : isLocalImage ? Image.asset(icon) : null;
 
   /// 是否可点击
   bool get isTapable => aim != null || url != null;
@@ -116,28 +79,13 @@ class MyList extends StatelessWidget {
             MyListConfig.fromJson(content[index] as Map<String, dynamic>),
       );
 
-  /// 列表头部组件
-  Widget _listHead(BuildContext context) => Padding(
-        padding: const EdgeInsets.only(top: 8, left: 30, right: 30),
-        child: Text(
-          head as String,
-          style: Theme.of(context).textTheme.body2,
-        ),
-      );
-
   /// 获取渲染的列表项
   Widget _listTile(BuildContext context, int index) {
     final config = content[index];
 
     return ListTile(
       onTap: config.isTapable ? config.tapAction(context) : null,
-      leading: config.iconWidget == null
-          ? null
-          : SizedBox(
-              width: 30,
-              height: 30,
-              child: config.iconWidget,
-            ),
+      leading: JSONTools.getIconWidget(config.icon),
       title: Text(config.text),
       subtitle: config.desc == null ? null : Text(config.desc),
       trailing: config.isTapable ? const Icon(Icons.chevron_right) : null,
@@ -155,21 +103,14 @@ class MyList extends StatelessWidget {
         children: _getList(context),
       ));
 
-  /// 列表尾部组件
-  Widget _listFoot(BuildContext context) => Padding(
-        padding: const EdgeInsets.only(left: 30, right: 30, bottom: 8),
-        child: Text(
-          foot,
-          style: Theme.of(context).textTheme.caption,
-        ),
-      );
-
   List<Widget> _children(BuildContext context) {
-    final children = <Widget>[];
+    final children = [_listWidget(context)];
 
-    if (head is String) children.add(_listHead(context));
-    children.add(_listWidget(context));
-    if (foot.isNotEmpty) children.add(_listFoot(context));
+    if (head is String) {
+      children.insert(0, JSONTools.cardHead(context, head as String));
+    }
+
+    if (foot.isNotEmpty) children.add(JSONTools.cardFoot(context, foot));
 
     return children;
   }
