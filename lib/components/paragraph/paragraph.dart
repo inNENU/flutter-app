@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:json_annotation/json_annotation.dart';
+import 'package:logging/logging.dart';
 
 import '../image/image.dart';
 import '../jsonTools.dart';
 
 part 'paragraph.g.dart';
+
+final _logger = Logger('component.paragraph');
 
 /// 单个段落组件
 class _ParagraphWidget extends StatelessWidget {
@@ -113,7 +116,7 @@ class MyParagraph extends StatelessWidget {
       } else if (head is String && (head as String).isNotEmpty) {
         content.add(_headWidget(context));
       } else {
-        // TODO: Error log here
+        _logger.warning('Illegal \'head\' in paragraph config: $head');
       }
     }
 

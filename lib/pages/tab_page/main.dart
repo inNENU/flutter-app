@@ -18,12 +18,12 @@ NavigationBarConfig mainPageWidget = NavigationBarConfig(
         MyListConfig('grid 测试', url: '/test/grid'),
         MyListConfig('foot 测试', url: '/test/foot'),
       ]),
-      MyGrid([
-        MyGridConfig(text: '列表项1'),
-        MyGridConfig(text: '列表项2'),
-        MyGridConfig(text: '列表项3'),
-        MyGridConfig(text: '列表项4'),
-      ]),
+      // MyGrid([
+      //   MyGridConfig(text: '列表项1'),
+      //   MyGridConfig(text: '列表项2'),
+      //   MyGridConfig(text: '列表项3'),
+      //   MyGridConfig(text: '列表项4'),
+      // ]),
     ],
   ),
   title: '主页',

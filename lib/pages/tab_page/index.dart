@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:logging/logging.dart';
 
 import 'config.dart';
 import 'drawer.dart';
@@ -7,6 +8,8 @@ import 'guide.dart';
 import 'main.dart';
 
 export 'config.dart';
+
+final _logger = Logger('tagPage');
 
 class MyHome extends StatefulWidget {
   MyHome({Key key}) : super(key: key);
@@ -56,7 +59,7 @@ class _MyHomeState extends State<MyHome> {
       case 'guide':
         return 2;
       default:
-        // TODO: Error log here
+        _logger.warning('Illegal pageName: $pageName');
         return 0;
     }
   }
@@ -71,7 +74,7 @@ class _MyHomeState extends State<MyHome> {
       case 2:
         return 'guide';
       default:
-        // TODO: Error log here
+        _logger.warning('Illegal index: $index, index should only be 0,1,2.');
         return 'main';
     }
   }

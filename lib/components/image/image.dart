@@ -1,8 +1,11 @@
 import 'package:cached_network_image/cached_network_image.dart';
-import 'package:json_annotation/json_annotation.dart';
 import 'package:flutter/material.dart';
+import 'package:json_annotation/json_annotation.dart';
+import 'package:logging/logging.dart';
 
 part 'image.g.dart';
+
+final _logger = Logger('component.image');
 
 @JsonSerializable()
 class MyImage extends StatelessWidget {
@@ -126,7 +129,7 @@ class MyImage extends StatelessWidget {
               _imageBuilder(context, imageBuilder, desc),
           placeholder: (context, url) => _placeHolderWidget,
           errorWidget: (context, url, error) {
-            // TODO: Error log here
+            _logger.warning('Image: load $url fail.');
             return _errorWidget(context);
           },
         ),

@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:logging/logging.dart';
 
 import '../index.dart';
+
+final _logger = Logger('page');
 
 class MyPage extends StatelessWidget {
   /// 页面组件
@@ -34,7 +37,7 @@ class MyPage extends StatelessWidget {
       case 'foot':
         return MyFoot.fromJson(config);
       default:
-        // TODO: Error log here
+        _logger.warning('Unknown compoennt: $tag');
         return const SizedBox();
     }
   }

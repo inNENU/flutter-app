@@ -14,6 +14,8 @@ class MyApp extends StatelessWidget {
   /// App 标题
   static const String _title = 'in东师';
 
+  final logger = initLogManager();
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
