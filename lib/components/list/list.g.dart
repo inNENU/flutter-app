@@ -27,7 +27,7 @@ Map<String, dynamic> _$MyListConfigToJson(MyListConfig instance) =>
 
 MyList _$MyListFromJson(Map<String, dynamic> json) {
   return MyList(
-    MyList._getContentFromJson(json['content'] as List<Map<String, String>>),
+    MyList._getContentFromJson(json['content'] as List),
     head: json['head'],
     foot: json['foot'] as String ?? '',
   );

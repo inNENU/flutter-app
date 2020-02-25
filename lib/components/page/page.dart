@@ -6,15 +6,22 @@ import '../index.dart';
 final _logger = Logger('page');
 
 class MyPage extends StatelessWidget {
+  /// 页面标题
+  final String title;
+
   /// 页面组件
   final List<Widget> pageWidgets;
 
-  MyPage({@required List<Widget> children}) : pageWidgets = children;
+  MyPage({@required List<Widget> children, @required this.title})
+      : pageWidgets = children;
 
   /// 从 JSON 生成 MyPage
-  MyPage.fromJson(List<Map<String, dynamic>> pageWidgets)
-      : pageWidgets = List<Widget>.generate(
-            pageWidgets.length, (index) => _generateWidget(pageWidgets[index]));
+  MyPage.fromJson(List<dynamic> pageWidgets)
+      : title = pageWidgets[0]['title'] as String ?? '详情',
+        pageWidgets = List<Widget>.generate(
+            pageWidgets.length,
+            (index) =>
+                _generateWidget(pageWidgets[index] as Map<String, dynamic>));
 
   /// 生成 Widget
   static Widget _generateWidget(Map<String, dynamic> config) {
@@ -50,7 +57,7 @@ class MyPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) => Scaffold(
       appBar: AppBar(
-        title: const Text('Paragraph 测试'),
+        title: Text(title),
       ),
       body: ListView(
         children: pageWidgets,

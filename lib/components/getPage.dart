@@ -32,9 +32,7 @@ Future<MyPage> getPage(String url) async {
   print(response.statusCode);
   if (response.statusCode == 200) {
     final jsonString = const Utf8Decoder().convert(response.bodyBytes);
-    final config = json.decode(jsonString) as List<Map<String, dynamic>>;
-
-    print(config.toString());
+    final config = json.decode(jsonString) as List;
 
     // If server returns an OK response, parse the JSON.
     return MyPage.fromJson(config);

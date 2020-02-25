@@ -2,6 +2,7 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:json_annotation/json_annotation.dart';
 
+import '../../utils/index.dart';
 import '../getPage.dart';
 
 part 'list.g.dart';
@@ -32,13 +33,8 @@ class MyListConfig {
   void Function() tapAction(BuildContext context) => () {
         if (aim != null) {
           getPageFromAim(aim).then<void>((page) {
-            Navigator.push<dynamic>(
-              context,
-              MaterialPageRoute<dynamic>(builder: (context) => page),
-            );
+            Navigator.push<dynamic>(context, SlidePageRoute<dynamic>(page));
           });
-
-          // Navigator.pushNamed(context, '/page');
         } else if (url != null) Navigator.pushNamed(context, url);
       };
 
@@ -49,7 +45,7 @@ class MyListConfig {
     this.aim,
     this.url,
   });
-  factory MyListConfig.fromJson(Map<String, String> json) =>
+  factory MyListConfig.fromJson(Map<String, dynamic> json) =>
       _$MyListConfigFromJson(json);
 
   Map<String, dynamic> toJson() => _$MyListConfigToJson(this);
@@ -75,11 +71,11 @@ class MyList extends StatelessWidget {
   Map<String, dynamic> toJson() => _$MyListToJson(this);
 
   /// 从 JSON 生成 content
-  static List<MyListConfig> _getContentFromJson(
-          List<Map<String, String>> content) =>
+  static List<MyListConfig> _getContentFromJson(List<dynamic> content) =>
       List.generate(
         content.length,
-        (index) => MyListConfig.fromJson(content[index]),
+        (index) =>
+            MyListConfig.fromJson(content[index] as Map<String, dynamic>),
       );
 
   /// 列表头部组件
