@@ -23,8 +23,23 @@ dependencies:
   flutter_localizations:
     sdk: flutter
 
+  archive:
+  # auto_size_text:
   cached_network_image:
+  # carousel_slider:
+  # connectivity:
+  # device_info:
+  # fluttertoast:
+  # flutter_secure_storage:
+  # flutter_svg:
+  # geolocator:
+  # location:
   logging:
+  # package_info:
+  # path:
+  path_provider:
+  # video_player:
+  # webview_flutter:
 
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.

@@ -18,16 +18,19 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: _title,
+
+      // 多语言设置
       localizationsDelegates: [
         GlobalMaterialLocalizations.delegate,
         GlobalWidgetsLocalizations.delegate,
         //  GlobalCupertinoLocalizations.delegate,
       ],
-      themeMode: ThemeMode.system,
       supportedLocales: [
         const Locale('zh', 'CN'),
         const Locale('en', 'US'),
       ],
+
+      // 路由设置
       initialRoute: '/',
       onGenerateRoute: (settings) => settings.name == '/'
           // 无动画
@@ -35,11 +38,18 @@ class MyApp extends StatelessWidget {
               pageBuilder: (context, animation1, animation2) => MyHome())
           // 滑动动画
           : SlidePageRoute<dynamic>(routeMap[settings.name]),
+
+      /// 主题设置
       theme: ThemeData(
         primaryColor: Colors.greenAccent[400],
       ),
+
+      /// 暗黑主题设置
       darkTheme: ThemeData(
           primaryColor: Colors.greenAccent[400], brightness: Brightness.dark),
+
+      /// 主题模式
+      themeMode: ThemeMode.system,
     );
   }
 }

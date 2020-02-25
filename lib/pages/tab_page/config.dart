@@ -14,6 +14,11 @@ class NavigationBarConfig {
   /// 对应的导航栏项配置
   BottomNavigationBarItem bottomNavigationBarItem;
 
+  /// 更新页面
+  void update(Widget page) {
+    widget = page;
+  }
+
   NavigationBarConfig(this.widget, {String title, this.icon}) {
     this.title = Text(title);
     bottomNavigationBarItem = BottomNavigationBarItem(

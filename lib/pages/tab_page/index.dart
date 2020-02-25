@@ -8,13 +8,6 @@ import 'main.dart';
 
 export 'config.dart';
 
-/// Tab Bar 配置
-final List<NavigationBarConfig> _tabBarConfig = [
-  mainPageWidget,
-  guidePageWidget,
-  functionPageWidget,
-];
-
 class MyHome extends StatefulWidget {
   MyHome({Key key}) : super(key: key);
 
@@ -23,28 +16,77 @@ class MyHome extends StatefulWidget {
 }
 
 class _MyHomeState extends State<MyHome> {
+  /// 当前显示的页面索引
   int _selectedIndex = 0;
 
-  /// 设置页码
-  set page(String page) {
-    switch (page) {
+  /// Tab Bar 配置
+  final List<NavigationBarConfig> _tabBarConfig = [
+    mainPageWidget,
+    guidePageWidget,
+    functionPageWidget,
+  ];
+
+  /// 当前显示的页面名称
+  String _pageName = 'main';
+
+  /// 获取显示页面
+  String get pageName => _pageName;
+
+  /// 设置显示页面
+  set pageName(String pageName) {
+    setState(() {
+      _selectedIndex = getIndexFromPageName(pageName);
+      _pageName = pageName;
+    });
+  }
+
+  void updatePage(String pageName, Widget page) {
+    setState(() {
+      _tabBarConfig[getIndexFromPageName(pageName)].update(page);
+    });
+  }
+
+  /// 通过页面名称获取索引
+  int getIndexFromPageName(String pageName) {
+    switch (pageName) {
       case 'main':
-        _selectedIndex = 0;
-        break;
+        return 0;
       case 'function':
-        _selectedIndex = 1;
-        break;
+        return 1;
       case 'guide':
-        _selectedIndex = 2;
-        break;
+        return 2;
       default:
-      // TODO: Error log here
+        // TODO: Error log here
+        return 0;
     }
   }
 
+  /// 通过页面名称获取索引
+  String getPageNameFromIndex(int index) {
+    switch (index) {
+      case 0:
+        return 'main';
+      case 1:
+        return 'function';
+      case 2:
+        return 'guide';
+      default:
+        // TODO: Error log here
+        return 'main';
+    }
+  }
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+  }
+
+  /// 切换页面
   void _onItemTapped(int index) {
     setState(() {
       _selectedIndex = index;
+      _pageName = getPageNameFromIndex(index);
     });
   }
 
