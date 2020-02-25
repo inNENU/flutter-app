@@ -31,7 +31,7 @@ dependencies:
   # device_info:
   # fluttertoast:
   # flutter_secure_storage:
-  # flutter_svg:
+  flutter_svg:
   # geolocator:
   # location:
   logging:

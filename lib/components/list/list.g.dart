@@ -9,7 +9,7 @@ part of 'list.dart';
 MyListConfig _$MyListConfigFromJson(Map<String, dynamic> json) {
   return MyListConfig(
     json['text'] as String ?? '',
-    icon: json['icon'] as String,
+    icon: json['icon'] as String ?? '',
     desc: json['desc'] as String,
     aim: json['aim'] as String,
     url: json['url'] as String,

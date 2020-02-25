@@ -1,6 +1,7 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:json_annotation/json_annotation.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 
 import '../../utils/index.dart';
 import '../getPage.dart';
@@ -15,6 +16,7 @@ class MyListConfig {
   final String text;
 
   /// 列表图标
+  @JsonKey(defaultValue: '')
   final String icon;
 
   /// 列表详情
@@ -25,6 +27,42 @@ class MyListConfig {
 
   /// 跳转地址
   final String url;
+
+  /// 是否为在线资源
+  bool get _isOnlineResourse =>
+      icon.startsWith('https://') || icon.startsWith('http://');
+
+  bool get _isImage =>
+      icon.endsWith('.png') || icon.endsWith('.jpg') || icon.endsWith('jpeg');
+
+  /// 是否是在线图片
+  bool get isOnlineImage => _isOnlineResourse && _isImage;
+
+  bool get isLocalImage => _isImage && icon.startsWith('assets/');
+
+  /// 是否是在线 SVG
+  bool get isOnlineSVG => _isOnlineResourse && icon.endsWith('.svg');
+
+  /// 是否为合法本地资源
+  bool get isLocalSvg =>
+      (icon.startsWith('/module/icon/') || icon.startsWith('/icon/tabPage/')) &&
+      icon.endsWith('.svg');
+
+  /// 本地资源路径
+  String get localAssetPath => isLocalSvg
+      ? icon
+          .replaceFirst('/module/icon/', 'assets/icon/module/')
+          .replaceFirst('/icon/tabPage/', 'assets/icon/tab/')
+      : '';
+
+  /// 图片组件
+  Widget get iconWidget => isLocalSvg
+      ? SvgPicture.asset(localAssetPath)
+      : isOnlineSVG
+          ? SvgPicture.network(icon)
+          : isOnlineImage
+              ? CachedNetworkImage(imageUrl: icon)
+              : isLocalImage ? Image.asset(icon) : null;
 
   /// 是否可点击
   bool get isTapable => aim != null || url != null;
@@ -40,7 +78,7 @@ class MyListConfig {
 
   MyListConfig(
     this.text, {
-    this.icon,
+    this.icon = '',
     this.desc,
     this.aim,
     this.url,
@@ -93,9 +131,13 @@ class MyList extends StatelessWidget {
 
     return ListTile(
       onTap: config.isTapable ? config.tapAction(context) : null,
-      leading: config.icon == null
+      leading: config.iconWidget == null
           ? null
-          : CachedNetworkImage(imageUrl: config.icon),
+          : SizedBox(
+              width: 30,
+              height: 30,
+              child: config.iconWidget,
+            ),
       title: Text(config.text),
       subtitle: config.desc == null ? null : Text(config.desc),
       trailing: config.isTapable ? const Icon(Icons.chevron_right) : null,
