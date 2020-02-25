@@ -110,7 +110,7 @@ class MyGrid extends StatelessWidget {
     final lastRowItemNumber = itemNumber % itemsPerLine;
 
     /// 行数
-    final rowNumber = (itemNumber / itemsPerLine).ceil();
+    final rowNumber = itemNumber ~/ itemsPerLine;
 
     return List.generate(
       rowNumber,

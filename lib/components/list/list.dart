@@ -2,6 +2,8 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:json_annotation/json_annotation.dart';
 
+import '../getPage.dart';
+
 part 'list.g.dart';
 
 /// 列表配置
@@ -29,7 +31,14 @@ class MyListConfig {
   /// 点击动作
   void Function() tapAction(BuildContext context) => () {
         if (aim != null) {
-          Navigator.pushNamed(context, '/page');
+          getPageFromAim(aim).then<void>((page) {
+            Navigator.push<dynamic>(
+              context,
+              MaterialPageRoute<dynamic>(builder: (context) => page),
+            );
+          });
+
+          // Navigator.pushNamed(context, '/page');
         } else if (url != null) Navigator.pushNamed(context, url);
       };
 
@@ -57,9 +66,10 @@ class MyList extends StatelessWidget {
   final dynamic head;
 
   /// 列表页脚
-  final dynamic foot;
+  @JsonKey(defaultValue: '')
+  final String foot;
 
-  MyList(this.content, {this.head, this.foot});
+  MyList(this.content, {this.head, this.foot = ''});
   factory MyList.fromJson(Map<String, dynamic> json) => _$MyListFromJson(json);
 
   Map<String, dynamic> toJson() => _$MyListToJson(this);
@@ -70,6 +80,15 @@ class MyList extends StatelessWidget {
       List.generate(
         content.length,
         (index) => MyListConfig.fromJson(content[index]),
+      );
+
+  /// 列表头部组件
+  Widget _listHead(BuildContext context) => Padding(
+        padding: const EdgeInsets.only(top: 8, left: 30, right: 30),
+        child: Text(
+          head as String,
+          style: Theme.of(context).textTheme.body2,
+        ),
       );
 
   /// 获取渲染的列表项
@@ -91,10 +110,35 @@ class MyList extends StatelessWidget {
   List<Widget> _getList(BuildContext context) =>
       List.generate(content.length, (index) => _listTile(context, index));
 
-  @override
-  Widget build(BuildContext context) => Card(
+  /// 列表组件
+  Widget _listWidget(BuildContext context) => Card(
       margin: const EdgeInsets.symmetric(horizontal: 15, vertical: 8),
       child: Column(
         children: _getList(context),
       ));
+
+  /// 列表尾部组件
+  Widget _listFoot(BuildContext context) => Padding(
+        padding: const EdgeInsets.only(left: 30, right: 30, bottom: 8),
+        child: Text(
+          foot,
+          style: Theme.of(context).textTheme.caption,
+        ),
+      );
+
+  List<Widget> _children(BuildContext context) {
+    final children = <Widget>[];
+
+    if (head is String) children.add(_listHead(context));
+    children.add(_listWidget(context));
+    if (foot.isNotEmpty) children.add(_listFoot(context));
+
+    return children;
+  }
+
+  @override
+  Widget build(BuildContext context) => Column(
+        crossAxisAlignment: CrossAxisAlignment.stretch,
+        children: _children(context),
+      );
 }

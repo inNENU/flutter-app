@@ -1,8 +1,11 @@
 import 'dart:convert';
 // import 'dart:io';
 import 'package:http/http.dart' as http;
+import 'package:logging/logging.dart';
 
 import 'index.dart';
+
+final _logger = Logger('component.page');
 
 /// 获取文件夹名称
 String _resolveFolderName(String aim) {
@@ -26,14 +29,22 @@ String _resolveFolderName(String aim) {
 /// 获得页面对象
 Future<MyPage> getPage(String url) async {
   final response = await http.get(url);
-
+  print(response.statusCode);
   if (response.statusCode == 200) {
-    final config = json.decode(response.body) as List<Map<String, dynamic>>;
+    final jsonString = const Utf8Decoder().convert(response.bodyBytes);
+    final config = json.decode(jsonString) as List<Map<String, dynamic>>;
+
+    print(config.toString());
+
     // If server returns an OK response, parse the JSON.
     return MyPage.fromJson(config);
   }
-  // If that response was not OK, throw an error.
-  throw Exception('Failed to load post');
+
+  _logger.warning('Request failed with statusCode: ${response.statusCode}');
+
+  return MyPage.fromJson(<Map<String, dynamic>>[
+    <String, dynamic>{'tag': 'head', 'title': 'error'}
+  ]);
 }
 
 /// 通过 aim 获得页面对象
@@ -41,5 +52,5 @@ Future<MyPage> getPageFromAim(String aim) async {
   /// 文件夹
   final folder = _resolveFolderName(aim);
 
-  return await getPage('https://mp.innenu.com/page/$folder/$aim');
+  return await getPage('https://mp.innenu.com/page/$folder/$aim.json');
 }

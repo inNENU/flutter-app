@@ -29,7 +29,7 @@ MyList _$MyListFromJson(Map<String, dynamic> json) {
   return MyList(
     MyList._getContentFromJson(json['content'] as List<Map<String, String>>),
     head: json['head'],
-    foot: json['foot'],
+    foot: json['foot'] as String ?? '',
   );
 }
 

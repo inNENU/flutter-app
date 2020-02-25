@@ -16,6 +16,16 @@ class ListTest extends StatelessWidget {
             MyListConfig('列表项3'),
             MyListConfig('列表项4'),
           ]),
+          MyList(
+            [
+              MyListConfig('列表项1'),
+              MyListConfig('列表项2'),
+              MyListConfig('列表项3'),
+              MyListConfig('列表项4'),
+            ],
+            head: '列表标题',
+            foot: '列表脚注',
+          ),
           MyList([
             MyListConfig('列表项1', desc: '列表1的详细描述'),
             MyListConfig('列表项2', desc: '列表2的详细描述'),
