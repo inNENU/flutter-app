@@ -73,8 +73,10 @@ class MyList extends StatelessWidget {
 
   /// 从 JSON 生成 content
   static List<MyListConfig> _getContentFromJson(List<dynamic> content) =>
-      List.of(content.map<MyListConfig>((dynamic item) =>
-          MyListConfig.fromJson(item as Map<String, dynamic>)));
+      content
+          .map<MyListConfig>((dynamic item) =>
+              MyListConfig.fromJson(item as Map<String, dynamic>))
+          .toList();
 
   /// 获取渲染的列表项
   Widget _listTile(BuildContext context, MyListConfig config) => ListTile(
@@ -90,7 +92,7 @@ class MyList extends StatelessWidget {
       margin: const EdgeInsets.symmetric(horizontal: 15, vertical: 8),
       child: Column(
         children:
-            List.of(content.map<Widget>((item) => _listTile(context, item))),
+            content.map<Widget>((item) => _listTile(context, item)).toList(),
       ));
 
   List<Widget> _children(BuildContext context) {

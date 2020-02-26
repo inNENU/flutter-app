@@ -107,4 +107,12 @@ class JSONTools {
           style: Theme.of(context).textTheme.caption,
         ),
       );
+
+  /// 加载组件
+  static Widget loadingWidget([double margin = 40]) => Padding(
+        padding: EdgeInsets.symmetric(vertical: margin),
+        child: const Center(
+          child: CircularProgressIndicator(),
+        ),
+      );
 }

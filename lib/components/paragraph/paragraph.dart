@@ -132,11 +132,14 @@ class MyParagraph extends StatelessWidget {
     } else {
       // 多个段落
       content.addAll(
-          List.of((text as List).map<Widget>((dynamic item) => _ParagraphWidget(
-                item as String,
-                align,
-                selectable: selectable,
-              ))));
+        (text as List)
+            .map<Widget>((dynamic item) => _ParagraphWidget(
+                  item as String,
+                  align,
+                  selectable: selectable,
+                ))
+            .toList(),
+      );
     }
 
     // 处理图片部分

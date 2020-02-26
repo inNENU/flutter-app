@@ -122,8 +122,10 @@ class _MyHomeState extends State<MyHome> {
       drawer: drawerWidget(context),
       body: _tabBarConfig.elementAt(_selectedIndex).widget,
       bottomNavigationBar: BottomNavigationBar(
-        items: List.of(_tabBarConfig.map<BottomNavigationBarItem>(
-            (item) => item.bottomNavigationBarItem)),
+        items: _tabBarConfig
+            .map<BottomNavigationBarItem>(
+                (item) => item.bottomNavigationBarItem)
+            .toList(),
         currentIndex: _selectedIndex,
         onTap: _onItemTapped,
       ),

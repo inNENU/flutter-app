@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:json_annotation/json_annotation.dart';
 import 'package:logging/logging.dart';
 
+import '../jsonTools.dart';
+
 part 'image.g.dart';
 
 final _logger = Logger('component.image');
@@ -21,15 +23,6 @@ class MyImage extends StatelessWidget {
       _$MyImageFromJson(json);
 
   Map<String, dynamic> toJson() => _$MyImageToJson(this);
-
-  /// 加载组件
-  Widget get _placeHolderWidget => Column(
-        children: [
-          const SizedBox(height: 40),
-          const CircularProgressIndicator(),
-          const SizedBox(height: 40),
-        ],
-      );
 
   /// 错误组件
   Widget _errorWidget(BuildContext context) => Column(
@@ -127,7 +120,7 @@ class MyImage extends StatelessWidget {
           imageUrl: src,
           imageBuilder: (context, imageBuilder) =>
               _imageBuilder(context, imageBuilder, desc),
-          placeholder: (context, url) => _placeHolderWidget,
+          placeholder: (context, url) => JSONTools.loadingWidget(),
           errorWidget: (context, url, error) {
             _logger.warning('Image: load $url fail.');
             return _errorWidget(context);
