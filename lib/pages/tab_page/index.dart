@@ -122,10 +122,9 @@ class _MyHomeState extends State<MyHome> {
       drawer: drawerWidget(context),
       body: _tabBarConfig.elementAt(_selectedIndex).widget,
       bottomNavigationBar: BottomNavigationBar(
-        items: List.generate(_tabBarConfig.length,
-            (index) => _tabBarConfig[index].bottomNavigationBarItem),
+        items: List.of(_tabBarConfig.map<BottomNavigationBarItem>(
+            (item) => item.bottomNavigationBarItem)),
         currentIndex: _selectedIndex,
-        // selectedItemColor: Theme.of(context).primaryColor,
         onTap: _onItemTapped,
       ),
     );

@@ -73,34 +73,24 @@ class MyList extends StatelessWidget {
 
   /// 从 JSON 生成 content
   static List<MyListConfig> _getContentFromJson(List<dynamic> content) =>
-      List.generate(
-        content.length,
-        (index) =>
-            MyListConfig.fromJson(content[index] as Map<String, dynamic>),
-      );
+      List.of(content.map<MyListConfig>((dynamic item) =>
+          MyListConfig.fromJson(item as Map<String, dynamic>)));
 
   /// 获取渲染的列表项
-  Widget _listTile(BuildContext context, int index) {
-    final config = content[index];
-
-    return ListTile(
-      onTap: config.isTapable ? config.tapAction(context) : null,
-      leading: JSONTools.getIconWidget(config.icon),
-      title: Text(config.text),
-      subtitle: config.desc == null ? null : Text(config.desc),
-      trailing: config.isTapable ? const Icon(Icons.chevron_right) : null,
-    );
-  }
-
-  /// 渲染的列表
-  List<Widget> _getList(BuildContext context) =>
-      List.generate(content.length, (index) => _listTile(context, index));
+  Widget _listTile(BuildContext context, MyListConfig config) => ListTile(
+        onTap: config.isTapable ? config.tapAction(context) : null,
+        leading: JSONTools.getIconWidget(config.icon),
+        title: Text(config.text),
+        subtitle: config.desc == null ? null : Text(config.desc),
+        trailing: config.isTapable ? const Icon(Icons.chevron_right) : null,
+      );
 
   /// 列表组件
   Widget _listWidget(BuildContext context) => Card(
       margin: const EdgeInsets.symmetric(horizontal: 15, vertical: 8),
       child: Column(
-        children: _getList(context),
+        children:
+            List.of(content.map<Widget>((item) => _listTile(context, item))),
       ));
 
   List<Widget> _children(BuildContext context) {

@@ -71,11 +71,8 @@ class MyGrid extends StatelessWidget {
 
   /// 从 JSON 生成 content
   static List<MyGridConfig> _getContentFromJson(List<dynamic> content) =>
-      List.generate(
-        content.length,
-        (index) =>
-            MyGridConfig.fromJson(content[index] as Map<String, dynamic>),
-      );
+      List.of(content.map<MyGridConfig>((dynamic item) =>
+          MyGridConfig.fromJson(item as Map<String, dynamic>)));
 
   /// 网格 Widget
   Widget _gridWidget(BuildContext context, MyGridConfig config) => Column(
