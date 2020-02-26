@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 
-// import 'components/index.dart';
 import 'pages/index.dart';
 import 'tests/index.dart';
 import 'utils/index.dart';

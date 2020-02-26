@@ -1,3 +1,4 @@
+export 'carousel/carousel.dart';
 export 'foot/foot.dart';
 export 'grid/grid.dart';
 export 'head/head.dart';

@@ -47,9 +47,10 @@ class MyPage extends StatelessWidget {
         return MyFoot.fromJson(config);
       case 'phone':
         return MyPhone.fromJson(config);
+      case 'swiper':
+        return MyCarousel.fromJson(config);
 
       case 'doc':
-      case 'swiper':
       case 'intro':
       case 'List':
       case 'gzh':

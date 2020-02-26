@@ -24,6 +24,7 @@ NavigationBarConfig functionPageWidget = NavigationBarConfig(
           MyListConfig('grid 测试', url: '/test/grid'),
           MyListConfig('phone 测试', url: '/test/phone'),
           MyListConfig('foot 测试', url: '/test/foot'),
+          MyListConfig('carousel 测试', url: '/test/carousel'),
           MyListConfig('MyPage 测试', aim: 'card0'),
         ],
         head: '类测试',
