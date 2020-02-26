@@ -16,6 +16,7 @@ Map<String, Widget> get routeMap => {
       '/test/titleJSON': TitleJSONTest(),
       '/test/paragraph': ParagraphTest(),
       '/test/paragraphJSON': ParagraphJSONTest(),
+      '/test/phone': PhoneTest(),
       '/test/image': ImageTest(),
       '/test/imageJSON': ImageJSONTest(),
       '/test/list': ListTest(),

@@ -16,6 +16,8 @@ export 'list_json.dart';
 export 'paragraph.dart';
 export 'paragraph_json.dart';
 
+export 'phone.dart';
+
 export 'text_theme.dart';
 
 export 'title.dart';

@@ -22,6 +22,7 @@ NavigationBarConfig functionPageWidget = NavigationBarConfig(
           MyListConfig('image 测试', url: '/test/image'),
           MyListConfig('list 测试', url: '/test/list'),
           MyListConfig('grid 测试', url: '/test/grid'),
+          MyListConfig('phone 测试', url: '/test/phone'),
           MyListConfig('foot 测试', url: '/test/foot'),
           MyListConfig('MyPage 测试', aim: 'card0'),
         ],
