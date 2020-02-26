@@ -133,9 +133,9 @@ class MyParagraph extends StatelessWidget {
       // 多个段落
       content.addAll(
         List.generate(
-          (text as List<String>).length,
+          (text as List).length,
           (index) => _ParagraphWidget(
-            (text as List<String>)[index],
+            (text as List)[index] as String,
             align,
             selectable: selectable,
           ),

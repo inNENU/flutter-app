@@ -45,8 +45,22 @@ class MyPage extends StatelessWidget {
         return MyList.fromJson(config);
       case 'foot':
         return MyFoot.fromJson(config);
+
+      case 'phone':
+      case 'doc':
+      case 'swiper':
+      case 'intro':
+      case 'List':
+      case 'gzh':
+      case 'media':
+        _logger.info('$tag component support is on the way.');
+        return Text(
+          '暂不支持的组件 $tag',
+          textAlign: TextAlign.center,
+        );
+
       default:
-        _logger.warning('Unknown compoennt: $tag');
+        _logger.warning('Unknown component: $tag');
         return const SizedBox();
     }
   }
