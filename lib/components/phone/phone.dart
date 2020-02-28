@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_contact/contacts.dart';
+import 'package:innenu/utils/tool.dart';
 import 'package:logging/logging.dart';
 import 'package:json_annotation/json_annotation.dart';
 import 'package:url_launcher/url_launcher.dart' as launcher;
+
+import '../../utils/index.dart';
 
 part 'phone.g.dart';
 
@@ -144,11 +147,36 @@ class MyPhone extends StatelessWidget {
   }
 
   /// 添加联系人
-  void _addContact() {
-    // TODO: 添加前询问
-    Contacts.addContact(contact).then((contact) {
-      // TODO: 添加成功提示
-    });
+  void _addContact(BuildContext context) {
+    Tool.modal<void>(
+      context,
+      content: '是否要添加联系人$familyName$givenName?',
+      actions: [
+        FlatButton(
+          child: const Text('取消'),
+          onPressed: () {
+            Navigator.pop(context);
+          },
+        ),
+        FlatButton(
+          child: const Text('确定'),
+          onPressed: () {
+            MyPermission.checkAndAskPermission(context, 'contact')
+                .then((success) {
+              if (success) {
+                Contacts.addContact(contact).then((contact) {
+                  print('添加成功');
+                });
+                Navigator.pop(context);
+                Tool.tip(context, content: '添加联系人成功');
+              } else {
+                Tool.tip(context, content: '授权失败');
+              }
+            });
+          },
+        )
+      ],
+    );
   }
 
   @override
@@ -171,9 +199,10 @@ class MyPhone extends StatelessWidget {
               onPressed: _makePhoneCall,
             ),
             IconButton(
-              icon: Icon(Icons.contact_phone),
-              onPressed: _addContact,
-            ),
+                icon: Icon(Icons.contact_phone),
+                onPressed: () {
+                  _addContact(context);
+                }),
           ],
         ),
       );

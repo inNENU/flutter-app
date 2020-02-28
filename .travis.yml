@@ -1,0 +1,7 @@
+language: dart
+os: linux
+dart:
+  - stable
+dart_task:
+  - dartanalyzer: true
+  - dartfmt: true

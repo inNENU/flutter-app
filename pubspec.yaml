@@ -39,6 +39,7 @@ dependencies:
   # package_info:
   # path:
   path_provider:
+  permission_handler:
   url_launcher:
   # video_player:
   # webview_flutter:
