@@ -28,7 +28,7 @@ String _resolveFolderName(String aim) {
 
 /// 获得页面对象
 Future<MyPage> getPage(String url) async {
-  final response = await http.get(url);
+  final response = await http.get(url, headers: {'Accept': 'application/json'});
 
   if (response.statusCode == 200) {
     final jsonString = const Utf8Decoder().convert(response.bodyBytes);

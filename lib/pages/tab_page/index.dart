@@ -87,11 +87,10 @@ class _MyHomeState extends State<MyHome> {
 
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
     final base = 'https://mp.innenu.com/config/wx33acb831ee1831a5';
 
-// 获取最新版本号
+    // 获取最新版本号
     http.get('$base/version.json').then((response) {
       if (response.statusCode == 200) {
         final version = jsonDecode(response.body) as String;
