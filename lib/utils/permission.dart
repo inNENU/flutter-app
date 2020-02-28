@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:logging/logging.dart';
 import 'package:permission_handler/permission_handler.dart';
 
-import 'tool.dart';
+import 'ui.dart';
 
 final _logger = Logger('permission');
 
@@ -168,7 +168,7 @@ class MyPermission {
     return checkPermission(permissionString).then((status) {
       switch (status) {
         case PermissionStatus.neverAskAgain: // 用户选择不再询问
-          Tool.tip(
+          UI.tip(
             context,
             content: '您已永久拒绝 $localeString 权限。',
             actionLabel: '打开',
@@ -186,7 +186,7 @@ class MyPermission {
               if (status == PermissionStatus.granted) {
                 return true;
               } else {
-                Tool.tip(
+                UI.tip(
                   context,
                   content: '您拒绝了 $localeString 权限请求',
                   actionLabel: '重试',
@@ -200,7 +200,7 @@ class MyPermission {
           return request();
 
         case PermissionStatus.restricted: // 获得权限受限
-          Tool.tip(
+          UI.tip(
             context,
             content: '受到访问限制，无法获得$localeString',
             actionLabel: '详情',
@@ -212,7 +212,7 @@ class MyPermission {
                       : '您的监护人/设备管控系统'
                           '';
 
-              Tool.modal<void>(context,
+              UI.modal<void>(context,
                   title: '收到系统限制',
                   content: '$tip 禁止您的应用获取 $localeString 权限',
                   actions: [

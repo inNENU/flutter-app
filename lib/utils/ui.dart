@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
-// import 'package:logging/logging.dart';
 
-class Tool {
+class UI {
   /// 弹出提示
   static void tip(
     BuildContext context, {

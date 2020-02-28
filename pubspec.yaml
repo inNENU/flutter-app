@@ -40,6 +40,8 @@ dependencies:
   # path:
   path_provider:
   permission_handler:
+  provider:
+  shared_preferences:
   url_launcher:
   # video_player:
   # webview_flutter:

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_contact/contacts.dart';
-import 'package:innenu/utils/tool.dart';
+import 'package:innenu/utils/ui.dart';
 import 'package:logging/logging.dart';
 import 'package:json_annotation/json_annotation.dart';
 import 'package:url_launcher/url_launcher.dart' as launcher;
@@ -148,7 +148,7 @@ class MyPhone extends StatelessWidget {
 
   /// 添加联系人
   void _addContact(BuildContext context) {
-    Tool.modal<void>(
+    UI.modal<void>(
       context,
       content: '是否要添加联系人$familyName$givenName?',
       actions: [
@@ -168,9 +168,9 @@ class MyPhone extends StatelessWidget {
                   print('添加成功');
                 });
                 Navigator.pop(context);
-                Tool.tip(context, content: '添加联系人成功');
+                UI.tip(context, content: '添加联系人成功');
               } else {
-                Tool.tip(context, content: '授权失败');
+                UI.tip(context, content: '授权失败');
               }
             });
           },
