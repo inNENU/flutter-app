@@ -8,39 +8,39 @@ final _logger = Logger('file');
 
 class FileManager {
   /// 缓存目录
-  Future<Directory> get tempDir async => await getTemporaryDirectory();
+  static Future<Directory> get tempDir async => await getTemporaryDirectory();
 
   /// 缓存目录路径
-  Future<String> get tempPath async {
+  static Future<String> get tempPath async {
     final tempDir = await getTemporaryDirectory();
 
     return tempDir.path;
   }
 
   /// 用户目录
-  Future<Directory> get userDir async =>
+  static Future<Directory> get userDir async =>
       await getApplicationDocumentsDirectory();
 
   /// 用户目录路径
-  Future<String> get userPath async {
+  static Future<String> get userPath async {
     final userDir = await getApplicationDocumentsDirectory();
 
     return userDir.path;
   }
 
   /// 程序目录
-  Future<Directory> get appDir async =>
+  static Future<Directory> get appDir async =>
       await getApplicationDocumentsDirectory();
 
   /// 程序目录路径
-  Future<String> get appPath async {
+  static Future<String> get appPath async {
     final appDir = await getApplicationDocumentsDirectory();
 
     return appDir.path;
   }
 
   /// 删除文件或文件夹
-  void $delete(String path, [bool isDir]) {
+  static void $delete(String path, [bool isDir]) {
     if (isDir == null) {
       try {
         // 判断路径是否是文件，并执行对应删除操作
@@ -74,10 +74,10 @@ class FileManager {
   }
 
   /// 判断对应文件或文件夹是否存在
-  bool exist(String path) => Link(path).existsSync();
+  static bool exist(String path) => Link(path).existsSync();
 
   /// 列出文件夹下文件
-  List<FileSystemEntity> listFile(String path) {
+  static List<FileSystemEntity> listFile(String path) {
     try {
       final fileList = Directory(path).listSync();
 
