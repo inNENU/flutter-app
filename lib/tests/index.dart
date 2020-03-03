@@ -24,3 +24,5 @@ export 'text_theme.dart';
 
 export 'title.dart';
 export 'title_json.dart';
+
+export 'utils/path.dart';

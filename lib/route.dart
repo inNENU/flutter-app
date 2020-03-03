@@ -22,4 +22,5 @@ Map<String, Widget> get routeMap => {
       '/test/imageJSON': ImageJSONTest(),
       '/test/list': ListTest(),
       '/test/listJSON': ListJSONTest(),
+      '/test/utils/path': PathTest(),
     };

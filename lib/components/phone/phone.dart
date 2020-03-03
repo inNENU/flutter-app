@@ -164,6 +164,7 @@ class MyPhone extends StatelessWidget {
             MyPermission.checkAndAskPermission(context, 'contact')
                 .then((success) {
               if (success) {
+                // TODO: Improve Call back
                 Contacts.addContact(contact).then((contact) {
                   print('添加成功');
                 });

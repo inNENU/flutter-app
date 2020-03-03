@@ -15,6 +15,12 @@ NavigationBarConfig functionPageWidget = NavigationBarConfig(
       ),
       MyList(
         [
+          MyListConfig('Path 库测试', url: '/test/utils/path'),
+        ],
+        head: '库测试',
+      ),
+      MyList(
+        [
           MyListConfig('textTheme 测试', url: '/test/textTheme'),
           MyListConfig('head 测试', url: '/test/head'),
           MyListConfig('title 测试', url: '/test/title'),

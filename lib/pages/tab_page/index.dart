@@ -85,9 +85,8 @@ class _MyHomeState extends State<MyHome> {
     }
   }
 
-  @override
-  void initState() {
-    super.initState();
+  /// 刷新页面
+  void refreshPage() {
     final base = 'https://mp.innenu.com/config/wx33acb831ee1831a5';
 
     // 获取最新版本号
@@ -99,9 +98,15 @@ class _MyHomeState extends State<MyHome> {
         updatePage(url, 'main');
         updatePage(url, 'guide');
       } else {
-        _logger.shout('Get version fail');
+        _logger.shout('Get app version fail');
       }
     });
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    refreshPage();
   }
 
   /// 切换页面
@@ -113,21 +118,19 @@ class _MyHomeState extends State<MyHome> {
   }
 
   @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: _tabBarConfig.elementAt(_selectedIndex).title,
-      ),
-      drawer: drawerWidget(context),
-      body: _tabBarConfig.elementAt(_selectedIndex).widget,
-      bottomNavigationBar: BottomNavigationBar(
-        items: _tabBarConfig
-            .map<BottomNavigationBarItem>(
-                (item) => item.bottomNavigationBarItem)
-            .toList(),
-        currentIndex: _selectedIndex,
-        onTap: _onItemTapped,
-      ),
-    );
-  }
+  Widget build(BuildContext context) => Scaffold(
+        appBar: AppBar(
+          title: _tabBarConfig.elementAt(_selectedIndex).title,
+        ),
+        drawer: drawerWidget(context),
+        body: _tabBarConfig.elementAt(_selectedIndex).widget,
+        bottomNavigationBar: BottomNavigationBar(
+          items: _tabBarConfig
+              .map<BottomNavigationBarItem>(
+                  (item) => item.bottomNavigationBarItem)
+              .toList(),
+          currentIndex: _selectedIndex,
+          onTap: _onItemTapped,
+        ),
+      );
 }
