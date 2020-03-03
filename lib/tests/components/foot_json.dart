@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../components/index.dart';
+import 'package:innenu/components/index.dart';
 
 class FootJSONTest extends StatelessWidget {
   @override

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
-import '../components/index.dart';
+import 'package:innenu/components/index.dart';
+
 
 class CarouselTest extends StatelessWidget {
   @override
