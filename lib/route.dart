@@ -7,6 +7,7 @@ Map<String, Widget> get routeMap => {
       '/setting': SettingsPage(),
       '/test/textTheme': TextThemeTest(),
       '/test/carousel': CarouselTest(),
+      '/test/carouselJSON': CarouselJSONTest(),
       '/test/foot': FootTest(),
       '/test/footJSON': FootJSONTest(),
       '/test/grid': GridTest(),

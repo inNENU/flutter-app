@@ -44,6 +44,7 @@ NavigationBarConfig functionPageWidget = NavigationBarConfig(
           MyListConfig('list 测试', url: '/test/listJSON'),
           MyListConfig('grid 测试', url: '/test/gridJSON'),
           MyListConfig('foot 测试', url: '/test/footJSON'),
+          MyListConfig('carousel 测试', url: '/test/carouselJSON'),
           MyListConfig('MyPage 测试', aim: 'card0'),
         ],
         head: 'JSON 测试',

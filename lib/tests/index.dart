@@ -1,4 +1,5 @@
 export 'carousel.dart';
+export 'carousel_json.dart';
 
 export 'foot.dart';
 export 'foot_json.dart';
