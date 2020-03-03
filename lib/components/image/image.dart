@@ -27,7 +27,7 @@ class MyImage extends StatelessWidget {
   /// 错误组件
   Widget _errorWidget(BuildContext context) => Column(
         children: [
-          const SizedBox(height: 45),
+          const SizedBox(height: 40),
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
@@ -48,7 +48,7 @@ class MyImage extends StatelessWidget {
               ),
             ],
           ),
-          const SizedBox(height: 45),
+          const SizedBox(height: 40),
         ],
       );
 
@@ -115,7 +115,7 @@ class MyImage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) => Container(
-        margin: const EdgeInsets.symmetric(horizontal: 15),
+        margin: const EdgeInsets.symmetric(horizontal: 15, vertical: 8),
         child: CachedNetworkImage(
           imageUrl: src,
           imageBuilder: (context, imageBuilder) =>

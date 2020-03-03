@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:logging/logging.dart';
 
+import '../utils/tool.dart';
+
 final log = Logger('JSONTools');
 
 class IconWidget {
@@ -62,25 +64,11 @@ class IconWidget {
 
 class JSONTools {
   /// 获得对齐方式
+  // static final getAlign =
+  //     ;
   static TextAlign getAlign(String align) {
-    if (align == null) return TextAlign.justify;
-
-    switch (align) {
-      case 'left':
-        return TextAlign.left;
-      case 'right':
-        return TextAlign.right;
-      case 'center':
-        return TextAlign.center;
-      case 'justify':
-        return TextAlign.justify;
-
-      /// 非法 Align 值
-      default:
-        log.warning('Align value illegal: $align');
-
-        return TextAlign.justify;
-    }
+    return Tool.string2EnumMap(TextAlign.values,
+        defaultValue: TextAlign.justify)(align);
   }
 
   /// 获取图标组件
@@ -109,7 +97,7 @@ class JSONTools {
       );
 
   /// 加载组件
-  static Widget loadingWidget([double margin = 40]) => Padding(
+  static Widget loadingWidget([double margin = 35]) => Padding(
         padding: EdgeInsets.symmetric(vertical: margin),
         child: const Center(
           child: CircularProgressIndicator(),

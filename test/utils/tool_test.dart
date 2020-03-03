@@ -24,4 +24,9 @@ void main() {
       () {
     expect(map2('d'), equals(_Test1.d12));
   });
+
+  test('Should be able to handle null and empty string.', () {
+    expect(map1(null), equals(_Test1.a));
+    expect(map2(''), equals(_Test1.d12));
+  });
 }
