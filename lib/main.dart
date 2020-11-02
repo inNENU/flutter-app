@@ -1,120 +1,83 @@
 import 'package:flutter/material.dart';
-import 'package:innenu/component/index.dart';
+import 'package:flutter/services.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
 
-void main() => runApp(MyApp());
+import 'package:sp_util/sp_util.dart';
+
+import 'package:innenu/pages/tab/tab.dart';
+import 'package:innenu/utils/device.dart';
+import 'package:innenu/router/not_found_page.dart';
+import 'package:innenu/router/router.dart';
+
+Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+
+  // shared_preferences 初始化
+  await SpUtil.getInstance();
+
+  runApp(MyApp());
+
+  // 透明状态栏
+  if (DeviceInfo.isAndroid) {
+    SystemChrome.setSystemUIOverlayStyle(
+        const SystemUiOverlayStyle(statusBarColor: Colors.transparent));
+  }
+}
 
 class MyApp extends StatelessWidget {
+  /// App 标题
   static const String _title = 'in东师';
+
+  MyApp() {
+    Routes.initRoutes();
+  }
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       title: _title,
+
+      // 多语言设置
+      localizationsDelegates: [
+        GlobalMaterialLocalizations.delegate,
+        GlobalWidgetsLocalizations.delegate,
+        //  GlobalCupertinoLocalizations.delegate,
+      ],
+      supportedLocales: [
+        const Locale('zh', 'CN'),
+        const Locale('en', 'US'),
+      ],
+      builder: (context, child) {
+        /// 保证文字大小不受手机系统设置影响 https://www.kikt.top/posts/flutter/layout/dynamic-text/
+        return MediaQuery(
+          data: MediaQuery.of(context).copyWith(textScaleFactor: 1.0),
+          child: child,
+        );
+      },
+
+      // 路由设置
+      // initialRoute: '/',
+      home: Home(),
+      onGenerateRoute: Routes.router.generator,
+
+      /// 因为使用了 fluro，这里设置主要针对 Web
+      onUnknownRoute: (_) {
+        return MaterialPageRoute<dynamic>(
+          builder: (context) => NotFoundPage(),
+        );
+      },
+
+      /// 主题设置
       theme: ThemeData(
         primaryColor: Colors.greenAccent[400],
       ),
-      home: MyHome(),
-    );
-  }
-}
 
-class MyHome extends StatefulWidget {
-  MyHome({Key key}) : super(key: key);
+      /// 暗黑主题设置
+      darkTheme: ThemeData(
+          primaryColor: Colors.greenAccent[400], brightness: Brightness.dark),
 
-  @override
-  _MyHomeState createState() => _MyHomeState();
-}
-
-/// 导航栏配置
-class NavigationBarConfig {
-  /// 对应的标题
-  Text title;
-
-  /// 对应的标题
-  Widget icon;
-
-  /// 对应的页面
-  Widget widget;
-
-  /// 对应的导航栏项配置
-  BottomNavigationBarItem bottomNavigationBarItem;
-
-  NavigationBarConfig(this.widget, {String title, this.icon}) {
-    this.title = Text(title);
-    this.bottomNavigationBarItem = BottomNavigationBarItem(
-      icon: this.icon,
-      title: this.title,
-    );
-  }
-}
-
-class _MyHomeState extends State<MyHome> {
-  int _selectedIndex = 0;
-
-  static const TextStyle optionStyle =
-      TextStyle(fontSize: 30, fontWeight: FontWeight.bold);
-
-  static List<NavigationBarConfig> _config = [
-    NavigationBarConfig(
-      MyParagraph(text: '主页'),
-      // Text(
-      //   '主页',
-      //   style: optionStyle,
-      // ),
-      title: '主页',
-      icon: Icon(Icons.home),
-    ),
-    NavigationBarConfig(
-      Text(
-        '指南',
-        style: optionStyle,
-      ),
-      title: '指南',
-      icon: Icon(Icons.lightbulb_outline),
-    ),
-    NavigationBarConfig(
-      Text(
-        '功能',
-        style: optionStyle,
-      ),
-      title: '功能',
-      icon: Icon(Icons.apps),
-    ),
-  ];
-
-  void _onItemTapped(int index) {
-    setState(() {
-      _selectedIndex = index;
-    });
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-          title: _config.elementAt(_selectedIndex).title,
-          automaticallyImplyLeading: false,
-          actions: [
-            IconButton(
-              icon: Icon(
-                Icons.settings,
-                color: Colors.white,
-              ),
-              onPressed: () {
-                // TODO: Make Setting Page
-              },
-            )
-          ]),
-      body: Center(
-        child: _config.elementAt(_selectedIndex).widget,
-      ),
-      bottomNavigationBar: BottomNavigationBar(
-        items: List.generate(
-            _config.length, (index) => _config[index].bottomNavigationBarItem),
-        currentIndex: _selectedIndex,
-        // selectedItemColor: Theme.of(context).primaryColor,
-        onTap: _onItemTapped,
-      ),
+      /// 主题模式
+      themeMode: ThemeMode.system,
     );
   }
 }
