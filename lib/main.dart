@@ -55,8 +55,6 @@ class MyApp extends StatelessWidget {
         );
       },
 
-      // 路由设置
-      // initialRoute: '/',
       home: Home(),
       onGenerateRoute: Routes.router.generator,
 
