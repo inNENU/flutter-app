@@ -3,13 +3,25 @@ import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:json_annotation/json_annotation.dart';
 
-import 'package:innenu/utils/jsonTools.dart';
+import 'package:innenu/utils/json_tools.dart';
 
 part 'carousel.g.dart';
 
 /// 标题组件
 @JsonSerializable()
 class CarouselComponent extends StatelessWidget {
+  const CarouselComponent(
+    this.images, {
+    this.height = 0,
+    this.autoplay = true,
+    this.interval = 5000,
+    this.duration = 500,
+    this.circular = true,
+    this.vertical = false,
+  });
+  factory CarouselComponent.fromJson(Map<String, dynamic> json) =>
+      _$CarouselComponentFromJson(json);
+
   /// 轮播图片
   @JsonKey(name: 'url', fromJson: _getImagesFromJson)
   final List<String> images;
@@ -37,17 +49,6 @@ class CarouselComponent extends StatelessWidget {
   @JsonKey(defaultValue: false)
   final bool vertical;
 
-  CarouselComponent(
-    this.images, {
-    this.height = 0,
-    this.autoplay = true,
-    this.interval = 5000,
-    this.duration = 500,
-    this.circular = true,
-    this.vertical = false,
-  });
-  factory CarouselComponent.fromJson(Map<String, dynamic> json) =>
-      _$CarouselComponentFromJson(json);
   Map<String, dynamic> toJson() => _$CarouselComponentToJson(this);
 
   /// 从 JSON 中获得图片
@@ -58,21 +59,16 @@ class CarouselComponent extends StatelessWidget {
   Widget build(BuildContext context) => CarouselSlider(
         options: CarouselOptions(
           height: height == 0 ? null : height,
-          aspectRatio: 16 / 9,
           viewportFraction: 0.9,
-          initialPage: 0,
-          enableInfiniteScroll: true,
-          reverse: false,
           autoPlay: autoplay,
           autoPlayInterval: Duration(milliseconds: interval),
           autoPlayAnimationDuration: Duration(milliseconds: duration),
-          autoPlayCurve: Curves.fastOutSlowIn,
           scrollDirection: vertical ? Axis.vertical : Axis.horizontal,
         ),
         items: images
             .map<Widget>(
               (link) => Builder(
-                builder: (context) => Container(
+                builder: (context) => SizedBox(
                   width: MediaQuery.of(context).size.width,
                   height: MediaQuery.of(context).size.height,
                   child: CachedNetworkImage(

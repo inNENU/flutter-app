@@ -10,7 +10,7 @@ class GridJSONTest extends StatelessWidget {
       ),
       body: ListView(
         children: [
-          GridComponent.fromJson(<String, dynamic>{
+          GridComponent.fromJson(const <String, dynamic>{
             'content': [
               {'text': '网格项1'},
               {'text': '网格项2'},
@@ -18,7 +18,7 @@ class GridJSONTest extends StatelessWidget {
               {'text': '网格项4'},
             ]
           }),
-          GridComponent.fromJson(<String, dynamic>{
+          GridComponent.fromJson(const <String, dynamic>{
             'head': '网格标题',
             'content': [
               {'text': '网格项1'},
@@ -28,7 +28,7 @@ class GridJSONTest extends StatelessWidget {
             ],
             'foot': '网格脚注',
           }),
-          GridComponent.fromJson(<String, dynamic>{
+          GridComponent.fromJson(const <String, dynamic>{
             'head': '网格标题',
             'content': [
               {

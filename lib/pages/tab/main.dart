@@ -5,7 +5,7 @@ import 'config.dart';
 
 /// 主页
 NavigationBarConfig mainPageWidget = NavigationBarConfig(
-  TitleComponent('主页'),
+  const TitleComponent('主页'),
   label: '主页',
   icon: const Icon(Icons.home),
 );

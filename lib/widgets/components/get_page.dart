@@ -18,7 +18,7 @@ Future<MyPage> getPage(String url) async {
 
   _logger.warning('Request failed with statusCode: ${response.statusCode}');
 
-  return MyPage.fromJson(<String, dynamic>{
+  return MyPage.fromJson(const <String, dynamic>{
     'title': '加载错误',
     'content': <void>[],
   });
@@ -26,4 +26,4 @@ Future<MyPage> getPage(String url) async {
 
 /// 通过 ID 获得页面对象
 Future<MyPage> getPageFromId(String id) async =>
-    await getPage('https://mp.innenu.com/resource/$id.json');
+    getPage('https://mp.innenu.com/resource/$id.json');

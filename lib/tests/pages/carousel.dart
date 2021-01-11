@@ -8,7 +8,7 @@ class CarouselTest extends StatelessWidget {
       appBar: AppBar(
         title: const Text('Carousel 测试'),
       ),
-      body: ListView(children: [
+      body: ListView(children: const [
         TitleComponent('轮播图'),
         CarouselComponent([
           'https://mp.innenu.com/img/check/check1.jpg',

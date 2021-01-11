@@ -11,6 +11,26 @@ final _logger = Logger('component.phone');
 
 @JsonSerializable()
 class PhoneComponent extends StatelessWidget {
+  const PhoneComponent(
+    this.phoneNumber,
+    this.givenName, {
+    this.familyName = '',
+    this.displayName = '',
+    this.homeNumber = '',
+    this.hostNumer = '',
+    this.workNumber = '',
+    this.company = '',
+    this.note = '',
+    this.region = '',
+    this.city = '',
+    this.street = '',
+    this.postcode = '',
+    this.jobTitle = '',
+    this.email = '',
+  });
+  factory PhoneComponent.fromJson(Map<String, dynamic> json) =>
+      _$PhoneComponentFromJson(json);
+
   /// 号码
   @JsonKey(defaultValue: '', name: 'num')
   final String phoneNumber;
@@ -70,26 +90,6 @@ class PhoneComponent extends StatelessWidget {
   /// 电子邮件
   @JsonKey(defaultValue: '', name: 'email')
   final String email;
-
-  PhoneComponent(
-    this.phoneNumber,
-    this.givenName, {
-    this.familyName = '',
-    this.displayName = '',
-    this.homeNumber = '',
-    this.hostNumer = '',
-    this.workNumber = '',
-    this.company = '',
-    this.note = '',
-    this.region = '',
-    this.city = '',
-    this.street = '',
-    this.postcode = '',
-    this.jobTitle = '',
-    this.email = '',
-  });
-  factory PhoneComponent.fromJson(Map<String, dynamic> json) =>
-      _$PhoneComponentFromJson(json);
 
   Map<String, dynamic> toJson() => _$PhoneComponentToJson(this);
 
@@ -151,13 +151,12 @@ class PhoneComponent extends StatelessWidget {
       content: '是否要添加联系人$familyName$givenName?',
       actions: [
         FlatButton(
-          child: const Text('取消'),
           onPressed: () {
             Navigator.pop(context);
           },
+          child: const Text('取消'),
         ),
         FlatButton(
-          child: const Text('确定'),
           onPressed: () {
             MyPermission.checkAndAskPermission(context, 'contact')
                 .then((success) {
@@ -171,6 +170,7 @@ class PhoneComponent extends StatelessWidget {
               }
             });
           },
+          child: const Text('确定'),
         )
       ],
     );

@@ -8,7 +8,7 @@ class PhoneTest extends StatelessWidget {
       appBar: AppBar(
         title: const Text('Phone 测试'),
       ),
-      body: ListView(children: [
+      body: ListView(children: const [
         PhoneComponent(
           '12344556677',
           '伯望',

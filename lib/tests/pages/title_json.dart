@@ -10,6 +10,6 @@ class TitleJSONTest extends StatelessWidget {
       ),
       body: ListView(children: [
         TitleComponent.fromJson(
-            <String, String>{'tag': 'title', 'text': '标题测试'}),
+            const <String, String>{'tag': 'title', 'text': '标题测试'}),
       ]));
 }

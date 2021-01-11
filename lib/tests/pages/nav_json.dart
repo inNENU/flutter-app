@@ -13,7 +13,8 @@ class HeadJSONTest extends StatelessWidget {
           const SizedBox(
             height: 20,
           ),
-          NavComponent.fromJson(<String, String>{'tag': 'head', 'title': '标题'}),
+          NavComponent.fromJson(
+              const <String, String>{'tag': 'head', 'title': '标题'}),
         ],
       ));
 }

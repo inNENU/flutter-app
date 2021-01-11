@@ -10,7 +10,7 @@ class ListJSONTest extends StatelessWidget {
       ),
       body: ListView(
         children: [
-          ListComponent.fromJson(<String, dynamic>{
+          ListComponent.fromJson(const <String, dynamic>{
             'tag': 'list',
             'content': [
               {'text': '列表项1'},
@@ -19,7 +19,7 @@ class ListJSONTest extends StatelessWidget {
               {'text': '列表项4'},
             ],
           }),
-          ListComponent.fromJson(<String, dynamic>{
+          ListComponent.fromJson(const <String, dynamic>{
             'tag': 'list',
             'head': '列表标题',
             'content': [
@@ -30,7 +30,7 @@ class ListJSONTest extends StatelessWidget {
             ],
             'foot': '列表脚注'
           }),
-          ListComponent.fromJson(<String, dynamic>{
+          ListComponent.fromJson(const <String, dynamic>{
             'tag': 'list',
             'content': [
               {

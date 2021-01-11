@@ -9,16 +9,16 @@ class CarouselJSONTest extends StatelessWidget {
         title: const Text('Carousel JSON 测试'),
       ),
       body: ListView(children: [
-        TitleComponent('轮播图'),
-        CarouselComponent.fromJson(<String, dynamic>{
+        const TitleComponent('轮播图'),
+        CarouselComponent.fromJson(const <String, dynamic>{
           'url': [
             'https://mp.innenu.com/img/check/check1.jpg',
             'https://mp.innenu.com/img/check/check2.jpg',
             'https://mp.innenu.com/img/check/check3.jpg',
           ]
         }),
-        TitleComponent('高度为300的轮播图'),
-        CarouselComponent.fromJson(<String, dynamic>{
+        const TitleComponent('高度为300的轮播图'),
+        CarouselComponent.fromJson(const <String, dynamic>{
           'url': [
             'https://mp.innenu.com/img/check/check1.jpg',
             'https://mp.innenu.com/img/check/check2.jpg',
@@ -26,8 +26,8 @@ class CarouselJSONTest extends StatelessWidget {
           ],
           'height': 300,
         }),
-        TitleComponent('不自动播放的轮播图'),
-        CarouselComponent.fromJson(<String, dynamic>{
+        const TitleComponent('不自动播放的轮播图'),
+        CarouselComponent.fromJson(const <String, dynamic>{
           'url': [
             'https://mp.innenu.com/img/check/check1.jpg',
             'https://mp.innenu.com/img/check/check2.jpg',
@@ -35,8 +35,8 @@ class CarouselJSONTest extends StatelessWidget {
           ],
           'autoplay': false,
         }),
-        TitleComponent('切换间隔为1s的轮播图'),
-        CarouselComponent.fromJson(<String, dynamic>{
+        const TitleComponent('切换间隔为1s的轮播图'),
+        CarouselComponent.fromJson(const <String, dynamic>{
           'url': [
             'https://mp.innenu.com/img/check/check1.jpg',
             'https://mp.innenu.com/img/check/check2.jpg',
@@ -44,8 +44,8 @@ class CarouselJSONTest extends StatelessWidget {
           ],
           'interval': 1000,
         }),
-        TitleComponent('切换动画为2s的轮播图'),
-        CarouselComponent.fromJson(<String, dynamic>{
+        const TitleComponent('切换动画为2s的轮播图'),
+        CarouselComponent.fromJson(const <String, dynamic>{
           'url': [
             'https://mp.innenu.com/img/check/check1.jpg',
             'https://mp.innenu.com/img/check/check2.jpg',
@@ -53,8 +53,8 @@ class CarouselJSONTest extends StatelessWidget {
           ],
           'duration': 3000,
         }),
-        TitleComponent('竖向的轮播图'),
-        CarouselComponent.fromJson(<String, dynamic>{
+        const TitleComponent('竖向的轮播图'),
+        CarouselComponent.fromJson(const <String, dynamic>{
           'url': [
             'https://mp.innenu.com/img/check/check1.jpg',
             'https://mp.innenu.com/img/check/check2.jpg',
@@ -62,8 +62,8 @@ class CarouselJSONTest extends StatelessWidget {
           ],
           'vertical': true,
         }),
-        TitleComponent('不衔接滚动的轮播图'),
-        CarouselComponent.fromJson(<String, dynamic>{
+        const TitleComponent('不衔接滚动的轮播图'),
+        CarouselComponent.fromJson(const <String, dynamic>{
           'url': [
             'https://mp.innenu.com/img/check/check1.jpg',
             'https://mp.innenu.com/img/check/check2.jpg',

@@ -9,16 +9,13 @@ class TextTest extends StatelessWidget {
           title: const Text('Paragraph 测试'),
         ),
         body: ListView(
-          children: [
+          children: const [
             TextComponent('段落1文字'),
             TextComponent(
               '带标题的段落文字',
               heading: '标题文字',
             ),
-            TextComponent([
-              '带有换行的段落文字\n'
-                  '带有换行的段落文字'
-            ]),
+            TextComponent(['带有换行的段落文字\n带有换行的段落文字']),
             TextComponent(
               '左对齐的段落文字',
               align: TextAlign.left,
@@ -42,7 +39,7 @@ class TextTest extends StatelessWidget {
               [
                 '   带标题的多个段落a',
                 '   带标题的多个段落b',
-                '   带标题的非常非常非常非常非常非常非常非常非常非常非常非常非常非常非常非常非常'
+                '   带标题的非常非常非常非常非常非常非常非常非常非常非常非常非常非常非常非常非常' +
                     '非常非常非常非常非常非常非常非常长的多个段落c'
               ],
               heading: '标题文字',

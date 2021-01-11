@@ -5,7 +5,7 @@ import 'config.dart';
 
 /// 指南页
 NavigationBarConfig guidePageWidget = NavigationBarConfig(
-  TitleComponent('东师指南'),
+  const TitleComponent('东师指南'),
   label: '东师指南',
   icon: const Icon(Icons.lightbulb_outline),
 );

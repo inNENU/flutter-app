@@ -10,6 +10,7 @@ import 'package:innenu/tests/router/router.dart';
 import 'package:innenu/pages/webview_page.dart';
 import 'package:innenu/pages/tab/tab.dart';
 
+// ignore: avoid_classes_with_only_static_members
 class Routes {
   static String home = '/home';
   static String webViewPage = '/webView';
@@ -25,23 +26,23 @@ class Routes {
       return NotFoundPage();
     });
 
-    router.define(home,
-        handler: Handler(handlerFunc: (context, params) => Home()));
+    router
+      ..define(home,
+          handler: Handler(handlerFunc: (context, params) => const Home()))
+      ..define(webViewPage, handler: Handler(handlerFunc: (_, params) {
+        final title = params['title']?.first;
+        final url = params['url']?.first;
+        return WebViewPage(title: title, url: url);
+      }));
 
-    router.define(webViewPage, handler: Handler(handlerFunc: (_, params) {
-      final title = params['title']?.first;
-      final url = params['url']?.first;
-      return WebViewPage(title: title, url: url);
-    }));
-
-    _listRouter.clear();
-
-    // 各自路由由各自模块管理，统一在此添加初始化
-    _listRouter.add(DrawerRouter());
-    _listRouter.add(TestRouter());
+    _listRouter
+      ..clear()
+      // 各自路由由各自模块管理，统一在此添加初始化
+      ..add(DrawerRouter())
+      ..add(TestRouter());
 
     // 初始化路由
-    for (var routerProvider in _listRouter) {
+    for (final routerProvider in _listRouter) {
       routerProvider.initRouter(router);
     }
   }

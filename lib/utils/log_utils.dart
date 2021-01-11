@@ -1,7 +1,7 @@
 import 'dart:convert' as convert;
 import 'package:common_utils/common_utils.dart';
 
-import 'env.dart';
+import 'info.dart';
 
 /// 日志工具
 class Log {
@@ -9,23 +9,23 @@ class Log {
   static const String tag = 'in-NENU';
 
   static void init() {
-    LogUtil.init(isDebug: !Environment.inProduction);
+    LogUtil.init(isDebug: !DeviceInfo.inProduction);
   }
 
   static void d(String msg, {String tag = tag}) {
-    if (!Environment.inProduction) {
+    if (!DeviceInfo.inProduction) {
       LogUtil.v(msg, tag: tag);
     }
   }
 
   static void e(String msg, {String tag = tag}) {
-    if (!Environment.inProduction) {
+    if (!DeviceInfo.inProduction) {
       LogUtil.e(msg, tag: tag);
     }
   }
 
   static void json(String msg, {String tag = tag}) {
-    if (!Environment.inProduction) {
+    if (!DeviceInfo.inProduction) {
       try {
         final dynamic data = convert.json.decode(msg);
         if (data is Map) {
@@ -35,8 +35,8 @@ class Log {
         } else {
           LogUtil.v(msg, tag: tag);
         }
-      } catch (e) {
-        LogUtil.e(msg, tag: tag);
+      } on Exception catch (e) {
+        LogUtil.e('$msg: $e', tag: tag);
       }
     }
   }
@@ -51,13 +51,16 @@ class Log {
     final initialIndent = _indent(tabs);
     tabs++;
 
-    if (isRoot || isListItem) LogUtil.v('$initialIndent{', tag: tag);
+    if (isRoot || isListItem) {
+      LogUtil.v('$initialIndent{', tag: tag);
+    }
 
     data.keys.toList().asMap().forEach((index, dynamic key) {
       final isLast = index == data.length - 1;
       dynamic value = data[key];
-      if (value is String) value = '\"$value\"';
-      if (value is Map) {
+      if (value is String) {
+        value = '"$value"';
+      } else if (value is Map) {
         if (value.isEmpty) {
           LogUtil.v('${_indent(tabs)} $key: $value${!isLast ? ',' : ''}',
               tag: tag);

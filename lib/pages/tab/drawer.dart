@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 /// 抽屉组件
-Drawer Function(BuildContext) drawerWidget = (context) => Drawer(
+Drawer drawerWidget(BuildContext context) => Drawer(
       child: ListView(
         children: [
           DrawerHeader(

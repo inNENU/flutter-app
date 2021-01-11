@@ -13,7 +13,7 @@ class FileManager {
   static void delete(String path) {
     try {
       Link(path).deleteSync(recursive: true);
-    } catch (err) {
+    } on Exception catch (err) {
       // 调试
       _logger.shout('删除 $path 出错,错误为:', err);
     }
@@ -30,7 +30,7 @@ class FileManager {
       _logger.info('$path 文件夹下文件为：', fileList); // 调试
 
       return fileList;
-    } catch (err) {
+    }  on Exception  catch (err) {
       // 调试
       _logger.shout('列出 $path 文件夹下文件错误：', err); // 调试
 
@@ -54,7 +54,9 @@ class FileManager {
         unzipBase,
         unzipPath.isEmpty
             ? '${path.withoutExtension(filePath)}/'
-            : unzipPath.endsWith('/') ? unzipPath : '$unzipPath/');
+            : unzipPath.endsWith('/')
+                ? unzipPath
+                : '$unzipPath/');
 
     // 读取 zip 文件
     final bytes = File(zipfilePath).readAsBytesSync();

@@ -6,6 +6,14 @@ part 'footer.g.dart';
 /// 标题组件
 @JsonSerializable()
 class FooterComponent extends StatelessWidget {
+  const FooterComponent({
+    this.author = '',
+    this.time = '',
+    this.desc = '',
+  });
+  factory FooterComponent.fromJson(Map<String, dynamic> json) =>
+      _$FooterComponentFromJson(json);
+
   /// 页脚文字
   @JsonKey(defaultValue: '')
   final String desc;
@@ -17,14 +25,6 @@ class FooterComponent extends StatelessWidget {
   /// 时间
   @JsonKey(defaultValue: '')
   final String time;
-
-  FooterComponent({
-    this.author = '',
-    this.time = '',
-    this.desc = '',
-  });
-  factory FooterComponent.fromJson(Map<String, dynamic> json) =>
-      _$FooterComponentFromJson(json);
 
   Map<String, dynamic> toJson() => _$FooterComponentToJson(this);
 

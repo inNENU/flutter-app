@@ -5,7 +5,7 @@ import 'config.dart';
 
 /// 东师介绍页
 NavigationBarConfig introPageWidget = NavigationBarConfig(
-  TitleComponent('东师介绍'),
+  const TitleComponent('东师介绍'),
   label: '东师介绍',
   icon: const Icon(Icons.info_outline),
 );

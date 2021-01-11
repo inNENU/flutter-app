@@ -9,7 +9,7 @@ class DocTest extends StatelessWidget {
         title: const Text('Doc 测试'),
       ),
       body: ListView(children: [
-        TitleComponent('Doc组件'),
+        const TitleComponent('Doc组件'),
         DocComponent(
             '学生违纪惩处办法.docx', 'https://mp.innenu.com/file/xsc/way.docx'),
       ]));

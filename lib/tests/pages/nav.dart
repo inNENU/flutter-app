@@ -9,8 +9,8 @@ class HeadTest extends StatelessWidget {
         title: const Text('Nav 测试'),
       ),
       body: ListView(
-        children: [
-          const SizedBox(
+        children: const [
+          SizedBox(
             height: 20,
           ),
           NavComponent('标题'),

@@ -6,13 +6,7 @@ import 'package:innenu/widgets/components/components.dart';
 final _logger = Logger('page');
 
 class MyPage extends StatelessWidget {
-  /// 页面标题
-  final String title;
-
-  /// 页面组件
-  final List<Widget> pageWidgets;
-
-  MyPage({@required List<Widget> children, @required this.title})
+  const MyPage({@required List<Widget> children, @required this.title})
       : pageWidgets = children;
 
   /// 从 JSON 生成 MyPage
@@ -24,6 +18,12 @@ class MyPage extends StatelessWidget {
             (pageWidgets['content'] as List<dynamic>).length,
             (index) => _generateWidget(
                 pageWidgets['content'][index] as Map<String, dynamic>));
+
+  /// 页面标题
+  final String title;
+
+  /// 页面组件
+  final List<Widget> pageWidgets;
 
   /// 生成 Widget
   static Widget _generateWidget(Map<String, dynamic> config) {

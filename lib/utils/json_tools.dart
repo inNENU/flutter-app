@@ -8,13 +8,13 @@ import 'package:innenu/utils/tool.dart';
 final logger = Logger('JSONTools');
 
 class IconWidget {
+  const IconWidget(this.icon, {double size}) : size = size ?? 30;
+
   /// 图标
   final String icon;
 
   // 尺寸
   final double size;
-
-  const IconWidget(this.icon, {double size}) : size = size ?? 30;
 
   /// 是否为在线资源
   bool get _isOnlineResourse =>
@@ -41,7 +41,9 @@ class IconWidget {
           ? SvgPicture.network(icon)
           : isOnlineImage
               ? CachedNetworkImage(imageUrl: icon)
-              : isLocalImage ? Image.asset(icon) : null;
+              : isLocalImage
+                  ? Image.asset(icon)
+                  : null;
 
   /// 图标组件
   Widget get widget => iconWidget == null
@@ -55,12 +57,9 @@ class IconWidget {
 
 class JSONTools {
   /// 获得对齐方式
-  // static final getAlign =
-  //     ;
-  static TextAlign getAlign(String align) {
-    return Tool.string2EnumMap(TextAlign.values,
-        defaultValue: TextAlign.justify)(align);
-  }
+  static TextAlign getAlign(String align) =>
+      Tool.string2EnumMap(TextAlign.values, defaultValue: TextAlign.justify)(
+          align);
 
   /// 获取图标组件
   static Widget getIconWidget(String icon, [double size]) {

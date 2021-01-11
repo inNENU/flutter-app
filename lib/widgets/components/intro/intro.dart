@@ -9,6 +9,11 @@ part 'intro.g.dart';
 /// 标题组件
 @JsonSerializable()
 class IntroComponent extends StatelessWidget {
+  const IntroComponent(this.name, this.logo, {this.desc = ''});
+
+  factory IntroComponent.fromJson(Map<String, dynamic> json) =>
+      _$IntroComponentFromJson(json);
+
   /// 主体名称
   final String name;
 
@@ -19,10 +24,6 @@ class IntroComponent extends StatelessWidget {
   @JsonKey(defaultValue: '')
   final String desc;
 
-  IntroComponent(this.name, this.logo, {this.desc = ''});
-
-  factory IntroComponent.fromJson(Map<String, dynamic> json) =>
-      _$IntroComponentFromJson(json);
   Map<String, dynamic> toJson() => _$IntroComponentToJson(this);
 
   @override
@@ -51,7 +52,6 @@ class IntroComponent extends StatelessWidget {
             Center(
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
-                crossAxisAlignment: CrossAxisAlignment.center,
                 children: <Widget>[
                   CachedNetworkImage(
                     imageUrl: logo,

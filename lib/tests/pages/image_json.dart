@@ -10,31 +10,31 @@ class ImageJSONTest extends StatelessWidget {
       ),
       body: ListView(
         children: [
-          TextComponent('普通图片'),
-          ImageComponent.fromJson(<String, String>{
+          const TextComponent('普通图片'),
+          ImageComponent.fromJson(const <String, String>{
             'tag': 'img',
             'src': 'https://mp.innenu.com/img/check/check1.jpg',
           }),
-          TextComponent('包含描述文字的图片'),
-          ImageComponent.fromJson(<String, String>{
+          const TextComponent('包含描述文字的图片'),
+          ImageComponent.fromJson(const <String, String>{
             'tag': 'img',
             'src': 'https://mp.innenu.com/img/check/check2.jpg',
             'desc': '报道图片1',
           }),
-          TextComponent('包含大量描述文字的图片'),
-          ImageComponent.fromJson(<String, String>{
+          const TextComponent('包含大量描述文字的图片'),
+          ImageComponent.fromJson(const <String, String>{
             'tag': 'img',
             'src': 'https://mp.innenu.com/img/check/check2.jpg',
             'desc': '报道图片1报道图片1报道图片1报道图片1报道图片1报道图片1报道图片1报道图片1报道图片1',
           }),
-          TextComponent('包含多行描述文字的图片'),
-          ImageComponent.fromJson(<String, String>{
+          const TextComponent('包含多行描述文字的图片'),
+          ImageComponent.fromJson(const <String, String>{
             'tag': 'img',
             'src': 'https://mp.innenu.com/img/check/check1.jpg',
             'desc': '报道图片1\n' '报道图片1',
           }),
-          TextComponent('加载失败图片'),
-          ImageComponent.fromJson(<String, String>{
+          const TextComponent('加载失败图片'),
+          ImageComponent.fromJson(const <String, String>{
             'tag': 'img',
             'src': 'https://mp.innenu.com/img/check/acheck1.jpg',
           }),

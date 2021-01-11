@@ -4,6 +4,7 @@ import 'package:logging/logging.dart';
 Logger initLogManager() {
   Logger.root.level = Level.INFO; // defaults to Level.INFO
   Logger.root.onRecord.listen((record) {
+    // ignore: avoid_print
     print('${record.level.name}: ${record.time}: ${record.message}');
   });
 

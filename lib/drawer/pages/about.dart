@@ -15,15 +15,15 @@ class AboutPage extends StatelessWidget {
               textAlign: TextAlign.center,
               style: Theme.of(context).textTheme.headline4,
             ),
-            TextComponent(
+            const TextComponent(
               '制作者: Mr.Hope',
               align: TextAlign.center,
             ),
-            TextComponent(
+            const TextComponent(
               '版本: V 0.0.1',
               align: TextAlign.center,
             ),
-            TextComponent(
+            const TextComponent(
               'Copyright © 2017 - present Hope Studio',
               align: TextAlign.center,
             ),

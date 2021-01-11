@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:json_annotation/json_annotation.dart';
 import 'package:logging/logging.dart';
 
-import 'package:innenu/utils/jsonTools.dart';
+import 'package:innenu/utils/json_tools.dart';
 
 part 'image.g.dart';
 
@@ -11,16 +11,16 @@ final _logger = Logger('component.image');
 
 @JsonSerializable()
 class ImageComponent extends StatelessWidget {
+  const ImageComponent(this.src, [this.desc]);
+  factory ImageComponent.fromJson(Map<String, dynamic> json) =>
+      _$ImageComponentFromJson(json);
+
   /// 图片地址
   @JsonKey(defaultValue: '')
   final String src;
 
   /// 描述文字
   final String desc;
-
-  ImageComponent(this.src, [this.desc]);
-  factory ImageComponent.fromJson(Map<String, dynamic> json) =>
-      _$ImageComponentFromJson(json);
 
   Map<String, dynamic> toJson() => _$ImageComponentToJson(this);
 

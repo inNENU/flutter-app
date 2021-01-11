@@ -2,7 +2,7 @@ import 'dart:convert';
 
 import 'package:flutter/material.dart';
 import 'package:dio/dio.dart';
-import 'package:innenu/widgets/components/getPage.dart';
+import 'package:innenu/widgets/components/get_page.dart';
 import 'package:logging/logging.dart';
 
 import 'package:innenu/pages/tab/config.dart';
@@ -17,7 +17,7 @@ export 'config.dart';
 final _logger = Logger('tagPage');
 
 class Home extends StatefulWidget {
-  Home({Key key}) : super(key: key);
+  const Home({Key key}) : super(key: key);
 
   @override
   _HomeState createState() => _HomeState();
@@ -52,7 +52,7 @@ class _HomeState extends State<Home> {
   void updatePage(String base, String pageName) {
     getPage('$base/$pageName.json').then((page) {
       setState(() {
-        _tabBarConfig[getIndexFromPageName(pageName)].update(page);
+        _tabBarConfig[getIndexFromPageName(pageName)].widget = page;
       });
     });
   }
@@ -93,7 +93,7 @@ class _HomeState extends State<Home> {
 
   /// 刷新页面
   void refreshPage() {
-    final base = 'https://mp.innenu.com/resource/config/wx33acb831ee1831a5';
+    const base = 'https://mp.innenu.com/resource/config/wx33acb831ee1831a5';
 
     // 获取最新版本号
     Dio().get<String>('$base/version.json').then((response) {

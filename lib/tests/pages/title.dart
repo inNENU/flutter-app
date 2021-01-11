@@ -8,7 +8,7 @@ class TitleTest extends StatelessWidget {
       appBar: AppBar(
         title: const Text('Title 测试'),
       ),
-      body: ListView(children: [
+      body: ListView(children: const [
         TitleComponent('标题测试'),
       ]));
 }

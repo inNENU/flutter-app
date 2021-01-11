@@ -10,22 +10,23 @@ class FootJSONTest extends StatelessWidget {
       ),
       body: ListView(
         children: [
-          TitleComponent('包含时间的页脚'),
-          FooterComponent.fromJson(<String, String>{'time': '2020/1/1'}),
-          TitleComponent('去除作者的页脚'),
-          FooterComponent.fromJson(<String, String>{'author': ''}),
-          TitleComponent('其他作者的页脚'),
-          FooterComponent.fromJson(<String, String>{'author': 'Ms.Hope'}),
-          TitleComponent('包含描述的页脚'),
-          FooterComponent.fromJson(<String, String>{'desc': '页脚描述页脚描述页脚描述'}),
-          TitleComponent('包含多行描述的页脚'),
-          FooterComponent.fromJson(<String, String>{
+          const TitleComponent('包含时间的页脚'),
+          FooterComponent.fromJson(const <String, String>{'time': '2020/1/1'}),
+          const TitleComponent('去除作者的页脚'),
+          FooterComponent.fromJson(const <String, String>{'author': ''}),
+          const TitleComponent('其他作者的页脚'),
+          FooterComponent.fromJson(const <String, String>{'author': 'Ms.Hope'}),
+          const TitleComponent('包含描述的页脚'),
+          FooterComponent.fromJson(
+              const <String, String>{'desc': '页脚描述页脚描述页脚描述'}),
+          const TitleComponent('包含多行描述的页脚'),
+          FooterComponent.fromJson(const <String, String>{
             'desc': '页脚描述\n'
                 '页脚描述\n'
                 '页脚描述',
           }),
-          TitleComponent('只含描述的页脚'),
-          FooterComponent.fromJson(<String, String>{
+          const TitleComponent('只含描述的页脚'),
+          FooterComponent.fromJson(const <String, String>{
             'author': '',
             'desc': '页脚描述页脚描述页脚描述',
           }),

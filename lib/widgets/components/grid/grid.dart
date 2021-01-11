@@ -2,16 +2,26 @@ import 'package:fluro/fluro.dart';
 import 'package:flutter/material.dart';
 import 'package:json_annotation/json_annotation.dart';
 
-import 'package:innenu/widgets/components/getPage.dart';
-import 'package:innenu/utils/utils.dart';
-import 'package:innenu/utils/jsonTools.dart';
+import 'package:innenu/widgets/components/get_page.dart';
+import 'package:innenu/widgets/components/page/page.dart';
 import 'package:innenu/router/router.dart';
+import 'package:innenu/utils/json_tools.dart';
+import 'package:innenu/utils/ui/route_animation.dart';
 
 part 'grid.g.dart';
 
 /// 列表配置
 @JsonSerializable()
 class GridComponentConfig {
+  GridComponentConfig({
+    this.text = '',
+    this.icon = '',
+    this.path,
+    this.url,
+  });
+  factory GridComponentConfig.fromJson(Map<String, dynamic> json) =>
+      _$GridComponentConfigFromJson(json);
+
   /// 列表文字
   @JsonKey(defaultValue: '')
   final String text;
@@ -32,7 +42,7 @@ class GridComponentConfig {
   /// 点击动作
   void Function() tapAction(BuildContext context) => () {
         if (path != null) {
-          getPageFromId(path).then<void>((page) {
+          getPageFromId(path).then<void>((MyPage page) {
             Navigator.push<dynamic>(context, SlidePageRoute<dynamic>(page));
           });
         } else if (url != null) {
@@ -41,20 +51,16 @@ class GridComponentConfig {
         }
       };
 
-  GridComponentConfig({
-    this.text = '',
-    this.icon = '',
-    this.path,
-    this.url,
-  });
-  factory GridComponentConfig.fromJson(Map<String, dynamic> json) =>
-      _$GridComponentConfigFromJson(json);
-
   Map<String, dynamic> toJson() => _$GridComponentConfigToJson(this);
 }
 
 @JsonSerializable()
 class GridComponent extends StatelessWidget {
+  const GridComponent(this.content, {this.header, this.footer = ''});
+
+  factory GridComponent.fromJson(Map<String, dynamic> json) =>
+      _$GridComponentFromJson(json);
+
   /// 段落内容
   @JsonKey(fromJson: _getContentFromJson)
   final List<GridComponentConfig> content;
@@ -67,11 +73,7 @@ class GridComponent extends StatelessWidget {
   final String footer;
 
   /// 每行个数
-  final int itemsPerLine = 4;
-
-  GridComponent(this.content, {this.header, this.footer = ''});
-  factory GridComponent.fromJson(Map<String, dynamic> json) =>
-      _$GridComponentFromJson(json);
+  int get itemsPerLine => 4;
 
   Map<String, dynamic> toJson() => _$GridComponentToJson(this);
 
@@ -162,7 +164,9 @@ class GridComponent extends StatelessWidget {
       children.insert(0, JSONTools.cardHead(context, header as String));
     }
 
-    if (footer.isNotEmpty) children.add(JSONTools.cardFoot(context, footer));
+    if (footer.isNotEmpty) {
+      children.add(JSONTools.cardFoot(context, footer));
+    }
 
     return children;
   }

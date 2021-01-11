@@ -8,8 +8,6 @@ import 'path.dart';
 final _logger = Logger('lib.network');
 
 class Network {
-  Dio dio = Dio(); // with default Options
-
   Network.init(
     String baseUrl, {
     int connectTimeout = 3000,
@@ -22,6 +20,8 @@ class Network {
     dio.options.sendTimeout = sendTimeout;
   }
 
+  Dio dio = Dio(); // with default Options
+
   Future<bool> downLoadFile(
     String url, {
     BaseFolder base,
@@ -30,12 +30,10 @@ class Network {
   }) async {
     final downloadFolder = await Path.resolveBase(base, savePath);
 
-    if (fileName.isEmpty) {
-      fileName = url.split('/').removeLast();
-    }
-
-    final response =
-        await dio.download(url, path.join(downloadFolder + fileName));
+    final response = await dio.download(
+        url,
+        path.join(downloadFolder +
+            (fileName.isEmpty ? url.split('/').removeLast() : fileName)));
 
     final statusCode = response.statusCode;
 

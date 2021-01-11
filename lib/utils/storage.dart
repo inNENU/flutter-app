@@ -72,6 +72,7 @@ class Storage {
       });
 
   /// 设置指定的 bool key
+  // ignore: avoid_positional_boolean_parameters
   static Future<void> setBoolKey(String key, bool value) =>
       SharedPreferences.getInstance().then((instance) {
         instance.setBool(key, value);

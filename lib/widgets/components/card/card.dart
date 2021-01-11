@@ -7,6 +7,17 @@ part 'card.g.dart';
 /// 组件
 @JsonSerializable()
 class CardComponent extends StatelessWidget {
+  const CardComponent(
+      {this.title,
+      this.desc = '',
+      this.src,
+      this.url,
+      this.name = '',
+      this.logo = ''});
+
+  factory CardComponent.fromJson(Map<String, dynamic> json) =>
+      _$CardComponentFromJson(json);
+
   /// 卡片标题
   final String title;
 
@@ -27,17 +38,6 @@ class CardComponent extends StatelessWidget {
   /// 卡片 logo 地址
   @JsonKey(defaultValue: '')
   final String logo;
-
-  CardComponent(
-      {this.title,
-      this.desc = '',
-      this.src,
-      this.url,
-      this.name = '',
-      this.logo = ''});
-
-  factory CardComponent.fromJson(Map<String, dynamic> json) =>
-      _$CardComponentFromJson(json);
 
   Map<String, dynamic> toJson() => _$CardComponentToJson(this);
 
@@ -64,30 +64,33 @@ class CardComponent extends StatelessWidget {
                           title,
                           style: Theme.of(context).textTheme.bodyText1,
                         ),
-                        desc == ''
-                            ? null
-                            : Text(
-                                desc,
-                                style: Theme.of(context).textTheme.bodyText2,
-                              )
+                        if (desc == '')
+                          null
+                        else
+                          Text(
+                            desc,
+                            style: Theme.of(context).textTheme.bodyText2,
+                          )
                       ],
                     ),
                   ),
-                  logo == ''
-                      ? null
-                      : Column(
-                          children: <Widget>[
-                            CachedNetworkImage(
-                              imageUrl: logo,
-                            ),
-                            name == ''
-                                ? null
-                                : Text(
-                                    name,
-                                    style: Theme.of(context).textTheme.caption,
-                                  )
-                          ],
+                  if (logo == '')
+                    null
+                  else
+                    Column(
+                      children: <Widget>[
+                        CachedNetworkImage(
+                          imageUrl: logo,
                         ),
+                        if (name == '')
+                          null
+                        else
+                          Text(
+                            name,
+                            style: Theme.of(context).textTheme.caption,
+                          )
+                      ],
+                    ),
                 ],
               ),
             )

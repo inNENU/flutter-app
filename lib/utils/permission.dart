@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:logging/logging.dart';
 import 'package:permission_handler/permission_handler.dart';
 
-import 'ui.dart';
+import 'ui/material.dart';
 
 final _logger = Logger('permission');
 
@@ -83,7 +83,7 @@ class MyPermission {
       case Permission.notification: // only iOS
         return 'notification';
       // case Permission.phone:
-        // return 'phone'; // only iOS
+      // return 'phone'; // only iOS
       // case Permission.location:
       //   return 'location';
       // case Permission.locationAlways:
@@ -155,10 +155,9 @@ class MyPermission {
     final permissionList =
         permissionStringList.map(permissionFromString).toList();
 
-    return permissionList.request().then((result) {
-      return result.map((permission, status) =>
-          MapEntry(permissionToString(permission), status));
-    });
+    return permissionList.request().then((result) => result.map(
+        (permission, status) =>
+            MapEntry(permissionToString(permission), status)));
   }
 
   /// 检查并获取权限
@@ -178,24 +177,24 @@ class MyPermission {
           );
           return false;
 
+        case PermissionStatus.undetermined: // 未请求过权限
         case PermissionStatus.denied: // 用户已拒绝
           // 请求权限
-          Future<bool> request() {
-            return requestPermission(permissionString).then((status) {
-              if (status == PermissionStatus.granted) {
-                return true;
-              } else {
-                UI.tip(
-                  context,
-                  content: '您拒绝了 $localeString 权限请求',
-                  actionLabel: '重试',
-                  action: request,
-                );
+          Future<bool> request() =>
+              requestPermission(permissionString).then((status) {
+                if (status == PermissionStatus.granted) {
+                  return true;
+                } else {
+                  UI.tip(
+                    context,
+                    content: '您拒绝了 $localeString 权限请求',
+                    actionLabel: '重试',
+                    action: request,
+                  );
 
-                return false;
-              }
-            });
-          }
+                  return false;
+                }
+              });
           return request();
 
         case PermissionStatus.restricted: // 获得权限受限
@@ -216,10 +215,10 @@ class MyPermission {
                   content: '$tip 禁止您的应用获取 $localeString 权限',
                   actions: [
                     FlatButton(
-                      child: const Text('确定'),
                       onPressed: () {
                         Navigator.pop(context);
                       },
+                      child: const Text('确定'),
                     )
                   ]);
             },
@@ -228,11 +227,10 @@ class MyPermission {
 
         case PermissionStatus.granted: // 已获得权限
           return true;
-
-        default:
-          _logger.warning('Unknown Status $status');
-          return false;
       }
+
+      _logger.warning('Unknown Status $status');
+      return false;
     });
   }
 }

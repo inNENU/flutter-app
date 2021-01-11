@@ -51,6 +51,7 @@ enum BaseFolder {
   document,
 }
 
+// ignore: avoid_classes_with_only_static_members
 class Path {
   /// 处理路径
   static String Function(
@@ -69,14 +70,15 @@ class Path {
       _tempDir ??= await getTemporaryDirectory();
 
   /// 缓存目录路径
-  static Future<String> get tempPath => tempDir.then((tempDir) => tempDir.path);
+  static Future<String> get tempPath async =>
+      tempDir.then((tempDir) => tempDir.path);
 
   /// APP 文件目录
   static Future<Directory> get appFileDir async =>
       _appFileDir ??= await getApplicationSupportDirectory();
 
   /// APP 文件路径
-  static Future<String> get appFilePath =>
+  static Future<String> get appFilePath async =>
       appFileDir.then((appFileDir) => appFileDir.path);
 
   /// 用户数据目录
@@ -84,7 +86,7 @@ class Path {
       _appDataDir ??= await getApplicationDocumentsDirectory();
 
   /// 用户数据路径
-  static Future<String> get appDataPath =>
+  static Future<String> get appDataPath async =>
       appDataDir.then((appDataDir) => appDataDir.path);
 
   /// 外部存储目录，仅 Android
@@ -101,7 +103,7 @@ class Path {
       _appExtFileDir ??= await getExternalStorageDirectory();
 
   /// 预定义的应用文件外部存储路径，仅 Android
-  static Future<String> get appExtFilePath =>
+  static Future<String> get appExtFilePath async =>
       appExtFileDir.then((appExtFileDir) => appExtFileDir.path);
 
   /// 应用库目录，仅 iOS
@@ -109,7 +111,8 @@ class Path {
       _libDir ??= await getLibraryDirectory();
 
   /// 应用库路径，仅 iOS
-  static Future<String> get libPath => libDir.then((libDir) => libDir.path);
+  static Future<String> get libPath async =>
+      libDir.then((libDir) => libDir.path);
 
   /// 路径处理
   static Future<String> resolveBase(BaseFolder base, String path) async {
@@ -132,8 +135,9 @@ class Path {
         return resolve('${extPath}Pictures/', path);
 
       case BaseFolder.appFile:
-      default:
         return resolve(await appFilePath, path);
     }
+
+    return resolve(await appFilePath, path);
   }
 }

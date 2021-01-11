@@ -5,12 +5,12 @@ part 'nav.g.dart';
 
 @JsonSerializable()
 class NavComponent extends StatelessWidget {
-  /// 页面标题
-  final String title;
-
-  NavComponent(this.title);
+  const NavComponent(this.title);
   factory NavComponent.fromJson(Map<String, dynamic> json) =>
       _$NavComponentFromJson(json);
+
+  /// 页面标题
+  final String title;
 
   Map<String, dynamic> toJson() => _$NavComponentToJson(this);
 

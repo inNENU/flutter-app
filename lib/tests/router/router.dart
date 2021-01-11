@@ -59,46 +59,39 @@ class TestRouter implements IRouterProvider {
 
   @override
   void initRouter(FluroRouter router) {
-    router.define(mainPage,
-        handler: Handler(handlerFunc: (_, __) => ComponentTest()));
-    router.define(textThemePage,
-        handler: Handler(handlerFunc: (_, __) => TextThemeTest()));
-    router.define(carouselPage,
-        handler: Handler(handlerFunc: (_, __) => CarouselTest()));
-    router.define(carouselJSONPage,
-        handler: Handler(handlerFunc: (_, __) => CarouselJSONTest()));
-    router.define(docPage, handler: Handler(handlerFunc: (_, __) => DocTest()));
-    router.define(footerPage,
-        handler: Handler(handlerFunc: (_, __) => FootTest()));
-    router.define(footerJSONPage,
-        handler: Handler(handlerFunc: (_, __) => FootJSONTest()));
-    router.define(gridPage,
-        handler: Handler(handlerFunc: (_, __) => GridTest()));
-    router.define(gridJSONPage,
-        handler: Handler(handlerFunc: (_, __) => GridJSONTest()));
-    router.define(imagePage,
-        handler: Handler(handlerFunc: (_, __) => ImageTest()));
-    router.define(imageJSONPage,
-        handler: Handler(handlerFunc: (_, __) => ImageJSONTest()));
-    router.define(listPage,
-        handler: Handler(handlerFunc: (_, __) => ListTest()));
-    router.define(listJSONPage,
-        handler: Handler(handlerFunc: (_, __) => ListJSONTest()));
-    router.define(navPage,
-        handler: Handler(handlerFunc: (_, __) => HeadTest()));
-    router.define(navJSONPage,
-        handler: Handler(handlerFunc: (_, __) => HeadJSONTest()));
-    router.define(titlePage,
-        handler: Handler(handlerFunc: (_, __) => TitleTest()));
-    router.define(titleJSONPage,
-        handler: Handler(handlerFunc: (_, __) => TitleJSONTest()));
-    router.define(textPage,
-        handler: Handler(handlerFunc: (_, __) => TextTest()));
-    router.define(textJSONPage,
-        handler: Handler(handlerFunc: (_, __) => TextJSONTest()));
-    router.define(phonePage,
-        handler: Handler(handlerFunc: (_, __) => PhoneTest()));
-    router.define(pathPage,
-        handler: Handler(handlerFunc: (_, __) => PathTest()));
+    router
+      ..define(mainPage,
+          handler: Handler(handlerFunc: (_, __) => ComponentTest()))
+      ..define(textThemePage,
+          handler: Handler(handlerFunc: (_, __) => TextThemeTest()))
+      ..define(carouselPage,
+          handler: Handler(handlerFunc: (_, __) => CarouselTest()))
+      ..define(carouselJSONPage,
+          handler: Handler(handlerFunc: (_, __) => CarouselJSONTest()))
+      ..define(docPage, handler: Handler(handlerFunc: (_, __) => DocTest()))
+      ..define(footerPage, handler: Handler(handlerFunc: (_, __) => FootTest()))
+      ..define(footerJSONPage,
+          handler: Handler(handlerFunc: (_, __) => FootJSONTest()))
+      ..define(gridPage, handler: Handler(handlerFunc: (_, __) => GridTest()))
+      ..define(gridJSONPage,
+          handler: Handler(handlerFunc: (_, __) => GridJSONTest()))
+      ..define(imagePage, handler: Handler(handlerFunc: (_, __) => ImageTest()))
+      ..define(imageJSONPage,
+          handler: Handler(handlerFunc: (_, __) => ImageJSONTest()))
+      ..define(listPage, handler: Handler(handlerFunc: (_, __) => ListTest()))
+      ..define(listJSONPage,
+          handler: Handler(handlerFunc: (_, __) => ListJSONTest()))
+      ..define(navPage, handler: Handler(handlerFunc: (_, __) => HeadTest()))
+      ..define(navJSONPage,
+          handler: Handler(handlerFunc: (_, __) => HeadJSONTest()))
+      ..define(titlePage, handler: Handler(handlerFunc: (_, __) => TitleTest()))
+      ..define(titleJSONPage,
+          handler: Handler(handlerFunc: (_, __) => TitleJSONTest()))
+      ..define(textPage, handler: Handler(handlerFunc: (_, __) => TextTest()))
+      ..define(textJSONPage,
+          handler: Handler(handlerFunc: (_, __) => TextJSONTest()))
+      ..define(phonePage, handler: Handler(handlerFunc: (_, __) => PhoneTest()))
+      ..define(pathPage,
+          handler: Handler(handlerFunc: (_, __) => const PathTest()));
   }
 }

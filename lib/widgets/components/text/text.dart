@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:json_annotation/json_annotation.dart';
 import 'package:logging/logging.dart';
 
-import 'package:innenu/utils/jsonTools.dart';
+import 'package:innenu/utils/json_tools.dart';
 
 part 'text.g.dart';
 
@@ -10,6 +10,13 @@ final _logger = Logger('component.paragraph');
 
 /// 单个段落组件
 class _TextWidget extends StatelessWidget {
+  const _TextWidget(
+    this.text,
+    this.textAlign, {
+    this.verticalPadding = 4,
+    this.selectable = true,
+  });
+
   /// 段落文字
   final String text;
 
@@ -21,13 +28,6 @@ class _TextWidget extends StatelessWidget {
 
   /// 段落文字是否可选中
   final bool selectable;
-
-  _TextWidget(
-    this.text,
-    this.textAlign, {
-    this.verticalPadding = 4,
-    this.selectable = true,
-  });
 
   /// 文字组件
   Widget _textWidget(BuildContext context) => selectable
@@ -51,6 +51,17 @@ class _TextWidget extends StatelessWidget {
 /// 段落组件
 @JsonSerializable()
 class TextComponent extends StatelessWidget {
+  const TextComponent(
+    this.text, {
+    this.heading,
+    this.align = TextAlign.justify,
+    this.selectable = true,
+    this.src,
+    this.desc,
+  });
+  factory TextComponent.fromJson(Map<String, dynamic> json) =>
+      _$TextComponentFromJson(json);
+
   /// 文字
   ///
   /// 可以是 `String` 或 `List<String>`。后者会显示多个段落。
@@ -76,17 +87,6 @@ class TextComponent extends StatelessWidget {
   /// 图片描述文字
   final String desc;
 
-  TextComponent(
-    this.text, {
-    this.heading,
-    this.align = TextAlign.justify,
-    this.selectable = true,
-    this.src,
-    this.desc,
-  });
-  factory TextComponent.fromJson(Map<String, dynamic> json) =>
-      _$TextComponentFromJson(json);
-
   Map<String, dynamic> toJson() => _$TextComponentToJson(this);
 
   /// 标题组件
@@ -109,7 +109,7 @@ class TextComponent extends StatelessWidget {
       if (heading.isNotEmpty) {
         content.add(_headWidget(context));
       } else {
-        _logger.warning('Illegal \'head\' in paragraph config: $heading');
+        _logger.warning('Illegal "head" in paragraph config: $heading');
       }
     }
 

@@ -3,7 +3,7 @@ import 'package:innenu/utils/utils.dart';
 import 'package:json_annotation/json_annotation.dart';
 import 'package:url_launcher/url_launcher.dart';
 
-import 'package:innenu/utils/jsonTools.dart';
+import 'package:innenu/utils/json_tools.dart';
 
 part 'doc.g.dart';
 
@@ -33,6 +33,16 @@ String _getDocIcon(String url) {
 /// 文档组件
 @JsonSerializable()
 class DocComponent extends StatelessWidget {
+  DocComponent(
+    this.name,
+    this.url, {
+    String icon = '',
+    this.downloadable = true,
+  }) : icon = icon ?? _getDocIcon(url);
+
+  factory DocComponent.fromJson(Map<String, dynamic> json) =>
+      _$DocComponentFromJson(json);
+
   /// 文档名称
   final String name;
 
@@ -45,16 +55,6 @@ class DocComponent extends StatelessWidget {
   /// 是否可下载
   @JsonKey(defaultValue: true)
   final bool downloadable;
-
-  DocComponent(
-    this.name,
-    this.url, {
-    String icon = '',
-    this.downloadable = true,
-  }) : icon = icon ?? _getDocIcon(url);
-
-  factory DocComponent.fromJson(Map<String, dynamic> json) =>
-      _$DocComponentFromJson(json);
 
   Map<String, dynamic> toJson() => _$DocComponentToJson(this);
 

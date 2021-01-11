@@ -5,11 +5,11 @@ import 'package:innenu/widgets/components/components.dart';
 import 'package:innenu/utils/path.dart';
 
 class _PathTestState extends State<PathTest> {
-  var tempPath = '';
-  var appDataPath = '';
-  var appFilePath = '';
-  var extPath = '';
-  var downloadPath = '';
+  String tempPath = '';
+  String appDataPath = '';
+  String appFilePath = '';
+  String extPath = '';
+  String downloadPath = '';
 
   @override
   void initState() {
@@ -29,11 +29,8 @@ class _PathTestState extends State<PathTest> {
         this.appFilePath = appFilePath;
       });
     });
-    // Path.extPath.then((extPath) {
-    // setState(() {
-    extPath = Path.extPath;
-    // });
-    // });
+
+    extPath = extPath;
 
     getExternalStorageDirectories(type: StorageDirectory.downloads)
         .then((downloadPath) {
@@ -48,22 +45,22 @@ class _PathTestState extends State<PathTest> {
       ),
       body: ListView(
         children: [
-          TitleComponent('应用文件目录'),
+          const TitleComponent('应用文件目录'),
           TextComponent(appFilePath),
-          TitleComponent('应用数据目录'),
+          const TitleComponent('应用数据目录'),
           TextComponent(appDataPath),
-          TitleComponent('缓存目录'),
+          const TitleComponent('缓存目录'),
           TextComponent(tempPath),
-          TitleComponent('外部存储目录'),
+          const TitleComponent('外部存储目录'),
           TextComponent(extPath),
-          TitleComponent('下载目录'),
+          const TitleComponent('下载目录'),
           TextComponent(downloadPath),
         ],
       ));
 }
 
 class PathTest extends StatefulWidget {
-  PathTest({Key key}) : super(key: key);
+  const PathTest({Key key}) : super(key: key);
 
   @override
   _PathTestState createState() => _PathTestState();

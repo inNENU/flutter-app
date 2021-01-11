@@ -9,7 +9,7 @@ class ImageTest extends StatelessWidget {
         title: const Text('Image 测试'),
       ),
       body: ListView(
-        children: [
+        children: const [
           TextComponent('普通图片'),
           ImageComponent('https://mp.innenu.com/img/check/check1.jpg'),
           TextComponent('包含描述文字的图片'),

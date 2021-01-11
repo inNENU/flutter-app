@@ -2,9 +2,9 @@ import 'package:fluro/fluro.dart';
 import 'package:flutter/material.dart';
 import 'package:json_annotation/json_annotation.dart';
 
-import 'package:innenu/widgets/components/getPage.dart';
-import 'package:innenu/utils/utils.dart';
-import 'package:innenu/utils/jsonTools.dart';
+import 'package:innenu/widgets/components/get_page.dart';
+import 'package:innenu/utils/json_tools.dart';
+import 'package:innenu/utils/ui/route_animation.dart';
 import 'package:innenu/router/router.dart';
 
 part 'list.g.dart';
@@ -12,6 +12,16 @@ part 'list.g.dart';
 /// 列表配置
 @JsonSerializable()
 class ListComponentConfig {
+  ListComponentConfig(
+    this.text, {
+    this.icon = '',
+    this.desc,
+    this.path,
+    this.url,
+  });
+  factory ListComponentConfig.fromJson(Map<String, dynamic> json) =>
+      _$ListComponentConfigFromJson(json);
+
   /// 列表文字
   @JsonKey(defaultValue: '')
   final String text;
@@ -44,22 +54,16 @@ class ListComponentConfig {
         }
       };
 
-  ListComponentConfig(
-    this.text, {
-    this.icon = '',
-    this.desc,
-    this.path,
-    this.url,
-  });
-  factory ListComponentConfig.fromJson(Map<String, dynamic> json) =>
-      _$ListComponentConfigFromJson(json);
-
   Map<String, dynamic> toJson() => _$ListComponentConfigToJson(this);
 }
 
 /// 列表组件
 @JsonSerializable()
 class ListComponent extends StatelessWidget {
+  const ListComponent(this.content, {this.header, this.footer = ''});
+  factory ListComponent.fromJson(Map<String, dynamic> json) =>
+      _$ListComponentFromJson(json);
+
   /// 段落内容
   @JsonKey(fromJson: _getContentFromJson)
   final List<ListComponentConfig> content;
@@ -70,10 +74,6 @@ class ListComponent extends StatelessWidget {
   /// 列表页脚
   @JsonKey(defaultValue: '')
   final String footer;
-
-  ListComponent(this.content, {this.header, this.footer = ''});
-  factory ListComponent.fromJson(Map<String, dynamic> json) =>
-      _$ListComponentFromJson(json);
 
   Map<String, dynamic> toJson() => _$ListComponentToJson(this);
 
@@ -109,7 +109,9 @@ class ListComponent extends StatelessWidget {
       children.insert(0, JSONTools.cardHead(context, header as String));
     }
 
-    if (footer.isNotEmpty) children.add(JSONTools.cardFoot(context, footer));
+    if (footer.isNotEmpty) {
+      children.add(JSONTools.cardFoot(context, footer));
+    }
 
     return children;
   }

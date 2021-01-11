@@ -5,9 +5,9 @@ import 'package:webview_flutter/webview_flutter.dart';
 
 class WebViewPage extends StatefulWidget {
   const WebViewPage({
-    Key key,
     @required this.title,
     @required this.url,
+    Key key,
   }) : super(key: key);
 
   final String title;
@@ -22,11 +22,9 @@ class _WebViewPageState extends State<WebViewPage> {
       Completer<WebViewController>();
 
   @override
-  Widget build(BuildContext context) {
-    return FutureBuilder<WebViewController>(
-        future: _controller.future,
-        builder: (context, snapshot) {
-          return WillPopScope(
+  Widget build(BuildContext context) => FutureBuilder<WebViewController>(
+      future: _controller.future,
+      builder: (context, snapshot) => WillPopScope(
             onWillPop: () async {
               if (snapshot.hasData) {
                 final canGoBack = await snapshot.data.canGoBack();
@@ -50,7 +48,5 @@ class _WebViewPageState extends State<WebViewPage> {
                 },
               ),
             ),
-          );
-        });
-  }
+          ));
 }

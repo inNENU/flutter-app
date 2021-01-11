@@ -10,7 +10,7 @@ class Tool {
   }) {
     final map = <String, T>{};
 
-    for (var enumValue in enumValues) {
+    for (final enumValue in enumValues) {
       map[enumValue.toString().split('.')[1]] = enumValue;
     }
 

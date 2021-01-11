@@ -23,6 +23,9 @@ dependencies:
   flutter_localizations:
     sdk: flutter
 
+  # https://github.com/material-components/material-components-flutter-adaptive/tree/develop/adaptive_breakpoints
+  adaptive_breakpoints:
+
   # https://github.com/brendan-duncan/archive
   archive: ^2.0.13
   # auto_size_text:
