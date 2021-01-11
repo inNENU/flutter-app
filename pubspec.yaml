@@ -70,7 +70,7 @@ dependencies:
   path: ^1.7.0
 
   # https://pub.flutter-io.cn/packages/path_provider
-  path_provider: ^1.6.22
+  path_provider: ^1.6.24
 
   # https://github.com/Baseflow/flutter-permission-handler
   permission_handler: ^5.0.1+1
@@ -84,7 +84,7 @@ dependencies:
   # video_player:
 
   # WebView 插件 https://github.com/flutter/plugins/tree/master/packages/webview_flutter
-  webview_flutter: ^1.0.5
+  webview_flutter: ^1.0.7
 
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
