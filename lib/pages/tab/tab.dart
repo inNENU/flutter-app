@@ -140,6 +140,7 @@ class _HomeState extends State<Home> {
           selectedItemColor: Theme.of(context).primaryColor,
           unselectedItemColor: const Color(0xff888888),
           onTap: _onItemTapped,
+          type: BottomNavigationBarType.fixed,
         ),
       );
 }

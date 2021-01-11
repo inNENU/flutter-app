@@ -1,11 +1,8 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
-// import 'package:logging/logging.dart';
 import 'package:json_annotation/json_annotation.dart';
 
 part 'card.g.dart';
-
-// final _logger = Logger('component.card');
 
 /// 组件
 @JsonSerializable()
