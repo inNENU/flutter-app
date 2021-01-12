@@ -100,6 +100,7 @@ dev_dependencies:
   flutter_test:
     sdk: flutter
   json_serializable: ^3.5.0
+  pedantic: ^1.9.0
   test:
 
 # For information on the generic Dart part of this file, see the
