@@ -1,6 +1,10 @@
 name: innenu
 description: innenu app.
 
+# The following line prevents the package from being accidentally published to
+# pub.dev using `pub publish`. This is preferred for private packages.
+publish_to: "none" # Remove this line if you wish to publish to pub.dev
+
 # The following defines the version and build number for your application.
 # A version number is three numbers separated by dots, like 1.2.43
 # followed by an optional build number separated by a +.
@@ -24,14 +28,15 @@ dependencies:
     sdk: flutter
 
   # https://github.com/material-components/material-components-flutter-adaptive/tree/develop/adaptive_breakpoints
-  adaptive_breakpoints:
+  adaptive_breakpoints: ^0.0.3
 
   # https://github.com/brendan-duncan/archive
   archive: ^2.0.13
+
   # auto_size_text:
 
   # https://github.com/Baseflow/flutter_cached_network_image
-  cached_network_image: ^2.3.3
+  cached_network_image: ^2.5.0
 
   # https://github.com/serenader2014/flutter_carousel_slider
   carousel_slider: ^2.3.1
@@ -56,7 +61,7 @@ dependencies:
   flutter_svg: ^0.19.1
 
   # 路由框架 https://github.com/theyakka/fluro
-  fluro: ^1.7.7
+  fluro: ^1.7.8
 
   # geolocator:
   # location:
@@ -73,17 +78,20 @@ dependencies:
   path: ^1.7.0
 
   # https://pub.flutter-io.cn/packages/path_provider
-  path_provider: ^1.6.24
+  path_provider: ^1.6.27
 
   # https://github.com/Baseflow/flutter-permission-handler
-  permission_handler: ^5.0.1+1
-  provider:
-  shared_preferences:
+  permission_handler: ^5.0.1
+
+  provider: ^4.3.2
+  shared_preferences: ^0.5.12
 
   # Flutter shared_preferences plugin util https://github.com/Sky24n/sp_util
   sp_util: ^1.0.1
 
-  url_launcher:
+  # https://pub.flutter-io.cn/packages/url_launcher
+  url_launcher: ^5.7.0
+
   # video_player:
 
   # WebView 插件 https://github.com/flutter/plugins/tree/master/packages/webview_flutter
@@ -95,13 +103,23 @@ dependencies:
   # flutter_cupertino_localizations:
 
 dev_dependencies:
-  build_runner: ^1.10.4
-  e2e: ^0.3.0
+  # https://pub.flutter-io.cn/packages/build_runner
+  build_runner: ^1.10.13
+
   flutter_test:
     sdk: flutter
-  json_serializable: ^3.5.0
-  pedantic: ^1.9.0
-  test:
+
+  # https://pub.flutter-io.cn/packages/integration_test
+  integration_test: ^1.0.1
+
+  # https://pub.flutter-io.cn/packages/json_serializable
+  json_serializable: ^3.5.1
+
+  # https://pub.flutter-io.cn/packages/pedantic
+  pedantic: ^1.9.2
+
+  # https://pub.flutter-io.cn/packages/test
+  test: ^1.15.7
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
@@ -112,8 +130,10 @@ flutter:
   # included with your application, so that you can use the icons in
   # the material Icons class.
   uses-material-design: true
+
   assets:
     - assets/components/doc/
+
   # To add custom fonts to your application, add a fonts section here,
   # in this "flutter" section. Each entry in this list should have a
   # "family" key with the font family name, and a "fonts" key with a
