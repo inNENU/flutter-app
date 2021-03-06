@@ -137,7 +137,5 @@ class Path {
       case BaseFolder.appFile:
         return resolve(await appFilePath, path);
     }
-
-    return resolve(await appFilePath, path);
   }
 }

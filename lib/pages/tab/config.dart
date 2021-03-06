@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 /// 导航栏配置
 class NavigationBarConfig {
-  NavigationBarConfig(this.widget, {this.label, this.icon}) {
+  NavigationBarConfig(this.widget, {required this.label, required this.icon}) {
     bottomNavigationBarItem = BottomNavigationBarItem(
       icon: icon,
       label: label,

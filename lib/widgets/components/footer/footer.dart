@@ -56,7 +56,7 @@ class FooterComponent extends StatelessWidget {
                   style: Theme.of(context)
                       .textTheme
                       .caption
-                      .copyWith(letterSpacing: -2, wordSpacing: -2),
+                      ?.copyWith(letterSpacing: -2, wordSpacing: -2),
                 ),
               ],
             ),

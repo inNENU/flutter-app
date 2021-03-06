@@ -30,8 +30,8 @@ class Routes {
       ..define(home,
           handler: Handler(handlerFunc: (context, params) => const Home()))
       ..define(webViewPage, handler: Handler(handlerFunc: (_, params) {
-        final title = params['title']?.first;
-        final url = params['url']?.first;
+        final title = params['title']?.first ?? 'in 东师';
+        final url = params['url']?.first ?? '';
         return WebViewPage(title: title, url: url);
       }));
 

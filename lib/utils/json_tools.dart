@@ -8,7 +8,7 @@ import 'package:innenu/utils/tool.dart';
 final logger = Logger('JSONTools');
 
 class IconWidget {
-  const IconWidget(this.icon, {double size}) : size = size ?? 30;
+  const IconWidget(this.icon, {this.size = 30});
 
   /// 图标
   final String icon;
@@ -35,7 +35,7 @@ class IconWidget {
   bool get isLocalSvg => icon.startsWith('assets/') && icon.endsWith('.svg');
 
   /// 图片组件
-  Widget get iconWidget => isLocalSvg
+  Widget? get iconWidget => isLocalSvg
       ? SvgPicture.asset(icon)
       : isOnlineSVG
           ? SvgPicture.network(icon)
@@ -46,7 +46,7 @@ class IconWidget {
                   : null;
 
   /// 图标组件
-  Widget get widget => iconWidget == null
+  Widget? get widget => iconWidget == null
       ? null
       : SizedBox(
           width: size,
@@ -62,8 +62,8 @@ class JSONTools {
           align);
 
   /// 获取图标组件
-  static Widget getIconWidget(String icon, [double size]) {
-    final iconWidget = IconWidget(icon ?? '', size: size);
+  static Widget? getIconWidget(String icon, [double size = 30]) {
+    final iconWidget = IconWidget(icon, size: size);
 
     return iconWidget.widget;
   }

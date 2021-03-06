@@ -8,10 +8,10 @@ part 'card.g.dart';
 @JsonSerializable()
 class CardComponent extends StatelessWidget {
   const CardComponent(
-      {this.title,
+      {this.title = '',
       this.desc = '',
-      this.src,
-      this.url,
+      this.src = '',
+      this.url = '',
       this.name = '',
       this.logo = ''});
 
@@ -19,6 +19,7 @@ class CardComponent extends StatelessWidget {
       _$CardComponentFromJson(json);
 
   /// 卡片标题
+  @JsonKey(defaultValue: '')
   final String title;
 
   /// 卡片详情
@@ -26,9 +27,11 @@ class CardComponent extends StatelessWidget {
   final String desc;
 
   /// 卡片图片地址
+  @JsonKey(defaultValue: '')
   final String src;
 
   /// 卡片跳转路径
+  @JsonKey(defaultValue: '')
   final String url;
 
   /// 卡片 logo 名称

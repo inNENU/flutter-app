@@ -177,7 +177,6 @@ class MyPermission {
           );
           return false;
 
-        case PermissionStatus.undetermined: // 未请求过权限
         case PermissionStatus.denied: // 用户已拒绝
           // 请求权限
           Future<bool> request() =>
@@ -214,7 +213,7 @@ class MyPermission {
                   title: '收到系统限制',
                   content: '$tip 禁止您的应用获取 $localeString 权限',
                   actions: [
-                    FlatButton(
+                    TextButton(
                       onPressed: () {
                         Navigator.pop(context);
                       },
@@ -225,12 +224,10 @@ class MyPermission {
           );
           return false;
 
+        case PermissionStatus.limited: // 已获得受限权限
         case PermissionStatus.granted: // 已获得权限
           return true;
       }
-
-      _logger.warning('Unknown Status $status');
-      return false;
     });
   }
 }

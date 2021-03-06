@@ -18,7 +18,7 @@ Drawer drawerWidget(BuildContext context) => Drawer(
                       style: Theme.of(context)
                           .textTheme
                           .bodyText2
-                          .copyWith(letterSpacing: -2, wordSpacing: -2),
+                          ?.copyWith(letterSpacing: -2, wordSpacing: -2),
                     ),
                   ],
                 ),

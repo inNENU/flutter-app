@@ -98,7 +98,7 @@ class _HomeState extends State<Home> {
     // 获取最新版本号
     Dio().get<String>('$base/version.json').then((response) {
       if (response.statusCode == 200) {
-        final version = jsonDecode(response.data) as String;
+        final version = jsonDecode(response.data ?? '') as String;
         final url = '$base/$version';
 
         updatePage(url, 'main');

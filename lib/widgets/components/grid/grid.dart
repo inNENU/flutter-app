@@ -16,8 +16,8 @@ class GridComponentConfig {
   GridComponentConfig({
     this.text = '',
     this.icon = '',
-    this.path,
-    this.url,
+    this.path = '',
+    this.url = '',
   });
   factory GridComponentConfig.fromJson(Map<String, dynamic> json) =>
       _$GridComponentConfigFromJson(json);
@@ -31,21 +31,23 @@ class GridComponentConfig {
   final String icon;
 
   /// 链接文件 ID
+  @JsonKey(defaultValue: '')
   final String path;
 
   /// 跳转地址
+  @JsonKey(defaultValue: '')
   final String url;
 
   /// 是否可点击
-  bool get isTapable => path != null || url != null;
+  bool get isTapable => path.isNotEmpty || url.isNotEmpty;
 
   /// 点击动作
   void Function() tapAction(BuildContext context) => () {
-        if (path != null) {
+        if (path.isNotEmpty) {
           getPageFromId(path).then<void>((MyPage page) {
             Navigator.push<dynamic>(context, SlidePageRoute<dynamic>(page));
           });
-        } else if (url != null) {
+        } else if (url.isNotEmpty) {
           Routes.router
               .navigateTo(context, url, transition: TransitionType.inFromRight);
         }

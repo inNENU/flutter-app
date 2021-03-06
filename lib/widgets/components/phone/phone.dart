@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_contact/contacts.dart';
+// import 'package:flutter_contact/contacts.dart';
 import 'package:innenu/utils/utils.dart';
 import 'package:logging/logging.dart';
 import 'package:json_annotation/json_annotation.dart';
@@ -93,43 +93,43 @@ class PhoneComponent extends StatelessWidget {
 
   Map<String, dynamic> toJson() => _$PhoneComponentToJson(this);
 
-  /// 电话列表
-  List<Item> get phones {
-    final phoneList = [Item(label: '电话', value: phoneNumber)];
+  // /// 电话列表
+  // List<Item> get phones {
+  //   final phoneList = [Item(label: '电话', value: phoneNumber)];
 
-    if (homeNumber.isNotEmpty) {
-      phoneList.add(Item(label: '家庭电话', value: homeNumber));
-    }
+  //   if (homeNumber.isNotEmpty) {
+  //     phoneList.add(Item(label: '家庭电话', value: homeNumber));
+  //   }
 
-    if (workNumber.isNotEmpty) {
-      phoneList.add(Item(label: '工作电话', value: workNumber));
-    }
+  //   if (workNumber.isNotEmpty) {
+  //     phoneList.add(Item(label: '工作电话', value: workNumber));
+  //   }
 
-    if (hostNumer.isNotEmpty) {
-      phoneList.add(Item(label: '公司电话', value: hostNumer));
-    }
+  //   if (hostNumer.isNotEmpty) {
+  //     phoneList.add(Item(label: '公司电话', value: hostNumer));
+  //   }
 
-    return phoneList;
-  }
+  //   return phoneList;
+  // }
 
-  Contact get contact => Contact(
-        givenName: givenName,
-        familyName: familyName,
-        displayName: displayName,
-        company: company,
-        phones: phones,
-        note: note,
-        postalAddresses: [
-          PostalAddress(
-            region: region,
-            city: city,
-            street: street,
-            postcode: postcode,
-          )
-        ],
-        jobTitle: jobTitle,
-        emails: [Item(value: email)],
-      );
+  // Contact get contact => Contact(
+  //       givenName: givenName,
+  //       familyName: familyName,
+  //       displayName: displayName,
+  //       company: company,
+  //       phones: phones,
+  //       note: note,
+  //       postalAddresses: [
+  //         PostalAddress(
+  //           region: region,
+  //           city: city,
+  //           street: street,
+  //           postcode: postcode,
+  //         )
+  //       ],
+  //       jobTitle: jobTitle,
+  //       emails: [Item(value: email)],
+  //     );
 
   /// 拨打电话
   void _makePhoneCall() {
@@ -150,21 +150,22 @@ class PhoneComponent extends StatelessWidget {
       context,
       content: '是否要添加联系人$familyName$givenName?',
       actions: [
-        FlatButton(
+        TextButton(
           onPressed: () {
             Navigator.pop(context);
           },
           child: const Text('取消'),
         ),
-        FlatButton(
+        TextButton(
           onPressed: () {
             MyPermission.checkAndAskPermission(context, 'contact')
                 .then((success) {
               if (success) {
-                Contacts.addContact(contact).then((contact) {
-                  Navigator.pop(context);
-                  UI.tip(context, content: '添加联系人成功');
-                });
+                // TODO: Fix it
+                // Contacts.addContact(contact).then((contact) {
+                //   Navigator.pop(context);
+                //   UI.tip(context, content: '添加联系人成功');
+                // });
               } else {
                 UI.tip(context, content: '授权失败');
               }

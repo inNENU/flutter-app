@@ -30,7 +30,7 @@ class MyApp extends StatelessWidget {
   }
 
   /// App 标题
-  static const String _title = 'in东师';
+  static const String _title = 'in 东师';
 
   @override
   Widget build(BuildContext context) => MaterialApp(

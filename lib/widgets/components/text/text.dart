@@ -1,12 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:json_annotation/json_annotation.dart';
-import 'package:logging/logging.dart';
 
 import 'package:innenu/utils/json_tools.dart';
 
 part 'text.g.dart';
-
-final _logger = Logger('component.paragraph');
 
 /// 单个段落组件
 class _TextWidget extends StatelessWidget {
@@ -53,11 +50,11 @@ class _TextWidget extends StatelessWidget {
 class TextComponent extends StatelessWidget {
   const TextComponent(
     this.text, {
-    this.heading,
+    this.heading = '',
     this.align = TextAlign.justify,
     this.selectable = true,
-    this.src,
-    this.desc,
+    this.src = '',
+    this.desc = '',
   });
   factory TextComponent.fromJson(Map<String, dynamic> json) =>
       _$TextComponentFromJson(json);
@@ -105,12 +102,8 @@ class TextComponent extends StatelessWidget {
     final content = <Widget>[];
 
     // 处理标题部分
-    if (heading != null) {
-      if (heading.isNotEmpty) {
-        content.add(_headWidget(context));
-      } else {
-        _logger.warning('Illegal "head" in paragraph config: $heading');
-      }
+    if (heading.isNotEmpty) {
+      content.add(_headWidget(context));
     }
 
     // 处理段落部分

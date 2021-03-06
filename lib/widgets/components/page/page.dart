@@ -6,14 +6,14 @@ import 'package:innenu/widgets/components/components.dart';
 final _logger = Logger('page');
 
 class MyPage extends StatelessWidget {
-  const MyPage({@required List<Widget> children, @required this.title})
+  const MyPage({required List<Widget> children, required this.title})
       : pageWidgets = children;
 
   /// 从 JSON 生成 MyPage
   MyPage.fromJson(Map<String, dynamic> pageWidgets)
       : title = pageWidgets['hidden'] as bool == true
             ? ''
-            : pageWidgets['title'] as String ?? 'in东师',
+            : pageWidgets['title'] as String? ?? 'in东师',
         pageWidgets = List<Widget>.generate(
             (pageWidgets['content'] as List<dynamic>).length,
             (index) => _generateWidget(

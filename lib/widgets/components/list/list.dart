@@ -15,9 +15,9 @@ class ListComponentConfig {
   ListComponentConfig(
     this.text, {
     this.icon = '',
-    this.desc,
-    this.path,
-    this.url,
+    this.desc = '',
+    this.path = '',
+    this.url = '',
   });
   factory ListComponentConfig.fromJson(Map<String, dynamic> json) =>
       _$ListComponentConfigFromJson(json);
@@ -31,24 +31,27 @@ class ListComponentConfig {
   final String icon;
 
   /// 列表详情
+  @JsonKey(defaultValue: '')
   final String desc;
 
   /// 列表文件路径
+  @JsonKey(defaultValue: '')
   final String path;
 
   /// 跳转地址
+  @JsonKey(defaultValue: '')
   final String url;
 
   /// 是否可点击
-  bool get isTapable => path != null || url != null;
+  bool get isTapable => path.isNotEmpty || url.isNotEmpty;
 
   /// 点击动作
   void Function() tapAction(BuildContext context) => () {
-        if (path != null) {
+        if (path.isNotEmpty) {
           getPageFromId(path).then<void>((page) {
             Navigator.push<dynamic>(context, SlidePageRoute<dynamic>(page));
           });
-        } else if (url != null) {
+        } else if (url.isNotEmpty) {
           Routes.router
               .navigateTo(context, url, transition: TransitionType.inFromRight);
         }
@@ -90,7 +93,7 @@ class ListComponent extends StatelessWidget {
         onTap: config.isTapable ? config.tapAction(context) : null,
         leading: JSONTools.getIconWidget(config.icon),
         title: Text(config.text),
-        subtitle: config.desc == null ? null : Text(config.desc),
+        subtitle: config.desc.isEmpty ? null : Text(config.desc),
         trailing: config.isTapable ? const Icon(Icons.chevron_right) : null,
       );
 

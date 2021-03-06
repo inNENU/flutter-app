@@ -18,7 +18,7 @@ publish_to: "none" # Remove this line if you wish to publish to pub.dev
 version: 0.0.1+2
 
 environment:
-  sdk: ">=2.9.0 <3.0.0"
+  sdk: ">=2.12.0 <3.0.0"
 
 dependencies:
   flutter:
@@ -31,46 +31,46 @@ dependencies:
   adaptive_breakpoints: ^0.0.3
 
   # https://github.com/brendan-duncan/archive
-  archive: ^2.0.13
+  archive: ^3.1.2
 
   # auto_size_text:
 
   # https://github.com/Baseflow/flutter_cached_network_image
-  cached_network_image: ^2.5.0
+  cached_network_image: ^3.0.0-nullsafety
 
   # https://github.com/serenader2014/flutter_carousel_slider
-  carousel_slider: ^2.3.1
+  carousel_slider: ^3.0.0
 
   # Dart 常用工具类库 https://github.com/Sky24n/common_utils
-  common_utils: ^1.2.1
+  common_utils: ^2.0.1
 
   # connectivity:
   # device_info:
 
   # 网络库 https://github.com/flutterchina/dio
-  dio: ^3.0.10
+  dio: ^4.0.0-beta5
 
   # fluttertoast:
 
   # https://github.com/SunnyApp/flutter_contact
-  flutter_contact: ^0.6.4
+  # flutter_contact: ^0.6.4
 
   # flutter_secure_storage:
 
   # SVG 支持: https://github.com/dnfield/flutter_svg
-  flutter_svg: ^0.19.1
+  flutter_svg: ^0.21.0-nullsafety.0
 
   # 路由框架 https://github.com/theyakka/fluro
-  fluro: ^1.7.8
+  fluro: ^2.0.3
 
   # geolocator:
   # location:
 
   # https://github.com/dart-lang/logging
-  logging: ^0.11.4
+  logging: ^1.0.0
 
   # https://github.com/OpenFlutter/flutter_oktoast
-  oktoast: ^2.3.2
+  oktoast: ^3.0.0
 
   # package_info:
 
@@ -78,24 +78,24 @@ dependencies:
   path: ^1.7.0
 
   # https://pub.flutter-io.cn/packages/path_provider
-  path_provider: ^1.6.27
+  path_provider: ^2.0.1
 
   # https://github.com/Baseflow/flutter-permission-handler
-  permission_handler: ^5.0.1
+  permission_handler: ^6.0.0
 
-  provider: ^4.3.2
-  shared_preferences: ^0.5.12
+  provider: ^5.0.0
+  shared_preferences: ^2.0.3
 
   # Flutter shared_preferences plugin util https://github.com/Sky24n/sp_util
-  sp_util: ^1.0.1
+  sp_util: ^2.0.1
 
   # https://pub.flutter-io.cn/packages/url_launcher
-  url_launcher: ^5.7.0
+  url_launcher: ^6.0.2
 
   # video_player:
 
   # WebView 插件 https://github.com/flutter/plugins/tree/master/packages/webview_flutter
-  webview_flutter: ^1.0.7
+  webview_flutter: ^2.0.2
 
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
@@ -110,10 +110,10 @@ dev_dependencies:
     sdk: flutter
 
   # https://pub.flutter-io.cn/packages/integration_test
-  integration_test: ^1.0.1
+  # integration_test: ^1.0.1
 
   # https://pub.flutter-io.cn/packages/json_serializable
-  json_serializable: ^3.5.1
+  json_serializable: ^4.0.2
 
   # https://pub.flutter-io.cn/packages/pedantic
   pedantic: ^1.9.2
