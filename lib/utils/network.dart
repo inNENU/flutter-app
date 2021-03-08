@@ -24,7 +24,7 @@ class Network {
 
   Future<bool> downLoadFile(
     String url, {
-    BaseFolder base,
+    required BaseFolder base,
     String fileName = '',
     String savePath = './',
   }) async {

@@ -4,9 +4,9 @@ final _logger = Logger('utils.tool');
 
 class Tool {
   /// 建立 String 到 Enum 的映射
-  static T Function(String) string2EnumMap<T>(
+  static T Function(String?) string2EnumMap<T>(
     List<T> enumValues, {
-    T defaultValue,
+    T? defaultValue,
   }) {
     final map = <String, T>{};
 
@@ -16,7 +16,7 @@ class Tool {
 
     return (enumString) {
       if (map[enumString] != null) {
-        return map[enumString];
+        return map[enumString] as T;
       }
       final defaultEnum = defaultValue ?? enumValues[0];
       final logMessage = defaultValue == null

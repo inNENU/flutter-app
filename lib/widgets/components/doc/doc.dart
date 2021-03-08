@@ -36,7 +36,7 @@ class DocComponent extends StatelessWidget {
   DocComponent(
     this.name,
     this.url, {
-    String icon = '',
+    String? icon,
     this.downloadable = true,
   }) : icon = icon ?? _getDocIcon(url);
 

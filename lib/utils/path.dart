@@ -8,17 +8,17 @@ import 'package:path_provider/path_provider.dart';
 /// 缓存目录
 ///
 /// 该目录可能随时被清除
-Directory _tempDir;
+Directory? _tempDir;
 
 /// 应用文件目录
 ///
 /// 用于存储应用需要读取、但不希望暴露给用户的文件
-Directory _appFileDir;
+Directory? _appFileDir;
 
 /// 应用数据目录
 ///
 /// 用于存储应用的用户数据文件
-Directory _appDataDir;
+Directory? _appDataDir;
 
 /// 外部存储目录
 ///
@@ -29,7 +29,7 @@ Directory _appDataDir;
 ///
 /// 仅 iOS 可用
 /// 用于存储数据库等包含用户隐私信息的敏感文件
-Directory _libDir;
+Directory? _libDir;
 
 /// 预定义的外部存储项目目录
 ///
@@ -39,7 +39,7 @@ Directory _libDir;
 /// 预定义的应用文件外部存储目录
 ///
 /// 仅 Andriod 可用
-Directory _appExtFileDir;
+Directory? _appExtFileDir;
 
 /// 基文件夹
 enum BaseFolder {

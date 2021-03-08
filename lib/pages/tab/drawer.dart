@@ -7,25 +7,9 @@ Drawer drawerWidget(BuildContext context) => Drawer(
           DrawerHeader(
             child: ListView(
               children: [
-                Row(
-                  children: [
-                    Text(
-                      '走出半生，归来仍是',
-                      style: Theme.of(context).textTheme.bodyText2,
-                    ),
-                    Text(
-                      '———',
-                      style: Theme.of(context)
-                          .textTheme
-                          .bodyText2
-                          ?.copyWith(letterSpacing: -2, wordSpacing: -2),
-                    ),
-                  ],
-                ),
                 Text(
-                  '东师青年',
-                  textAlign: TextAlign.right,
-                  style: Theme.of(context).textTheme.headline6,
+                  'in东师，就用in东师',
+                  style: Theme.of(context).textTheme.bodyText2,
                 ),
               ],
             ),

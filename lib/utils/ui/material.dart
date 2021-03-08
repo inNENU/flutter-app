@@ -6,9 +6,9 @@ class UI {
     BuildContext context, {
     required String content,
     int duration = 3000,
-    Icon icon,
-    String actionLabel,
-    void Function() action,
+    Icon? icon,
+    String? actionLabel,
+    void Function()? action,
   }) {
     ScaffoldMessenger.of(context).showSnackBar(
       SnackBar(
@@ -27,7 +27,7 @@ class UI {
     required String content,
     String title = '',
     bool mask = false,
-    List<Widget> actions,
+    List<Widget>? actions,
   }) {
     showDialog<T>(
       context: parentContent,

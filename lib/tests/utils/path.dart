@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:path_provider/path_provider.dart';
 
@@ -32,10 +34,12 @@ class _PathTestState extends State<PathTest> {
 
     extPath = extPath;
 
-    getExternalStorageDirectories(type: StorageDirectory.downloads)
-        .then((downloadPath) {
-      this.downloadPath = downloadPath[0].path;
-    });
+    if (!Platform.isIOS) {
+      getExternalStorageDirectories(type: StorageDirectory.downloads)
+          .then((downloadPath) {
+        this.downloadPath = downloadPath![0].path;
+      });
+    }
   }
 
   @override
@@ -60,7 +64,7 @@ class _PathTestState extends State<PathTest> {
 }
 
 class PathTest extends StatefulWidget {
-  const PathTest({Key key}) : super(key: key);
+  const PathTest({Key? key}) : super(key: key);
 
   @override
   _PathTestState createState() => _PathTestState();

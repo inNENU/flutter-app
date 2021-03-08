@@ -17,7 +17,7 @@ export 'config.dart';
 final _logger = Logger('tagPage');
 
 class Home extends StatefulWidget {
-  const Home({Key key}) : super(key: key);
+  const Home({Key? key}) : super(key: key);
 
   @override
   _HomeState createState() => _HomeState();

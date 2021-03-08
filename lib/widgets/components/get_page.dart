@@ -12,7 +12,7 @@ Future<MyPage> getPage(String url) async {
   final response = await Dio().get<String>(url);
 
   if (response.statusCode == 200) {
-    final config = json.decode(response.data) as Map<String, dynamic>;
+    final config = json.decode(response.data ?? '{}') as Map<String, dynamic>;
     return MyPage.fromJson(config);
   }
 

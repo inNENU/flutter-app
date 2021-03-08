@@ -5,29 +5,29 @@ final _logger = Logger('tool');
 
 class Storage {
   /// 获得指定的 key
-  static Future<T> getKey<T>(String key) => SharedPreferences.getInstance()
+  static Future<T?> getKey<T>(String key) => SharedPreferences.getInstance()
       .then((instance) => instance.get(key) as T);
 
   /// 获得指定的 int key
-  static Future<int> getIntKey(String key) =>
+  static Future<int?> getIntKey(String key) =>
       SharedPreferences.getInstance().then((instance) => instance.getInt(key));
 
   /// 获得指定的 String key
-  static Future<String> getStringKey(String key) =>
+  static Future<String?> getStringKey(String key) =>
       SharedPreferences.getInstance()
           .then((instance) => instance.getString(key));
 
   /// 获得指定的 bool key
-  static Future<bool> getBoolKey(String key) =>
+  static Future<bool?> getBoolKey(String key) =>
       SharedPreferences.getInstance().then((instance) => instance.getBool(key));
 
   /// 获得指定的 double key
-  static Future<double> getDoubleKey(String key) =>
+  static Future<double?> getDoubleKey(String key) =>
       SharedPreferences.getInstance()
           .then((instance) => instance.getDouble(key));
 
   /// 获得指定的 List<String> key
-  static Future<List<String>> getStringListKey(String key) =>
+  static Future<List<String>?> getStringListKey(String key) =>
       SharedPreferences.getInstance()
           .then((instance) => instance.getStringList(key));
 

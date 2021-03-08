@@ -110,7 +110,8 @@ dev_dependencies:
     sdk: flutter
 
   # https://pub.flutter-io.cn/packages/integration_test
-  # integration_test: ^1.0.1
+  # integration_test:
+  #   sdk: flutter
 
   # https://pub.flutter-io.cn/packages/json_serializable
   json_serializable: ^4.0.2
