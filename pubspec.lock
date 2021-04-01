@@ -204,6 +204,20 @@ packages:
       url: "https://pub.flutter-io.cn"
     source: hosted
     version: "2.0.0"
+  dartx:
+    dependency: transitive
+    description:
+      name: dartx
+      url: "https://pub.flutter-io.cn"
+    source: hosted
+    version: "0.6.0"
+  dartxx:
+    dependency: transitive
+    description:
+      name: dartxx
+      url: "https://pub.flutter-io.cn"
+    source: hosted
+    version: "0.4.4+6"
   decimal:
     dependency: transitive
     description:
@@ -218,6 +232,13 @@ packages:
       url: "https://pub.flutter-io.cn"
     source: hosted
     version: "4.0.0"
+  equatable:
+    dependency: transitive
+    description:
+      name: equatable
+      url: "https://pub.flutter-io.cn"
+    source: hosted
+    version: "2.0.0"
   fake_async:
     dependency: transitive
     description:
@@ -246,6 +267,13 @@ packages:
       url: "https://pub.flutter-io.cn"
     source: hosted
     version: "1.0.0"
+  flexidate:
+    dependency: transitive
+    description:
+      name: flexidate
+      url: "https://pub.flutter-io.cn"
+    source: hosted
+    version: "0.4.4+5"
   fluro:
     dependency: "direct main"
     description:
@@ -272,6 +300,13 @@ packages:
       url: "https://pub.flutter-io.cn"
     source: hosted
     version: "3.0.1"
+  flutter_contact:
+    dependency: "direct main"
+    description:
+      name: flutter_contact
+      url: "https://pub.flutter-io.cn"
+    source: hosted
+    version: "0.8.1+2"
   flutter_localizations:
     dependency: "direct main"
     description: flutter
@@ -336,6 +371,13 @@ packages:
       url: "https://pub.flutter-io.cn"
     source: hosted
     version: "3.0.2"
+  inflection3:
+    dependency: transitive
+    description:
+      name: inflection3
+      url: "https://pub.flutter-io.cn"
+    source: hosted
+    version: "0.5.3+2"
   intl:
     dependency: transitive
     description:
@@ -378,6 +420,13 @@ packages:
       url: "https://pub.flutter-io.cn"
     source: hosted
     version: "1.0.1"
+  logging_config:
+    dependency: transitive
+    description:
+      name: logging_config
+      url: "https://pub.flutter-io.cn"
+    source: hosted
+    version: "0.6.7+6"
   matcher:
     dependency: transitive
     description:
@@ -567,6 +616,13 @@ packages:
       url: "https://pub.flutter-io.cn"
     source: hosted
     version: "1.0.0"
+  quiver:
+    dependency: transitive
+    description:
+      name: quiver
+      url: "https://pub.flutter-io.cn"
+    source: hosted
+    version: "3.0.0"
   rational:
     dependency: transitive
     description:
@@ -574,6 +630,13 @@ packages:
       url: "https://pub.flutter-io.cn"
     source: hosted
     version: "1.0.0"
+  recase:
+    dependency: transitive
+    description:
+      name: recase
+      url: "https://pub.flutter-io.cn"
+    source: hosted
+    version: "4.0.0-nullsafety.0"
   rxdart:
     dependency: transitive
     description:
@@ -768,6 +831,20 @@ packages:
       url: "https://pub.flutter-io.cn"
     source: hosted
     version: "0.3.15"
+  time:
+    dependency: transitive
+    description:
+      name: time
+      url: "https://pub.flutter-io.cn"
+    source: hosted
+    version: "1.5.0-nullsafety.1"
+  timezone:
+    dependency: transitive
+    description:
+      name: timezone
+      url: "https://pub.flutter-io.cn"
+    source: hosted
+    version: "0.7.0"
   timing:
     dependency: transitive
     description:
