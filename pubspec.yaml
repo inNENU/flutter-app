@@ -28,7 +28,7 @@ dependencies:
     sdk: flutter
 
   # https://github.com/material-components/material-components-flutter-adaptive/tree/develop/adaptive_breakpoints
-  adaptive_breakpoints: ^0.0.3
+  adaptive_breakpoints: ^0.0.4
 
   # https://github.com/brendan-duncan/archive
   archive: ^3.1.2
@@ -36,19 +36,19 @@ dependencies:
   # auto_size_text:
 
   # https://github.com/Baseflow/flutter_cached_network_image
-  cached_network_image: ^3.0.0-nullsafety
+  cached_network_image: ^3.0.0
 
   # https://github.com/serenader2014/flutter_carousel_slider
-  carousel_slider: ^3.0.0
+  carousel_slider: ^4.0.0-nullsafety.0
 
   # Dart 常用工具类库 https://github.com/Sky24n/common_utils
-  common_utils: ^2.0.1
+  common_utils: ^2.0.2
 
   # connectivity:
   # device_info:
 
   # 网络库 https://github.com/flutterchina/dio
-  dio: ^4.0.0-beta5
+  dio: ^4.0.0
 
   # fluttertoast:
 
@@ -67,7 +67,7 @@ dependencies:
   # location:
 
   # https://github.com/dart-lang/logging
-  logging: ^1.0.0
+  logging: ^1.0.1
 
   # https://github.com/OpenFlutter/flutter_oktoast
   oktoast: ^3.0.0
@@ -75,22 +75,22 @@ dependencies:
   # package_info:
 
   # https://github.com/dart-lang/path
-  path: ^1.7.0
+  path: ^1.8.0
 
   # https://pub.flutter-io.cn/packages/path_provider
   path_provider: ^2.0.1
 
   # https://github.com/Baseflow/flutter-permission-handler
-  permission_handler: ^6.0.0
+  permission_handler: ^6.1.1
 
   provider: ^5.0.0
-  shared_preferences: ^2.0.3
+  shared_preferences: ^2.0.5
 
   # Flutter shared_preferences plugin util https://github.com/Sky24n/sp_util
-  sp_util: ^2.0.1
+  sp_util: ^2.0.3
 
   # https://pub.flutter-io.cn/packages/url_launcher
-  url_launcher: ^6.0.2
+  url_launcher: ^6.0.3
 
   # video_player:
 
@@ -114,13 +114,13 @@ dev_dependencies:
   #   sdk: flutter
 
   # https://pub.flutter-io.cn/packages/json_serializable
-  json_serializable: ^4.0.2
+  json_serializable: ^4.1.0
 
   # https://pub.flutter-io.cn/packages/pedantic
-  pedantic: ^1.9.2
+  pedantic: ^1.11.0
 
   # https://pub.flutter-io.cn/packages/test
-  test: ^1.15.7
+  test: ^1.16.5
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
