@@ -161,7 +161,7 @@ class PhoneComponent extends StatelessWidget {
             MyPermission.checkAndAskPermission(context, 'contact')
                 .then((success) {
               if (success) {
-                // TODO: Fix it
+                // TODO(Mister-Hope): Fix it
                 // Contacts.addContact(contact).then((contact) {
                 //   Navigator.pop(context);
                 //   UI.tip(context, content: '添加联系人成功');
