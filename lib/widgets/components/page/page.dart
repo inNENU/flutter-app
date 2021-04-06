@@ -6,18 +6,24 @@ import 'package:innenu/widgets/components/components.dart';
 final _logger = Logger('page');
 
 class MyPage extends StatelessWidget {
-  const MyPage({required List<Widget> children, required this.title})
-      : pageWidgets = children;
+  const MyPage({
+    required this.config,
+    required this.title,
+    required List<Widget> children,
+  }) : pageWidgets = children;
 
   /// 从 JSON 生成 MyPage
-  MyPage.fromJson(Map<String, dynamic> pageWidgets)
-      : title = (pageWidgets['hidden'] as bool?) == true
+  MyPage.fromJson(this.config)
+      : title = (config['hidden'] as bool?) == true
             ? ''
-            : pageWidgets['title'] as String? ?? 'in东师',
+            : config['title'] as String? ?? 'in东师',
         pageWidgets = List<Widget>.generate(
-            (pageWidgets['content'] as List<dynamic>).length,
+            (config['content'] as List<dynamic>).length,
             (index) => _generateWidget(
-                pageWidgets['content'][index] as Map<String, dynamic>));
+                config['content'][index] as Map<String, dynamic>));
+
+  /// 页面配置
+  final Map<String, dynamic> config;
 
   /// 页面标题
   final String title;
@@ -77,6 +83,6 @@ class MyPage extends StatelessWidget {
             )
           : null,
       body: ListView(
-        children: pageWidgets,
+        children: [...pageWidgets, FooterComponent.fromJson(config)],
       ));
 }

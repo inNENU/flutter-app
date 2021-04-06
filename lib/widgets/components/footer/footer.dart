@@ -28,64 +28,65 @@ class FooterComponent extends StatelessWidget {
 
   Map<String, dynamic> toJson() => _$FooterComponentToJson(this);
 
-  /// 页脚文字
-  String get footText =>
-      // 作者
-      (author.isNotEmpty ? '作者: $author' : '') +
-      // 分割空格
-      (author.isNotEmpty && time.isNotEmpty ? '  ' : '') +
-      // 时间
-      (time.isNotEmpty ? '最后更新于: $time' : '');
+  static const TextStyle _style = TextStyle(
+      color: Color(0xff888888),
+      fontSize: 12,
+      height: 1.333333333333333,
+      letterSpacing: -0.1);
 
-  /// 寄语 Widget
-  Widget _subjectWidget(BuildContext context) => Padding(
-        padding: const EdgeInsets.only(top: 20, bottom: 4),
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.center,
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            Text(
-              '———',
-              style: Theme.of(context)
-                  .textTheme
-                  .caption
-                  ?.copyWith(letterSpacing: -2, wordSpacing: -2),
-            ),
-          ],
-        ),
-      );
+  /// 页脚信息
+  Widget? _getInfoWidget(BuildContext context) {
+    final info = <Widget>[
+      // 作者
+      ...author.isNotEmpty
+          ? [
+              Text(
+                '作者: $author',
+                style: _style,
+              )
+            ]
+          : [],
+      // 时间
+      ...time.isNotEmpty
+          ? [
+              Text(
+                '最后更新于: $time',
+                style: _style,
+              ),
+            ]
+          : []
+    ];
+
+    return info.isNotEmpty
+        ? Padding(
+            padding: const EdgeInsets.only(bottom: 10),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: info,
+            ))
+        : null;
+  }
 
   /// 版权 Widget
-  Widget _copyRightWidget(BuildContext context) => Padding(
-        padding: const EdgeInsets.only(bottom: 20),
-        child: Text(
-          'Copyright © 2017 - present Hope Studio',
-          style: Theme.of(context).textTheme.overline,
-        ),
+  Widget _getCopyRightWidget(BuildContext context) => const Text(
+        'Copyright © 2017 - present Hope Studio',
+        style: _style,
       );
 
   /// 页脚组件
-  List<Widget> _content(BuildContext context) {
-    final content = [_subjectWidget(context), _copyRightWidget(context)];
+  List<Widget> _getContent(BuildContext context) {
+    final content = [_getCopyRightWidget(context)];
+    final infoWidget = _getInfoWidget(context);
 
     // 插入作者与时间
-    if (footText.isNotEmpty) {
-      content.insert(
-        1,
-        Padding(
-          padding: const EdgeInsets.only(bottom: 4),
-          child: Text(
-            footText,
-            style: Theme.of(context).textTheme.overline,
-          ),
-        ),
-      );
+    if (infoWidget != null) {
+      content.insert(0, infoWidget);
     }
 
     // 插入描述文字
     if (desc.isNotEmpty) {
       content.insert(
-          1,
+          0,
           Padding(
             padding: const EdgeInsets.only(bottom: 4),
             child: Text(
@@ -100,6 +101,6 @@ class FooterComponent extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) => Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 8),
-      child: Column(children: _content(context)));
+      padding: const EdgeInsets.fromLTRB(15, 10, 15, 20),
+      child: Column(children: _getContent(context)));
 }
