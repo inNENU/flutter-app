@@ -1,0 +1,33 @@
+name: Flutter test
+
+on:
+  - push
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - uses: subosito/flutter-action@v1
+        with:
+          channel: "stable"
+
+      - name: Install dependencies
+        run: flutter pub get
+
+      - name: Run tests
+        run: flutter test
+
+      - name: Try apk debug build
+        run: |
+          flutter build apk --target-platform=android-arm64 --debug
+
+      - name: Try apk profile build
+        run: |
+          flutter build apk --target-platform=android-arm64 --profile
+
+      - name: Try apk build
+        run: |
+          flutter build apk --target-platform=android-arm64 --release
