@@ -1,4 +1,4 @@
-package com.example.innenu
+package com.innenu.app
 
 import io.flutter.embedding.android.FlutterActivity
 
