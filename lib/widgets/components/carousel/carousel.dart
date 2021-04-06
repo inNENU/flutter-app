@@ -13,7 +13,7 @@ class CarouselComponent extends StatelessWidget {
   // TODO(Mister-Hope): add support for 'fill'
   const CarouselComponent(
     this.images, {
-    this.height = 0,
+    this.height,
     this.autoplay = true,
     this.interval = 5000,
     this.duration = 500,
@@ -28,7 +28,7 @@ class CarouselComponent extends StatelessWidget {
   final List<String> images;
 
   /// 轮播图组件高度
-  final double height;
+  final double? height;
 
   /// 自动播放
   @JsonKey(defaultValue: true)
