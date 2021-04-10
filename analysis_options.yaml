@@ -7,6 +7,9 @@ analyzer:
     implicit-casts: false
     implicit-dynamic: false
 
+  exclude:
+    - lib/**/*.g.dart
+
 linter:
   rules:
     - always_declare_return_types
