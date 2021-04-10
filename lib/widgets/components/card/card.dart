@@ -65,9 +65,7 @@ class CardComponent extends StatelessWidget {
                           title,
                           style: Theme.of(context).textTheme.bodyText1,
                         ),
-                        if (desc == '')
-                          const SizedBox()
-                        else
+                        if (desc != '')
                           Text(
                             desc,
                             style: Theme.of(context).textTheme.bodyText2,
@@ -75,17 +73,13 @@ class CardComponent extends StatelessWidget {
                       ],
                     ),
                   ),
-                  if (logo == '')
-                    const SizedBox()
-                  else
+                  if (logo != '')
                     Column(
                       children: <Widget>[
                         CachedNetworkImage(
                           imageUrl: logo,
                         ),
-                        if (name == '')
-                          const SizedBox()
-                        else
+                        if (name != '')
                           Text(
                             name,
                             style: Theme.of(context).textTheme.caption,

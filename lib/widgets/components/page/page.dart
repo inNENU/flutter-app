@@ -14,7 +14,7 @@ class MyPage extends StatelessWidget {
 
   /// 从 JSON 生成 MyPage
   MyPage.fromJson(this.config)
-      : title = (config['hidden'] as bool?) == true
+      : title = (config['hidden'] as bool?) ?? false
             ? ''
             : config['title'] as String? ?? 'in东师',
         pageWidgets = List<Widget>.generate(
@@ -71,7 +71,10 @@ class MyPage extends StatelessWidget {
 
       default:
         _logger.warning('Unknown component: $tag');
-        return const SizedBox();
+        return Text(
+          '暂不支持的组件 $tag',
+          textAlign: TextAlign.center,
+        );
     }
   }
 

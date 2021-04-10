@@ -26,23 +26,20 @@ class _TextWidget extends StatelessWidget {
   /// 段落文字是否可选中
   final bool selectable;
 
-  /// 文字组件
-  Widget _textWidget(BuildContext context) => selectable
-      ? SelectableText(
-          text,
-          style: Theme.of(context).textTheme.bodyText2,
-          textAlign: textAlign,
-        )
-      : Text(
-          text,
-          style: Theme.of(context).textTheme.bodyText2,
-          textAlign: textAlign,
-        );
-
   @override
   Widget build(BuildContext context) => Padding(
       padding: EdgeInsets.symmetric(vertical: verticalPadding),
-      child: _textWidget(context));
+      child: selectable
+          ? SelectableText(
+              text,
+              style: Theme.of(context).textTheme.bodyText2,
+              textAlign: textAlign,
+            )
+          : Text(
+              text,
+              style: Theme.of(context).textTheme.bodyText2,
+              textAlign: textAlign,
+            ));
 }
 
 /// 段落组件
@@ -89,56 +86,43 @@ class TextComponent extends StatelessWidget {
 
   Map<String, dynamic> toJson() => _$TextComponentToJson(this);
 
-  /// 标题组件
-  Widget _headWidget(BuildContext context) => selectable
-      ? SelectableText(
-          heading,
-          style: Theme.of(context).textTheme.subtitle1,
-        )
-      : Text(
-          heading,
-          style: Theme.of(context).textTheme.subtitle1,
-        );
-
-  /// 渲染内容
-  List<Widget> _renderContents(BuildContext context) {
-    final content = <Widget>[];
-
-    // 处理标题部分
-    if (heading.isNotEmpty) {
-      content.add(_headWidget(context));
-    }
-
-    // 处理段落部分
-    if (text is String) {
-      // 单个段落
-      content.add(_TextWidget(
-        text as String,
-        align,
-        verticalPadding: 8,
-        selectable: selectable,
-      ));
-    } else if (text is List) {
-      // 多个段落
-      content.addAll(
-        (text as List)
-            .map<Widget>((dynamic item) => _TextWidget(
-                  item as String,
-                  align,
-                  selectable: selectable,
-                ))
-            .toList(),
-      );
-    }
-
-    return content;
-  }
-
   @override
   Widget build(BuildContext context) => Padding(
       padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 4),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
-        children: _renderContents(context),
+        children: [
+          // 标题
+          if (heading.isNotEmpty)
+            selectable
+                ? SelectableText(
+                    heading,
+                    style: Theme.of(context).textTheme.subtitle1,
+                  )
+                : Text(
+                    heading,
+                    style: Theme.of(context).textTheme.subtitle1,
+                  ),
+
+          // 段落
+          //
+          // 单个段落
+          if (text is String)
+            _TextWidget(
+              text as String,
+              align,
+              verticalPadding: 8,
+              selectable: selectable,
+            )
+          // 多个段落
+          else if (text is List)
+            ...(text as List)
+                .map<Widget>((dynamic item) => _TextWidget(
+                      item as String,
+                      align,
+                      selectable: selectable,
+                    ))
+                .toList()
+        ],
       ));
 }

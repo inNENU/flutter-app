@@ -94,23 +94,12 @@ class PhoneComponent extends StatelessWidget {
   Map<String, dynamic> toJson() => _$PhoneComponentToJson(this);
 
   /// 电话列表
-  List<Item> get phones {
-    final phoneList = [Item(label: '电话', value: phoneNumber)];
-
-    if (homeNumber.isNotEmpty) {
-      phoneList.add(Item(label: '家庭电话', value: homeNumber));
-    }
-
-    if (workNumber.isNotEmpty) {
-      phoneList.add(Item(label: '工作电话', value: workNumber));
-    }
-
-    if (hostNumer.isNotEmpty) {
-      phoneList.add(Item(label: '公司电话', value: hostNumer));
-    }
-
-    return phoneList;
-  }
+  List<Item> get phones => [
+        Item(label: '电话', value: phoneNumber),
+        if (homeNumber.isNotEmpty) Item(label: '家庭电话', value: homeNumber),
+        if (workNumber.isNotEmpty) Item(label: '工作电话', value: workNumber),
+        if (hostNumer.isNotEmpty) Item(label: '公司电话', value: hostNumer),
+      ];
 
   Contact get contact => Contact(
         givenName: givenName,

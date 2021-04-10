@@ -38,23 +38,18 @@ class FooterComponent extends StatelessWidget {
   Widget? _getInfoWidget(BuildContext context) {
     final info = <Widget>[
       // 作者
-      ...author.isNotEmpty
-          ? [
-              Text(
-                '作者: $author',
-                style: _style,
-              )
-            ]
-          : [],
+      if (author.isNotEmpty)
+        Text(
+          '作者: $author',
+          style: _style,
+        ),
+
       // 时间
-      ...time.isNotEmpty
-          ? [
-              Text(
-                '最后更新于: $time',
-                style: _style,
-              ),
-            ]
-          : []
+      if (time.isNotEmpty)
+        Text(
+          '最后更新于: $time',
+          style: _style,
+        ),
     ];
 
     return info.isNotEmpty
@@ -67,36 +62,30 @@ class FooterComponent extends StatelessWidget {
         : null;
   }
 
-  /// 版权 Widget
-  Widget _getCopyRightWidget(BuildContext context) => const Text(
-        'Copyright © 2017 - present Hope Studio',
-        style: _style,
-      );
-
   /// 页脚组件
   List<Widget> _getContent(BuildContext context) {
-    final content = [_getCopyRightWidget(context)];
     final infoWidget = _getInfoWidget(context);
 
-    // 插入作者与时间
-    if (infoWidget != null) {
-      content.insert(0, infoWidget);
-    }
+    return [
+      // 描述
+      if (desc.isNotEmpty)
+        Padding(
+          padding: const EdgeInsets.only(bottom: 4),
+          child: Text(
+            desc,
+            style: Theme.of(context).textTheme.overline,
+          ),
+        ),
 
-    // 插入描述文字
-    if (desc.isNotEmpty) {
-      content.insert(
-          0,
-          Padding(
-            padding: const EdgeInsets.only(bottom: 4),
-            child: Text(
-              desc,
-              style: Theme.of(context).textTheme.overline,
-            ),
-          ));
-    }
+      /// 信息
+      if (infoWidget != null) infoWidget,
 
-    return content;
+      /// 版权
+      const Text(
+        'Copyright © 2017 - present Hope Studio',
+        style: _style,
+      )
+    ];
   }
 
   @override

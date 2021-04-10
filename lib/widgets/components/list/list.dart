@@ -96,31 +96,24 @@ class ListComponent extends StatelessWidget {
         trailing: config.isTapable ? const Icon(Icons.chevron_right) : null,
       );
 
-  /// 列表组件
-  Widget _listWidget(BuildContext context) => Card(
-      margin: const EdgeInsets.symmetric(horizontal: 15, vertical: 8),
-      child: Column(
-        children:
-            content.map<Widget>((item) => _listTile(context, item)).toList(),
-      ));
-
-  List<Widget> _children(BuildContext context) {
-    final children = [_listWidget(context)];
-
-    if (header is String) {
-      children.insert(0, JSONTools.cardHead(context, header as String));
-    }
-
-    if (footer.isNotEmpty) {
-      children.add(JSONTools.cardFoot(context, footer));
-    }
-
-    return children;
-  }
-
   @override
   Widget build(BuildContext context) => Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
-        children: _children(context),
+        children: [
+          /// 列表 header
+          if (header is String) JSONTools.cardHead(context, header as String),
+
+          /// 列表组件
+          Card(
+              margin: const EdgeInsets.symmetric(horizontal: 15, vertical: 8),
+              child: Column(
+                children: content
+                    .map<Widget>((item) => _listTile(context, item))
+                    .toList(),
+              )),
+
+          /// 列表 footer
+          if (footer.isNotEmpty) JSONTools.cardFoot(context, footer)
+        ],
       );
 }

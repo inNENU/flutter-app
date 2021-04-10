@@ -158,19 +158,11 @@ class GridComponent extends StatelessWidget {
     );
   }
 
-  List<Widget> _children(BuildContext context) {
-    final children = [_gridListWidget(context)];
-
-    if (header is String) {
-      children.insert(0, JSONTools.cardHead(context, header as String));
-    }
-
-    if (footer.isNotEmpty) {
-      children.add(JSONTools.cardFoot(context, footer));
-    }
-
-    return children;
-  }
+  List<Widget> _children(BuildContext context) => [
+        if (header is String) JSONTools.cardHead(context, header as String),
+        _gridListWidget(context),
+        if (footer.isNotEmpty) JSONTools.cardFoot(context, footer)
+      ];
 
   @override
   Widget build(BuildContext context) => Column(
