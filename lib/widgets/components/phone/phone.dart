@@ -147,8 +147,7 @@ class PhoneComponent extends StatelessWidget {
         ),
         TextButton(
           onPressed: () {
-            MyPermission.checkAndAskPermission(context, 'contact')
-                .then((success) {
+            checkAndAskPermission(context, 'contact').then((success) {
               if (success) {
                 Contacts.addContact(contact).then((contact) {
                   Navigator.pop(context);

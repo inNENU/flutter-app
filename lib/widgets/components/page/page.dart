@@ -39,6 +39,9 @@ class MyPage extends StatelessWidget {
       case 'title':
         return TitleComponent.fromJson(config);
       case 'text':
+      case 'ul':
+      case 'ol':
+      case 'p':
         return TextComponent.fromJson(config);
       case 'img':
         return ImageComponent.fromJson(config);

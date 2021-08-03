@@ -50,13 +50,13 @@ dependencies:
     sdk: flutter
 
   # https://github.com/SunnyApp/flutter_contact
-  flutter_contact: ^0.8.1+2
+  flutter_contact: ^0.9.1+7
 
   flutter_localizations:
     sdk: flutter
 
   # SVG 支持: https://github.com/dnfield/flutter_svg
-  flutter_svg: ^0.21.0-nullsafety.0
+  flutter_svg: ^0.22.0
 
   # https://github.com/dart-lang/logging
   logging: ^1.0.1
@@ -71,7 +71,7 @@ dependencies:
   path_provider: ^2.0.1
 
   # https://github.com/Baseflow/flutter-permission-handler
-  permission_handler: ^6.1.1
+  permission_handler: ^8.1.1
 
   provider: ^5.0.0
   shared_preferences: ^2.0.5
@@ -87,16 +87,13 @@ dependencies:
 
 dev_dependencies:
   # https://pub.flutter-io.cn/packages/build_runner
-  build_runner: ^1.10.13
+  build_runner: ^2.0.1
 
   flutter_test:
     sdk: flutter
 
   # https://pub.flutter-io.cn/packages/json_serializable
   json_serializable: ^4.1.0
-
-  # https://pub.flutter-io.cn/packages/pedantic
-  pedantic: ^1.11.0
 
   # https://pub.flutter-io.cn/packages/test
   test: ^1.16.5

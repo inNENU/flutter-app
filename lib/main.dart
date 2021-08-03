@@ -68,6 +68,7 @@ class MyApp extends StatelessWidget {
         darkTheme: ThemeData(
             primaryColor: Colors.greenAccent[400], brightness: Brightness.dark),
 
+        // TODO(Mister-Hope): add switch theme
         /// 主题模式
         themeMode: ThemeMode.system,
       );

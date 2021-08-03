@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:json_annotation/json_annotation.dart';
 
 import 'package:innenu/utils/json_tools.dart';
+import 'package:innenu/utils/tool.dart';
 
 part 'text.g.dart';
 
@@ -42,12 +43,19 @@ class _TextWidget extends StatelessWidget {
             ));
 }
 
+enum TextType { info, tip, warning, danger, none }
+
+/// 获得类型
+TextType getTextType(String? type) =>
+    Tool.string2EnumMap(TextType.values, defaultValue: TextType.none)(type);
+
 /// 段落组件
 @JsonSerializable()
 class TextComponent extends StatelessWidget {
   const TextComponent(
     this.text, {
     this.heading = '',
+    this.type = TextType.none,
     this.align = TextAlign.justify,
     this.selectable = true,
     this.src = '',
@@ -71,6 +79,12 @@ class TextComponent extends StatelessWidget {
   /// 只能是 `'left'`, `'right'`, `'center'` 或 `'justify'` 中的一种
   @JsonKey(fromJson: JSONTools.getAlign)
   final TextAlign align;
+
+  /// 文字类型
+  ///
+  /// 只能是 `'none'`, `'info'`, `'tip'`, `'warning'` 或 `'danger'` 中的一种
+  @JsonKey(fromJson: getTextType)
+  final TextType type;
 
   /// 文字是否可以选中
   @JsonKey(defaultValue: true)
