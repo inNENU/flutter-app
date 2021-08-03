@@ -2,7 +2,6 @@ import 'package:fluro/fluro.dart';
 import 'package:flutter/material.dart';
 import 'package:json_annotation/json_annotation.dart';
 
-import 'package:innenu/widgets/components/get_page.dart';
 import 'package:innenu/widgets/components/page/page.dart';
 import 'package:innenu/router/router.dart';
 import 'package:innenu/utils/json_tools.dart';
@@ -43,9 +42,8 @@ class GridComponentConfig {
   /// 点击动作
   void Function() tapAction(BuildContext context) => () {
         if (path.isNotEmpty) {
-          getPageFromId(path).then<void>((MyPage page) {
-            Navigator.push<dynamic>(context, SlidePageRoute<dynamic>(page));
-          });
+          Navigator.push<dynamic>(
+              context, SlidePageRoute<dynamic>(OnlinePage(path)));
         } else if (url.isNotEmpty) {
           Routes.router
               .navigateTo(context, url, transition: TransitionType.inFromRight);
