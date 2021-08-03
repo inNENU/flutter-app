@@ -34,16 +34,22 @@ class IconWidget {
   /// 是否为合法本地资源
   bool get isLocalSvg => icon.startsWith('assets/') && icon.endsWith('.svg');
 
+  /// 是否为合法本地资源
+  bool get isIconString => RegExp(r'^([a-z]|[0-9]|-)+$').hasMatch(icon);
+
   /// 图片组件
-  Widget? get iconWidget => isLocalSvg
-      ? SvgPicture.asset(icon)
-      : isOnlineSVG
-          ? SvgPicture.network(icon)
-          : isOnlineImage
-              ? CachedNetworkImage(imageUrl: icon)
-              : isLocalImage
-                  ? Image.asset(icon)
-                  : null;
+  Widget? get iconWidget => isIconString
+      // TODO(Mister-Hope): Support reading local svg
+      ? SvgPicture.network('https://mp.innenu.com/res/icon/$icon.svg')
+      : isLocalSvg
+          ? SvgPicture.asset(icon)
+          : isOnlineSVG
+              ? SvgPicture.network(icon)
+              : isOnlineImage
+                  ? CachedNetworkImage(imageUrl: icon)
+                  : isLocalImage
+                      ? Image.asset(icon)
+                      : null;
 
   /// 图标组件
   Widget? get widget => iconWidget == null
