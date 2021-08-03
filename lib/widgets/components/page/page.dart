@@ -59,6 +59,8 @@ class MyPage extends StatelessWidget {
         return DocComponent.fromJson(config);
       case 'card':
         return CardComponent.fromJson(config);
+      case 'copy':
+        return ActionComponent.fromJson(config);
       case 'intro':
         return IntroComponent.fromJson(config);
 
