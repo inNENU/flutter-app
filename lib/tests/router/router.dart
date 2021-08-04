@@ -6,8 +6,8 @@ import 'package:innenu/tests/pages/carousel_json.dart';
 
 import 'package:innenu/tests/pages/doc.dart';
 
-import 'package:innenu/tests/pages/foot.dart';
-import 'package:innenu/tests/pages/foot_json.dart';
+import 'package:innenu/tests/pages/footer.dart';
+import 'package:innenu/tests/pages/footer_json.dart';
 
 import 'package:innenu/tests/pages/grid.dart';
 import 'package:innenu/tests/pages/grid_json.dart';
@@ -40,8 +40,8 @@ class TestRouter implements IRouterProvider {
   static String carouselPage = '/test/component/carousel';
   static String carouselJSONPage = '/test/component/carouselJSON';
   static String docPage = '/test/component/doc';
-  static String footerPage = '/test/component/foot';
-  static String footerJSONPage = '/test/component/footJSON';
+  static String footerPage = '/test/component/footer';
+  static String footerJSONPage = '/test/component/footerJSON';
   static String gridPage = '/test/component/grid';
   static String gridJSONPage = '/test/component/gridJSON';
   static String imagePage = '/test/component/image';

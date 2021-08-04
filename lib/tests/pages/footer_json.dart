@@ -10,6 +10,12 @@ class FootJSONTest extends StatelessWidget {
       ),
       body: ListView(
         children: [
+          const TitleComponent('常规页脚'),
+          FooterComponent.fromJson(const <String, String>{
+            'author': 'Mr.Hope',
+            'time': '2020/1/1',
+            'desc': '一些描述'
+          }),
           const TitleComponent('包含时间的页脚'),
           FooterComponent.fromJson(const <String, String>{'time': '2020/1/1'}),
           const TitleComponent('去除作者的页脚'),

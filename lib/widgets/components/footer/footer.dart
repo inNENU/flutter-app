@@ -73,7 +73,7 @@ class FooterComponent extends StatelessWidget {
           padding: const EdgeInsets.only(bottom: 4),
           child: Text(
             desc,
-            style: Theme.of(context).textTheme.overline,
+            style: _style,
           ),
         ),
 
