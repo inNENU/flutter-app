@@ -1,3 +1,4 @@
+export 'account/account.dart';
 export 'action/action.dart';
 export 'card/card.dart';
 export 'carousel/carousel.dart';
@@ -5,7 +6,6 @@ export 'doc/doc.dart';
 export 'footer/footer.dart';
 export 'grid/grid.dart';
 export 'image/image.dart';
-export 'intro/intro.dart';
 export 'list/list.dart';
 export 'nav/nav.dart';
 export 'page/page.dart';

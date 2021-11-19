@@ -9,9 +9,9 @@ part 'card.g.dart';
 class CardComponent extends StatelessWidget {
   // TODO(Mister-Hope): add type support
   const CardComponent(
-      {required this.src,
-      required this.url,
+      {required this.cover,
       required this.title,
+      required this.url,
       this.desc = '',
       this.name = '',
       this.logo = ''});
@@ -27,7 +27,7 @@ class CardComponent extends StatelessWidget {
   final String desc;
 
   /// 卡片图片地址
-  final String src;
+  final String cover;
 
   /// 卡片跳转路径
   final String url;
@@ -43,14 +43,17 @@ class CardComponent extends StatelessWidget {
   Map<String, dynamic> toJson() => _$CardComponentToJson(this);
 
   @override
-  Widget build(BuildContext context) => Card(
-      margin: const EdgeInsets.symmetric(horizontal: 15, vertical: 8),
+  Widget build(BuildContext context) => Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 8),
       child: Card(
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(8),
+        ),
         child: Column(
           children: <Widget>[
             AspectRatio(
               aspectRatio: 16 / 9,
-              child: CachedNetworkImage(imageUrl: src, fit: BoxFit.cover),
+              child: CachedNetworkImage(imageUrl: cover, fit: BoxFit.cover),
             ),
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 8),
@@ -77,6 +80,7 @@ class CardComponent extends StatelessWidget {
                     Column(
                       children: <Widget>[
                         CachedNetworkImage(
+                          width: 28,
                           imageUrl: logo,
                         ),
                         if (name != '')

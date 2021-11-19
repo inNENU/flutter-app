@@ -4,15 +4,15 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:json_annotation/json_annotation.dart';
 
-part 'intro.g.dart';
+part 'account.g.dart';
 
 /// 标题组件
 @JsonSerializable()
-class IntroComponent extends StatelessWidget {
-  const IntroComponent(this.name, this.logo, {this.desc = ''});
+class AccountComponent extends StatelessWidget {
+  const AccountComponent(this.name, this.logo, {this.desc = ''});
 
-  factory IntroComponent.fromJson(Map<String, dynamic> json) =>
-      _$IntroComponentFromJson(json);
+  factory AccountComponent.fromJson(Map<String, dynamic> json) =>
+      _$AccountComponentFromJson(json);
 
   /// 主体名称
   final String name;
@@ -24,7 +24,7 @@ class IntroComponent extends StatelessWidget {
   @JsonKey(defaultValue: '')
   final String desc;
 
-  Map<String, dynamic> toJson() => _$IntroComponentToJson(this);
+  Map<String, dynamic> toJson() => _$AccountComponentToJson(this);
 
   @override
   Widget build(BuildContext context) => AspectRatio(

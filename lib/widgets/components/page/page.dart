@@ -1,8 +1,8 @@
 import 'dart:convert';
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
-import 'package:logging/logging.dart';
 import 'package:innenu/widgets/components/components.dart';
+import 'package:logging/logging.dart';
 
 final _logger = Logger('page');
 
@@ -80,8 +80,8 @@ class MyPage extends StatelessWidget {
         return CardComponent.fromJson(config);
       case 'copy':
         return ActionComponent.fromJson(config);
-      case 'intro':
-        return IntroComponent.fromJson(config);
+      case 'account':
+        return AccountComponent.fromJson(config);
 
       case 'advanced-ist':
       case 'media':
@@ -174,8 +174,8 @@ class OnlinePage extends StatelessWidget {
         return CardComponent.fromJson(config);
       case 'copy':
         return ActionComponent.fromJson(config);
-      case 'intro':
-        return IntroComponent.fromJson(config);
+      case 'account':
+        return AccountComponent.fromJson(config);
 
       case 'advanced-ist':
       case 'media':

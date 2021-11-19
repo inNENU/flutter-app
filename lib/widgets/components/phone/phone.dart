@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_contact/contacts.dart';
+import 'package:flutter_contacts/flutter_contacts.dart';
 import 'package:innenu/utils/utils.dart';
-import 'package:logging/logging.dart';
 import 'package:json_annotation/json_annotation.dart';
+import 'package:logging/logging.dart';
 import 'package:url_launcher/url_launcher.dart' as launcher;
 
 part 'phone.g.dart';
@@ -17,7 +17,7 @@ class PhoneComponent extends StatelessWidget {
     this.familyName = '',
     this.displayName = '',
     this.homeNumber = '',
-    this.hostNumer = '',
+    this.hostNumber = '',
     this.workNumber = '',
     this.company = '',
     this.note = '',
@@ -28,6 +28,7 @@ class PhoneComponent extends StatelessWidget {
     this.jobTitle = '',
     this.email = '',
   });
+
   factory PhoneComponent.fromJson(Map<String, dynamic> json) =>
       _$PhoneComponentFromJson(json);
 
@@ -49,7 +50,7 @@ class PhoneComponent extends StatelessWidget {
 
   /// 公司电话
   @JsonKey(defaultValue: '', name: 'hostNum')
-  final String hostNumer;
+  final String hostNumber;
 
   /// 住宅电话
   @JsonKey(defaultValue: '', name: 'homeNum')
@@ -93,33 +94,6 @@ class PhoneComponent extends StatelessWidget {
 
   Map<String, dynamic> toJson() => _$PhoneComponentToJson(this);
 
-  /// 电话列表
-  List<Item> get phones => [
-        Item(label: '电话', value: phoneNumber),
-        if (homeNumber.isNotEmpty) Item(label: '家庭电话', value: homeNumber),
-        if (workNumber.isNotEmpty) Item(label: '工作电话', value: workNumber),
-        if (hostNumer.isNotEmpty) Item(label: '公司电话', value: hostNumer),
-      ];
-
-  Contact get contact => Contact(
-        givenName: givenName,
-        familyName: familyName,
-        displayName: displayName,
-        company: company,
-        phones: phones,
-        note: note,
-        postalAddresses: [
-          PostalAddress(
-            region: region,
-            city: city,
-            street: street,
-            postcode: postcode,
-          )
-        ],
-        jobTitle: jobTitle,
-        emails: [Item(value: email)],
-      );
-
   /// 拨打电话
   void _makePhoneCall() {
     final url = 'tel:$phoneNumber';
@@ -149,7 +123,58 @@ class PhoneComponent extends StatelessWidget {
           onPressed: () {
             checkAndAskPermission(context, 'contact').then((success) {
               if (success) {
-                Contacts.addContact(contact).then((contact) {
+                // Insert new contact
+                final newContact = Contact()
+                  ..name.first = givenName
+                  ..phones = [
+                    Phone(phoneNumber, label: PhoneLabel.main),
+                    if (homeNumber.isNotEmpty)
+                      Phone(homeNumber, label: PhoneLabel.home),
+                    if (workNumber.isNotEmpty)
+                      Phone(workNumber, label: PhoneLabel.work),
+                    if (hostNumber.isNotEmpty)
+                      Phone(hostNumber, label: PhoneLabel.companyMain),
+                  ];
+                ;
+
+                if (displayName.isNotEmpty) {
+                  newContact.displayName = displayName;
+                }
+
+                if (familyName.isNotEmpty) {
+                  newContact.name.last = familyName;
+                }
+
+                if (company.isNotEmpty || jobTitle.isNotEmpty) {
+                  newContact.organizations = [
+                    Organization(company: company, title: jobTitle)
+                  ];
+                }
+
+                if (email.isNotEmpty) {
+                  newContact.emails = [Email(email)];
+                }
+
+                if (note.isNotEmpty) {
+                  newContact.notes = [Note(note)];
+                }
+
+                if (region.isNotEmpty ||
+                    city.isNotEmpty ||
+                    street.isNotEmpty ||
+                    postcode.isNotEmpty) {
+                  newContact.addresses = [
+                    Address(
+                      '',
+                      state: region,
+                      city: city,
+                      street: street,
+                      postalCode: postcode,
+                    )
+                  ];
+                }
+
+                newContact.insert().then((contact) {
                   Navigator.pop(context);
                   UI.tip(context, content: '添加联系人成功');
                 });
