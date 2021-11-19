@@ -24,15 +24,12 @@ class GridComponentConfig {
   final String text;
 
   /// 列表图标
-  @JsonKey(defaultValue: '')
   final String icon;
 
   /// 链接文件 ID
-  @JsonKey(defaultValue: '')
   final String path;
 
   /// 跳转地址
-  @JsonKey(defaultValue: '')
   final String url;
 
   /// 是否可点击
@@ -67,7 +64,6 @@ class GridComponent extends StatelessWidget {
   final dynamic header;
 
   /// 列表页脚
-  @JsonKey(defaultValue: '')
   final String footer;
 
   /// 每行个数

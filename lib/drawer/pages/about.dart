@@ -16,7 +16,7 @@ class AboutPage extends StatelessWidget {
               style: Theme.of(context).textTheme.headline4,
             ),
             const TextComponent(
-              [
+              text: [
                 '制作者: Mr.Hope',
                 '版本: V 0.0.1',
                 'Copyright © 2017 - present Hope Studio'

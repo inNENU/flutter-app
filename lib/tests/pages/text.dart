@@ -10,33 +10,34 @@ class TextTest extends StatelessWidget {
         ),
         body: ListView(
           children: const [
-            TextComponent('段落1文字'),
+            TextComponent(text: '段落1文字'),
             TextComponent(
-              '带标题的段落文字',
+              text: '带标题的段落文字',
               heading: '标题文字',
             ),
-            TextComponent(['带有换行的段落文字\n带有换行的段落文字']),
+            TextComponent(text: ['带有换行的段落文字\n带有换行的段落文字']),
             TextComponent(
-              '左对齐的段落文字',
+              text: '左对齐的段落文字',
               align: TextAlign.left,
             ),
             TextComponent(
-              '右对齐的段落文字',
+              text: '右对齐的段落文字',
               align: TextAlign.right,
             ),
             TextComponent(
-              '居中的段落文字',
+              text: '居中的段落文字',
               align: TextAlign.center,
             ),
             TextComponent(
-                '非常非常非常非常非常非常非常非常非常非常非常非常非常非常非常非常非常非常非常非常非常非常非常非常非常长的段落3'),
-            TextComponent([
+                text:
+                    '非常非常非常非常非常非常非常非常非常非常非常非常非常非常非常非常非常非常非常非常非常非常非常非常非常长的段落3'),
+            TextComponent(text: [
               '   多个段落a',
               '   多个段落b',
               '   非常非常非常非常非常非常非常非常非常非常非常非常非常非常非常非常非常非常非常非常非常非常非常非常非常长的多个段落c'
             ]),
             TextComponent(
-              [
+              text: [
                 '   带标题的多个段落a',
                 '   带标题的多个段落b',
                 '   带标题的非常非常非常非常非常非常非常非常非常非常非常非常非常非常非常非常非常'
@@ -44,12 +45,12 @@ class TextTest extends StatelessWidget {
               ],
               heading: '标题文字',
             ),
-            TextComponent([
+            TextComponent(text: [
               '   居中的多个段落a',
               '   居中的多个段落b',
               '   居中的非常非常非常非常非常非常非常非常非常非常非常非常非常非常非常非常非常非常非常非常非常非常非常非常非常长的多个段落c'
             ], align: TextAlign.center),
-            TextComponent([
+            TextComponent(text: [
               '右对齐的多个段落a',
               '右对齐的多个段落b',
               '右对齐的非常非常非常非常非常非常非常非常非常非常非常非常非常非常非常非常非常非常非常非常非常非常非常非常非常长的多个段落c'

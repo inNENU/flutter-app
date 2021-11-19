@@ -49,15 +49,15 @@ class _PathTestState extends State<PathTest> {
       body: ListView(
         children: [
           const TitleComponent('应用文件目录'),
-          TextComponent(appFilePath),
+          TextComponent(text: appFilePath),
           const TitleComponent('应用数据目录'),
-          TextComponent(appDataPath),
+          TextComponent(text: appDataPath),
           const TitleComponent('缓存目录'),
-          TextComponent(tempPath),
+          TextComponent(text: tempPath),
           const TitleComponent('外部存储目录'),
-          TextComponent(extPath),
+          TextComponent(text: extPath),
           const TitleComponent('下载目录'),
-          TextComponent(downloadPath),
+          TextComponent(text: downloadPath),
         ],
       ));
 }

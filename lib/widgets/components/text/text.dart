@@ -49,10 +49,10 @@ TextType getTextType(String? type) =>
     Tool.string2EnumMap(TextType.values, defaultValue: TextType.none)(type);
 
 /// 段落组件
-@JsonSerializable()
+@JsonSerializable(includeIfNull: false)
 class TextComponent extends StatelessWidget {
-  const TextComponent(
-    this.text, {
+  const TextComponent({
+    this.text = '',
     this.heading = '',
     this.type = TextType.none,
     this.align = TextAlign.justify,
@@ -66,11 +66,9 @@ class TextComponent extends StatelessWidget {
   /// 文字
   ///
   /// 可以是 `String` 或 `List<String>`。后者会显示多个段落。
-  @JsonKey(defaultValue: '')
   final dynamic text;
 
   /// 标题
-  @JsonKey(defaultValue: '')
   final String heading;
 
   /// 文字对齐方式
@@ -82,19 +80,15 @@ class TextComponent extends StatelessWidget {
   /// 文字类型
   ///
   /// 只能是 `'none'`, `'info'`, `'tip'`, `'warning'` 或 `'danger'` 中的一种
-  @JsonKey(fromJson: getTextType)
   final TextType type;
 
   /// 文字是否可以选中
-  @JsonKey(defaultValue: true)
   final bool selectable;
 
   /// 图片地址
-  @JsonKey(defaultValue: '')
   final String src;
 
   /// 图片描述文字
-  @JsonKey(defaultValue: '')
   final String desc;
 
   Map<String, dynamic> toJson() => _$TextComponentToJson(this);

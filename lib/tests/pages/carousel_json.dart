@@ -11,16 +11,16 @@ class CarouselJSONTest extends StatelessWidget {
       body: ListView(children: [
         const TitleComponent('轮播图'),
         CarouselComponent.fromJson(const <String, dynamic>{
-          'url': [
-            'https://mp.innenu.com/img/check/pickup.jpg',
+          'images': [
+            'https://mp.innenu.com/img/arrival/pickup.jpg',
             'https://mp.innenu.com/img/check/benbu.jpg',
             'https://mp.innenu.com/img/check/jingyue.jpg',
           ]
         }),
         const TitleComponent('高度为300的轮播图'),
         CarouselComponent.fromJson(const <String, dynamic>{
-          'url': [
-            'https://mp.innenu.com/img/check/pickup.jpg',
+          'images': [
+            'https://mp.innenu.com/img/arrival/pickup.jpg',
             'https://mp.innenu.com/img/check/benbu.jpg',
             'https://mp.innenu.com/img/check/jingyue.jpg',
           ],
@@ -28,8 +28,8 @@ class CarouselJSONTest extends StatelessWidget {
         }),
         const TitleComponent('不自动播放的轮播图'),
         CarouselComponent.fromJson(const <String, dynamic>{
-          'url': [
-            'https://mp.innenu.com/img/check/pickup.jpg',
+          'images': [
+            'https://mp.innenu.com/img/arrival/pickup.jpg',
             'https://mp.innenu.com/img/check/benbu.jpg',
             'https://mp.innenu.com/img/check/jingyue.jpg',
           ],
@@ -37,8 +37,8 @@ class CarouselJSONTest extends StatelessWidget {
         }),
         const TitleComponent('切换间隔为1s的轮播图'),
         CarouselComponent.fromJson(const <String, dynamic>{
-          'url': [
-            'https://mp.innenu.com/img/check/pickup.jpg',
+          'images': [
+            'https://mp.innenu.com/img/arrival/pickup.jpg',
             'https://mp.innenu.com/img/check/benbu.jpg',
             'https://mp.innenu.com/img/check/jingyue.jpg',
           ],
@@ -46,8 +46,8 @@ class CarouselJSONTest extends StatelessWidget {
         }),
         const TitleComponent('切换动画为2s的轮播图'),
         CarouselComponent.fromJson(const <String, dynamic>{
-          'url': [
-            'https://mp.innenu.com/img/check/pickup.jpg',
+          'images': [
+            'https://mp.innenu.com/img/arrival/pickup.jpg',
             'https://mp.innenu.com/img/check/benbu.jpg',
             'https://mp.innenu.com/img/check/jingyue.jpg',
           ],
@@ -55,8 +55,8 @@ class CarouselJSONTest extends StatelessWidget {
         }),
         const TitleComponent('竖向的轮播图'),
         CarouselComponent.fromJson(const <String, dynamic>{
-          'url': [
-            'https://mp.innenu.com/img/check/pickup.jpg',
+          'images': [
+            'https://mp.innenu.com/img/arrival/pickup.jpg',
             'https://mp.innenu.com/img/check/benbu.jpg',
             'https://mp.innenu.com/img/check/jingyue.jpg',
           ],
@@ -64,8 +64,8 @@ class CarouselJSONTest extends StatelessWidget {
         }),
         const TitleComponent('不衔接滚动的轮播图'),
         CarouselComponent.fromJson(const <String, dynamic>{
-          'url': [
-            'https://mp.innenu.com/img/check/pickup.jpg',
+          'images': [
+            'https://mp.innenu.com/img/arrival/pickup.jpg',
             'https://mp.innenu.com/img/check/benbu.jpg',
             'https://mp.innenu.com/img/check/jingyue.jpg',
           ],

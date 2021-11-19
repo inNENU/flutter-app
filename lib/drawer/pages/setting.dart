@@ -10,7 +10,7 @@ class SettingsPage extends StatelessWidget {
       ),
       body: ListView(
         children: const [
-          TextComponent('设置页'),
+          TextComponent(text: '设置页'),
         ],
       ));
 }

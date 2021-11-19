@@ -20,7 +20,6 @@ class ActionComponent extends StatelessWidget {
       _$ActionComponentFromJson(json);
 
   /// 动作标题
-  @JsonKey(defaultValue: '')
   final String header;
 
   /// 动作内容

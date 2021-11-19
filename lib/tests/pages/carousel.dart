@@ -11,14 +11,14 @@ class CarouselTest extends StatelessWidget {
       body: ListView(children: const [
         TitleComponent('轮播图'),
         CarouselComponent([
-          'https://mp.innenu.com/img/check/pickup.jpg',
+          'https://mp.innenu.com/img/arrival/pickup.jpg',
           'https://mp.innenu.com/img/check/benbu.jpg',
           'https://mp.innenu.com/img/check/jingyue.jpg',
         ]),
         TitleComponent('高度为300的轮播图'),
         CarouselComponent(
           [
-            'https://mp.innenu.com/img/check/pickup.jpg',
+            'https://mp.innenu.com/img/arrival/pickup.jpg',
             'https://mp.innenu.com/img/check/benbu.jpg',
             'https://mp.innenu.com/img/check/jingyue.jpg',
           ],
@@ -27,7 +27,7 @@ class CarouselTest extends StatelessWidget {
         TitleComponent('不自动播放的轮播图'),
         CarouselComponent(
           [
-            'https://mp.innenu.com/img/check/pickup.jpg',
+            'https://mp.innenu.com/img/arrival/pickup.jpg',
             'https://mp.innenu.com/img/check/benbu.jpg',
             'https://mp.innenu.com/img/check/jingyue.jpg',
           ],
@@ -36,7 +36,7 @@ class CarouselTest extends StatelessWidget {
         TitleComponent('切换间隔为1s的轮播图'),
         CarouselComponent(
           [
-            'https://mp.innenu.com/img/check/pickup.jpg',
+            'https://mp.innenu.com/img/arrival/pickup.jpg',
             'https://mp.innenu.com/img/check/benbu.jpg',
             'https://mp.innenu.com/img/check/jingyue.jpg',
           ],
@@ -45,7 +45,7 @@ class CarouselTest extends StatelessWidget {
         TitleComponent('切换动画为2s的轮播图'),
         CarouselComponent(
           [
-            'https://mp.innenu.com/img/check/pickup.jpg',
+            'https://mp.innenu.com/img/arrival/pickup.jpg',
             'https://mp.innenu.com/img/check/benbu.jpg',
             'https://mp.innenu.com/img/check/jingyue.jpg',
           ],
@@ -54,7 +54,7 @@ class CarouselTest extends StatelessWidget {
         TitleComponent('竖向的轮播图'),
         CarouselComponent(
           [
-            'https://mp.innenu.com/img/check/pickup.jpg',
+            'https://mp.innenu.com/img/arrival/pickup.jpg',
             'https://mp.innenu.com/img/check/benbu.jpg',
             'https://mp.innenu.com/img/check/jingyue.jpg',
           ],
@@ -63,7 +63,7 @@ class CarouselTest extends StatelessWidget {
         TitleComponent('不衔接滚动的轮播图'),
         CarouselComponent(
           [
-            'https://mp.innenu.com/img/check/pickup.jpg',
+            'https://mp.innenu.com/img/arrival/pickup.jpg',
             'https://mp.innenu.com/img/check/benbu.jpg',
             'https://mp.innenu.com/img/check/jingyue.jpg',
           ],

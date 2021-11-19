@@ -25,19 +25,15 @@ class ListComponentConfig {
   final String text;
 
   /// 列表图标
-  @JsonKey(defaultValue: '')
   final String icon;
 
   /// 列表详情
-  @JsonKey(defaultValue: '')
   final String desc;
 
   /// 列表文件路径
-  @JsonKey(defaultValue: '')
   final String path;
 
   /// 跳转地址
-  @JsonKey(defaultValue: '')
   final String url;
 
   /// 是否可点击
@@ -72,7 +68,6 @@ class ListComponent extends StatelessWidget {
   final dynamic header;
 
   /// 列表页脚
-  @JsonKey(defaultValue: '')
   final String footer;
 
   Map<String, dynamic> toJson() => _$ListComponentToJson(this);

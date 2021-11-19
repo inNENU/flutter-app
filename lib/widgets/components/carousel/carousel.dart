@@ -23,37 +23,27 @@ class CarouselComponent extends StatelessWidget {
       _$CarouselComponentFromJson(json);
 
   /// 轮播图片
-  @JsonKey(name: 'url', fromJson: _getImagesFromJson)
   final List<String> images;
 
   /// 轮播图组件高度
   final double? height;
 
   /// 自动播放
-  @JsonKey(defaultValue: true)
   final bool autoplay;
 
   /// 自动切换时间间隔，单位 ms
-  @JsonKey(defaultValue: 5000)
   final int interval;
 
   /// 滑动动画时长，单位 ms
-  @JsonKey(defaultValue: 500)
   final int duration;
 
   /// 是否采用衔接滑动
-  @JsonKey(defaultValue: true)
   final bool circular;
 
   /// 滑动方向是否为纵向
-  @JsonKey(defaultValue: false)
   final bool vertical;
 
   Map<String, dynamic> toJson() => _$CarouselComponentToJson(this);
-
-  /// 从 JSON 中获得图片
-  static List<String> _getImagesFromJson(List<dynamic> url) =>
-      url.map((dynamic item) => item.toString()).toList();
 
   @override
   Widget build(BuildContext context) => CarouselSlider(

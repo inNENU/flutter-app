@@ -21,7 +21,6 @@ class AccountComponent extends StatelessWidget {
   final String logo;
 
   /// 简介文字
-  @JsonKey(defaultValue: '')
   final String desc;
 
   Map<String, dynamic> toJson() => _$AccountComponentToJson(this);

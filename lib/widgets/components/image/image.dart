@@ -19,7 +19,6 @@ class ImageComponent extends StatelessWidget {
   final String src;
 
   /// 描述文字
-  @JsonKey(defaultValue: '')
   final String desc;
 
   Map<String, dynamic> toJson() => _$ImageComponentToJson(this);

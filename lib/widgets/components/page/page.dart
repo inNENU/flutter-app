@@ -72,7 +72,7 @@ class MyPage extends StatelessWidget {
         return FooterComponent.fromJson(config);
       case 'phone':
         return PhoneComponent.fromJson(config);
-      case 'swiper':
+      case 'carousel':
         return CarouselComponent.fromJson(config);
       case 'doc':
         return DocComponent.fromJson(config);
@@ -166,7 +166,7 @@ class OnlinePage extends StatelessWidget {
         return FooterComponent.fromJson(config);
       case 'phone':
         return PhoneComponent.fromJson(config);
-      case 'swiper':
+      case 'carousel':
         return CarouselComponent.fromJson(config);
       case 'doc':
         return DocComponent.fromJson(config);

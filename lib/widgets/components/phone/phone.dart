@@ -21,11 +21,11 @@ class PhoneComponent extends StatelessWidget {
     this.workNumber = '',
     this.company = '',
     this.note = '',
-    this.region = '',
+    this.state = '',
     this.city = '',
     this.street = '',
-    this.postcode = '',
-    this.jobTitle = '',
+    this.postalCode = '',
+    this.title = '',
     this.email = '',
   });
 
@@ -33,7 +33,7 @@ class PhoneComponent extends StatelessWidget {
       _$PhoneComponentFromJson(json);
 
   /// 号码
-  @JsonKey(defaultValue: '', name: 'num')
+  @JsonKey(name: 'num')
   final String phoneNumber;
 
   /// 名字
@@ -41,55 +41,50 @@ class PhoneComponent extends StatelessWidget {
   final String givenName;
 
   /// 姓氏
-  @JsonKey(defaultValue: '', name: 'lName')
+  @JsonKey(name: 'lName')
   final String familyName;
 
   /// 工作电话
-  @JsonKey(defaultValue: '', name: 'workNum')
+  @JsonKey(name: 'workNum')
   final String workNumber;
 
   /// 公司电话
-  @JsonKey(defaultValue: '', name: 'hostNum')
+  @JsonKey(name: 'hostNum')
   final String hostNumber;
 
   /// 住宅电话
-  @JsonKey(defaultValue: '', name: 'homeNum')
+  @JsonKey(name: 'homeNum')
   final String homeNumber;
 
   /// 公司
-  @JsonKey(defaultValue: '', name: 'org')
+  @JsonKey(name: 'org')
   final String company;
 
   /// 备注
-  @JsonKey(defaultValue: '', name: 'remark')
+  @JsonKey(name: 'remark')
   final String note;
 
   /// 昵称
-  @JsonKey(defaultValue: '', name: 'nickName')
+  @JsonKey(name: 'nickName')
   final String displayName;
 
   /// 省份
-  @JsonKey(defaultValue: '', name: 'province')
-  final String region;
+  @JsonKey(name: 'province')
+  final String state;
 
   /// 城市
-  @JsonKey(defaultValue: '')
   final String city;
 
   /// 城市
-  @JsonKey(defaultValue: '')
   final String street;
 
   /// 城市
-  @JsonKey(defaultValue: '', name: 'postCode')
-  final String postcode;
+  final String postalCode;
 
   /// 城市
-  @JsonKey(defaultValue: '', name: 'title')
-  final String jobTitle;
+  final String title;
 
   /// 电子邮件
-  @JsonKey(defaultValue: '', name: 'email')
   final String email;
 
   Map<String, dynamic> toJson() => _$PhoneComponentToJson(this);
@@ -144,9 +139,9 @@ class PhoneComponent extends StatelessWidget {
                   newContact.name.last = familyName;
                 }
 
-                if (company.isNotEmpty || jobTitle.isNotEmpty) {
+                if (company.isNotEmpty || title.isNotEmpty) {
                   newContact.organizations = [
-                    Organization(company: company, title: jobTitle)
+                    Organization(company: company, title: title)
                   ];
                 }
 
@@ -158,17 +153,17 @@ class PhoneComponent extends StatelessWidget {
                   newContact.notes = [Note(note)];
                 }
 
-                if (region.isNotEmpty ||
+                if (state.isNotEmpty ||
                     city.isNotEmpty ||
                     street.isNotEmpty ||
-                    postcode.isNotEmpty) {
+                    postalCode.isNotEmpty) {
                   newContact.addresses = [
                     Address(
                       '',
-                      state: region,
+                      state: state,
                       city: city,
                       street: street,
-                      postalCode: postcode,
+                      postalCode: postalCode,
                     )
                   ];
                 }

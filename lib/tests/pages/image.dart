@@ -10,21 +10,21 @@ class ImageTest extends StatelessWidget {
       ),
       body: ListView(
         children: const [
-          TextComponent('普通图片'),
-          ImageComponent('https://mp.innenu.com/img/check/pickup.jpg'),
-          TextComponent('包含描述文字的图片'),
+          TextComponent(text: '普通图片'),
+          ImageComponent('https://mp.innenu.com/img/arrival/pickup.jpg'),
+          TextComponent(text: '包含描述文字的图片'),
           ImageComponent('https://mp.innenu.com/img/check/benbu.jpg', '报道图片1'),
-          TextComponent('包含大量描述文字的图片'),
+          TextComponent(text: '包含大量描述文字的图片'),
           ImageComponent(
             'https://mp.innenu.com/img/check/benbu.jpg',
             '报道图片1报道图片1报道图片1报道图片1报道图片1报道图片1报道图片1报道图片1报道图片1',
           ),
-          TextComponent('包含多行描述文字的图片'),
+          TextComponent(text: '包含多行描述文字的图片'),
           ImageComponent(
-            'https://mp.innenu.com/img/check/pickup.jpg',
+            'https://mp.innenu.com/img/arrival/pickup.jpg',
             '报道图片1\n' '报道图片1',
           ),
-          TextComponent('加载失败图片'),
+          TextComponent(text: '加载失败图片'),
           ImageComponent('https://mp.innenu.com/img/check/not-exist1.jpg'),
         ],
       ));

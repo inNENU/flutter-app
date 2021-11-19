@@ -15,15 +15,12 @@ class FooterComponent extends StatelessWidget {
       _$FooterComponentFromJson(json);
 
   /// 作者
-  @JsonKey(defaultValue: '')
   final String author;
 
   /// 时间
-  @JsonKey(defaultValue: '')
   final String time;
 
   /// 页脚文字
-  @JsonKey(defaultValue: '')
   final String desc;
 
   Map<String, dynamic> toJson() => _$FooterComponentToJson(this);
