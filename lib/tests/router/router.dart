@@ -1,35 +1,23 @@
 import 'package:fluro/fluro.dart';
 import 'package:innenu/router/i_router.dart';
-
 import 'package:innenu/tests/pages/carousel.dart';
 import 'package:innenu/tests/pages/carousel_json.dart';
-
 import 'package:innenu/tests/pages/doc.dart';
-
 import 'package:innenu/tests/pages/footer.dart';
 import 'package:innenu/tests/pages/footer_json.dart';
-
 import 'package:innenu/tests/pages/grid.dart';
 import 'package:innenu/tests/pages/grid_json.dart';
-
 import 'package:innenu/tests/pages/image.dart';
 import 'package:innenu/tests/pages/image_json.dart';
-
-import 'package:innenu/tests/pages/tests.dart';
-
 import 'package:innenu/tests/pages/list.dart';
 import 'package:innenu/tests/pages/list_json.dart';
-
 import 'package:innenu/tests/pages/nav.dart';
 import 'package:innenu/tests/pages/nav_json.dart';
-
 import 'package:innenu/tests/pages/phone.dart';
-
+import 'package:innenu/tests/pages/tests.dart';
 import 'package:innenu/tests/pages/text.dart';
 import 'package:innenu/tests/pages/text_json.dart';
-
 import 'package:innenu/tests/pages/text_theme.dart';
-
 import 'package:innenu/tests/pages/title.dart';
 import 'package:innenu/tests/pages/title_json.dart';
 import 'package:innenu/tests/utils/path.dart';

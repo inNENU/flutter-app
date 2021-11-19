@@ -1,8 +1,7 @@
 import 'package:fluro/fluro.dart';
-import 'package:innenu/router/i_router.dart';
-
 import 'package:innenu/drawer/pages/about.dart';
 import 'package:innenu/drawer/pages/setting.dart';
+import 'package:innenu/router/i_router.dart';
 
 class DrawerRouter implements IRouterProvider {
   static String aboutPage = '/about';

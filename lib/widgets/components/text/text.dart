@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:json_annotation/json_annotation.dart';
-
 import 'package:innenu/utils/json_tools.dart';
 import 'package:innenu/utils/tool.dart';
+import 'package:json_annotation/json_annotation.dart';
 
 part 'text.g.dart';
 

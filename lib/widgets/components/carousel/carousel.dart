@@ -1,9 +1,8 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
-import 'package:json_annotation/json_annotation.dart';
-
 import 'package:innenu/utils/json_tools.dart';
+import 'package:json_annotation/json_annotation.dart';
 
 part 'carousel.g.dart';
 

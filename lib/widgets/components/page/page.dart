@@ -13,10 +13,10 @@ class MyPage extends StatelessWidget {
     required List<Widget> children,
   }) : pageWidgets = children;
 
-  MyPage.fromId(String id)
+  MyPage.fromId()
       : title = '加载中',
         config = loadingPageConfig,
-        pageWidgets = [loadingPageWidgets] {}
+        pageWidgets = [loadingPageWidgets];
 
   /// 从 JSON 生成 MyPage
   MyPage.fromJson(this.config)

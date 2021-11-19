@@ -1,13 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
-
-import 'package:sp_util/sp_util.dart';
-
 import 'package:innenu/pages/tab/tab.dart';
-import 'package:innenu/utils/info.dart';
 import 'package:innenu/router/not_found_page.dart';
 import 'package:innenu/router/router.dart';
+import 'package:innenu/utils/info.dart';
+import 'package:sp_util/sp_util.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -70,6 +68,6 @@ class MyApp extends StatelessWidget {
 
         // TODO(Mister-Hope): add switch theme
         /// 主题模式
-        themeMode: ThemeMode.system,
+        // themeMode: ThemeMode.system,
       );
 }

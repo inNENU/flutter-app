@@ -135,7 +135,6 @@ class PhoneComponent extends StatelessWidget {
                     if (hostNumber.isNotEmpty)
                       Phone(hostNumber, label: PhoneLabel.companyMain),
                   ];
-                ;
 
                 if (displayName.isNotEmpty) {
                   newContact.displayName = displayName;

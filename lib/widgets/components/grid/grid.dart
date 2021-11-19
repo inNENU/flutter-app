@@ -1,11 +1,10 @@
 import 'package:fluro/fluro.dart';
 import 'package:flutter/material.dart';
-import 'package:json_annotation/json_annotation.dart';
-
-import 'package:innenu/widgets/components/page/page.dart';
 import 'package:innenu/router/router.dart';
 import 'package:innenu/utils/json_tools.dart';
 import 'package:innenu/utils/ui/route_animation.dart';
+import 'package:innenu/widgets/components/page/page.dart';
+import 'package:json_annotation/json_annotation.dart';
 
 part 'grid.g.dart';
 
