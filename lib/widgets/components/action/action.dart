@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:json_annotation/json_annotation.dart';
 import 'package:logging/logging.dart';
-import 'package:url_launcher/url_launcher.dart' as launcher;
+import 'package:url_launcher/url_launcher_string.dart';
 
 part 'action.g.dart';
 
@@ -28,9 +28,9 @@ class ActionComponent extends StatelessWidget {
   /// 是否是链接
   bool get isLink => text.startsWith(RegExp('https?://'));
 
-  Future<void> openLink() => launcher.canLaunch(text).then((canLaunch) {
+  Future<void> openLink() => canLaunchUrlString(text).then((canLaunch) {
         if (canLaunch) {
-          launcher.launch(text);
+          launchUrlString(text);
         } else {
           _logger.warning('Phone: can not make phone call');
         }

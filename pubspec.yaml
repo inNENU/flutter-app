@@ -56,7 +56,7 @@ dependencies:
     sdk: flutter
 
   # SVG 支持: https://github.com/dnfield/flutter_svg
-  flutter_svg: ^0.23.0+1
+  flutter_svg: ^1.1.0
 
   json_annotation: ^4.3.0
 
@@ -73,7 +73,7 @@ dependencies:
   path_provider: ^2.0.1
 
   # https://github.com/Baseflow/flutter-permission-handler
-  permission_handler: ^8.1.1
+  permission_handler: ^9.2.0
 
   provider: ^6.0.1
   shared_preferences: ^2.0.5
@@ -85,7 +85,7 @@ dependencies:
   url_launcher: ^6.0.3
 
   # WebView 插件 https://github.com/flutter/plugins/tree/master/packages/webview_flutter
-  webview_flutter: ^2.0.3
+  webview_flutter: ^3.0.4
 
 dev_dependencies:
   # https://pub.flutter-io.cn/packages/build_runner

@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:innenu/utils/json_tools.dart';
 import 'package:innenu/utils/utils.dart';
 import 'package:json_annotation/json_annotation.dart';
-import 'package:url_launcher/url_launcher.dart';
+import 'package:url_launcher/url_launcher_string.dart';
 
 part 'doc.g.dart';
 
@@ -62,8 +62,8 @@ class DocComponent extends StatelessWidget {
 
   /// 下载文档
   Future<void> _download(BuildContext context) async {
-    if (await canLaunch(url)) {
-      await launch(url);
+    if (await canLaunchUrlString(url)) {
+      await launchUrlString(url);
     } else {
       UI.tip(context, content: '无法调用系统浏览器');
     }

@@ -3,7 +3,7 @@ import 'package:flutter_contacts/flutter_contacts.dart';
 import 'package:innenu/utils/utils.dart';
 import 'package:json_annotation/json_annotation.dart';
 import 'package:logging/logging.dart';
-import 'package:url_launcher/url_launcher.dart' as launcher;
+import 'package:url_launcher/url_launcher_string.dart';
 
 part 'phone.g.dart';
 
@@ -93,9 +93,9 @@ class PhoneComponent extends StatelessWidget {
   void _makePhoneCall() {
     final url = 'tel:$phoneNumber';
 
-    launcher.canLaunch(url).then((canLaunch) {
+    canLaunchUrlString(url).then((canLaunch) {
       if (canLaunch) {
-        launcher.launch(url);
+        launchUrlString(url);
       } else {
         _logger.warning('Phone: can not make phone call');
       }
