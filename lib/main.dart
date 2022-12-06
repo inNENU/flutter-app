@@ -7,20 +7,6 @@ import 'package:innenu/router/router.dart';
 import 'package:innenu/utils/info.dart';
 import 'package:sp_util/sp_util.dart';
 
-Future<void> main() async {
-  WidgetsFlutterBinding.ensureInitialized();
-
-  // shared_preferences 初始化
-  await SpUtil.getInstance();
-
-  runApp(MyApp());
-
-  // 透明状态栏
-  if (DeviceInfo.isAndroid) {
-    SystemChrome.setSystemUIOverlayStyle(
-        const SystemUiOverlayStyle(statusBarColor: Colors.transparent));
-  }
-}
 
 class MyApp extends StatelessWidget {
   MyApp() {
@@ -70,4 +56,19 @@ class MyApp extends StatelessWidget {
         /// 主题模式
         // themeMode: ThemeMode.system,
       );
+}
+
+Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+
+  // shared_preferences 初始化
+  await SpUtil.getInstance();
+
+  runApp(MyApp());
+
+  // 透明状态栏
+  if (DeviceInfo.isAndroid) {
+    SystemChrome.setSystemUIOverlayStyle(
+        const SystemUiOverlayStyle(statusBarColor: Colors.transparent));
+  }
 }
