@@ -10,8 +10,9 @@ class DrawerRouter implements IRouterProvider {
   @override
   void initRouter(FluroRouter router) {
     router
-      ..define(aboutPage, handler: Handler(handlerFunc: (_, __) => AboutPage()))
+      ..define(aboutPage,
+          handler: Handler(handlerFunc: (_, __) => const AboutPage()))
       ..define(settingPage,
-          handler: Handler(handlerFunc: (_, __) => SettingsPage()));
+          handler: Handler(handlerFunc: (_, __) => const SettingsPage()));
   }
 }

@@ -20,7 +20,7 @@ class Routes {
     /// 指定路由跳转错误返回页
     router.notFoundHandler = Handler(handlerFunc: (context, params) {
       debugPrint('页面不存在');
-      return NotFoundPage();
+      return const NotFoundPage();
     });
 
     router

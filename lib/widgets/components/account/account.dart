@@ -11,7 +11,12 @@ part 'account.g.dart';
 
 /// 账号组件
 class AccountComponent extends StatelessWidget {
-  const AccountComponent(this.name, this.logo, {this.desc = ''});
+  const AccountComponent(
+    this.name,
+    this.logo, {
+    this.desc = '',
+    super.key,
+  });
 
   factory AccountComponent.fromJson(Map<String, dynamic> json) =>
       _$AccountComponentFromJson(json);

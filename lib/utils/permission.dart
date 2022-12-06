@@ -81,7 +81,7 @@ Permission permissionFromString(String permissionString) {
     //   return Permission.locationWhenInUse;
 
     default:
-      _logger.warning('Unknown permision string $permissionString.');
+      _logger.warning('Unknown permission string $permissionString.');
       return Permission.unknown;
   }
 }
@@ -129,9 +129,9 @@ Future<PermissionStatus> checkPermission(String permissionString) =>
 
 /// 请求权限
 Future<PermissionStatus> requestPermission(String permissionString) {
-  final permisstion = permissionFromString(permissionString);
+  final permission = permissionFromString(permissionString);
 
-  return permisstion.request();
+  return permission.request();
 }
 
 /// 同时请求多个权限
@@ -154,7 +154,7 @@ Future<bool> checkAndAskPermission(
   return checkPermission(permissionString).then((status) {
     switch (status) {
       case PermissionStatus.permanentlyDenied: // 用户选择不再询问
-        UI.tip(
+        showTip(
           context,
           content: '您已永久拒绝 $localeString 权限。',
           actionLabel: '打开',
@@ -169,7 +169,7 @@ Future<bool> checkAndAskPermission(
               if (status == PermissionStatus.granted) {
                 return true;
               } else {
-                UI.tip(
+                showTip(
                   context,
                   content: '您拒绝了 $localeString 权限请求',
                   actionLabel: '重试',
@@ -182,7 +182,7 @@ Future<bool> checkAndAskPermission(
         return request();
 
       case PermissionStatus.restricted: // 获得权限受限
-        UI.tip(
+        showTip(
           context,
           content: '受到访问限制，无法获得$localeString',
           actionLabel: '详情',
@@ -194,7 +194,7 @@ Future<bool> checkAndAskPermission(
                     : '您的监护人/设备管控系统'
                         '';
 
-            UI.modal<void>(context,
+            showModal<void>(context,
                 title: '收到系统限制',
                 content: '$tip 禁止您的应用获取 $localeString 权限',
                 actions: [

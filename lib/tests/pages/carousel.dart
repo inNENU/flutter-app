@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:innenu/widgets/components/components.dart';
 
 class CarouselTest extends StatelessWidget {
+  const CarouselTest({super.key});
+
   @override
   Widget build(BuildContext context) => Scaffold(
       appBar: AppBar(

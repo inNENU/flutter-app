@@ -18,6 +18,7 @@ class CarouselComponent extends StatelessWidget {
     this.duration = 500,
     this.circular = true,
     this.vertical = false,
+    super.key,
   });
   factory CarouselComponent.fromJson(Map<String, dynamic> json) =>
       _$CarouselComponentFromJson(json);
@@ -64,7 +65,7 @@ class CarouselComponent extends StatelessWidget {
                   child: CachedNetworkImage(
                     imageUrl: link,
                     fit: BoxFit.cover,
-                    placeholder: (context, url) => JSONTools.loadingWidget(),
+                    placeholder: (context, url) => loadingWidget(),
                   ),
                 ),
               ),

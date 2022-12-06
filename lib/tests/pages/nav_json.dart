@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:innenu/widgets/components/components.dart';
 
 class HeadJSONTest extends StatelessWidget {
+  const HeadJSONTest({super.key});
+
   @override
   Widget build(BuildContext context) => Scaffold(
       appBar: AppBar(

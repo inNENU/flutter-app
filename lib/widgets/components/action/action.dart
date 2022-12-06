@@ -14,6 +14,7 @@ class ActionComponent extends StatelessWidget {
   const ActionComponent(
     this.content, {
     this.header = '',
+    super.key,
   });
 
   factory ActionComponent.fromJson(Map<String, dynamic> json) =>
@@ -49,7 +50,7 @@ class ActionComponent extends StatelessWidget {
             onTap: openLink,
             title: Text(content),
             // trailing:
-            //     config.isTapable ? const Icon(Icons.chevron_right) : null,
+            //     config.canTap ? const Icon(Icons.chevron_right) : null,
           )
         else
           ListTile(

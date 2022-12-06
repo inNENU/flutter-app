@@ -15,14 +15,7 @@ export 'config.dart';
 
 final _logger = Logger('tagPage');
 
-class Home extends StatefulWidget {
-  const Home({Key? key}) : super(key: key);
-
-  @override
-  _HomeState createState() => _HomeState();
-}
-
-class _HomeState extends State<Home> {
+class HomeState extends State<Home> {
   /// 当前显示的页面索引
   int _selectedIndex = 0;
 
@@ -142,4 +135,11 @@ class _HomeState extends State<Home> {
           type: BottomNavigationBarType.fixed,
         ),
       );
+}
+
+class Home extends StatefulWidget {
+  const Home({Key? key}) : super(key: key);
+
+  @override
+  HomeState createState() => HomeState();
 }

@@ -96,7 +96,7 @@ class Path {
   static String get extPath => '/storage/emulated/0/';
 
   // static final _storageDirMap =
-  // Tool.string2EnumMap<StorageDirectory>(StorageDirectory.values);
+  // stringToEnumMap<StorageDirectory>(StorageDirectory.values);
 
   /// 预定义的应用文件外部存储目录，仅 Android
   static Future<Directory?> get appExtFileDir async =>

@@ -11,6 +11,7 @@ class MyPage extends StatelessWidget {
     required this.config,
     required this.title,
     required List<Widget> children,
+    super.key,
   }) : pageWidgets = children;
 
   MyPage.fromId()
@@ -120,14 +121,16 @@ class MyPage extends StatelessWidget {
 }
 
 class OnlinePage extends StatelessWidget {
-  const OnlinePage(this.id);
+  const OnlinePage(
+    this.id, {
+    super.key,
+  });
 
   /// 页面 id
   final String id;
 
-  static Future<Map<String, dynamic>> getPageConfig(String id) => Dio()
-          .get<String>('https://mp.innenu.com/r/$id.json')
-          .then((response) {
+  static Future<Map<String, dynamic>> getPageConfig(String id) =>
+      Dio().get<String>('https://mp.innenu.com/r/$id.json').then((response) {
         if (response.statusCode == 200) {
           return json.decode(response.data ?? '{}') as Map<String, dynamic>;
         }

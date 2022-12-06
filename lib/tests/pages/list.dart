@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:innenu/widgets/components/components.dart';
 
 class ListTest extends StatelessWidget {
+  const ListTest({super.key});
+
   @override
   Widget build(BuildContext context) => Scaffold(
       appBar: AppBar(

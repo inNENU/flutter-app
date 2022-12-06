@@ -37,6 +37,7 @@ class DocComponent extends StatelessWidget {
     this.url, {
     String? icon,
     this.downloadable = true,
+    super.key,
   }) : icon = icon ?? _getDocIcon(url);
 
   factory DocComponent.fromJson(Map<String, dynamic> json) =>
@@ -64,7 +65,7 @@ class DocComponent extends StatelessWidget {
     if (await canLaunchUrlString(url)) {
       await launchUrlString(url);
     } else {
-      UI.tip(context, content: '无法调用系统浏览器');
+      showTip(context, content: '无法调用系统浏览器');
     }
   }
 
@@ -72,7 +73,7 @@ class DocComponent extends StatelessWidget {
   Widget build(BuildContext context) => Card(
       margin: const EdgeInsets.symmetric(horizontal: 15, vertical: 8),
       child: ListTile(
-        leading: JSONTools.getIconWidget(_icon),
+        leading: getIconWidget(_icon),
         title: Text(name),
         trailing: downloadable
             ? IconButton(

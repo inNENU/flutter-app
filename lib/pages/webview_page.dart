@@ -3,21 +3,7 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:webview_flutter/webview_flutter.dart';
 
-class WebViewPage extends StatefulWidget {
-  const WebViewPage({
-    required this.title,
-    required this.url,
-    Key? key,
-  }) : super(key: key);
-
-  final String title;
-  final String url;
-
-  @override
-  _WebViewPageState createState() => _WebViewPageState();
-}
-
-class _WebViewPageState extends State<WebViewPage> {
+class WebViewPageState extends State<WebViewPage> {
   final Completer<WebViewController> _controller =
       Completer<WebViewController>();
 
@@ -47,4 +33,18 @@ class _WebViewPageState extends State<WebViewPage> {
               ),
             ),
           ));
+}
+
+class WebViewPage extends StatefulWidget {
+  const WebViewPage({
+    required this.title,
+    required this.url,
+    Key? key,
+  }) : super(key: key);
+
+  final String title;
+  final String url;
+
+  @override
+  WebViewPageState createState() => WebViewPageState();
 }

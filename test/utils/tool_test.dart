@@ -5,7 +5,7 @@ import 'package:test/test.dart';
 enum _Test1 { a, b, c, aBC, d12 }
 
 void main() {
-  final map1 = Tool.string2EnumMap(_Test1.values);
+  final map1 = stringToEnumMap(_Test1.values);
   test('Should handle Enum correctly', () {
     expect(map1('a'), equals(_Test1.a));
     expect(map1('b'), equals(_Test1.b));
@@ -18,7 +18,7 @@ void main() {
     expect(map1('d'), equals(_Test1.a));
   });
 
-  final map2 = Tool.string2EnumMap(_Test1.values, defaultValue: _Test1.d12);
+  final map2 = stringToEnumMap(_Test1.values, defaultValue: _Test1.d12);
 
   test('Should return the correct Enum value when providing a defaultValue',
       () {

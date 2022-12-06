@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 
 class TextThemeTest extends StatelessWidget {
+  const TextThemeTest({super.key});
+
   @override
   Widget build(BuildContext context) => Scaffold(
         appBar: AppBar(

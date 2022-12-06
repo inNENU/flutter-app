@@ -16,19 +16,19 @@ class IconWidget {
   final double size;
 
   /// 是否为在线资源
-  bool get _isOnlineResourse =>
+  bool get _isOnlineResource =>
       icon.startsWith('https://') || icon.startsWith('http://');
 
   bool get _isImage =>
       icon.endsWith('.png') || icon.endsWith('.jpg') || icon.endsWith('jpeg');
 
   /// 是否是在线图片
-  bool get isOnlineImage => _isOnlineResourse && _isImage;
+  bool get isOnlineImage => _isOnlineResource && _isImage;
 
   bool get isLocalImage => _isImage && icon.startsWith('assets/');
 
   /// 是否是在线 SVG
-  bool get isOnlineSVG => _isOnlineResourse && icon.endsWith('.svg');
+  bool get isOnlineSVG => _isOnlineResource && icon.endsWith('.svg');
 
   /// 是否为合法本地资源
   bool get isLocalSvg => icon.startsWith('assets/') && icon.endsWith('.svg');
@@ -60,52 +60,49 @@ class IconWidget {
         );
 }
 
-class JSONTools {
-  /// 获得对齐方式
-  static TextAlign getAlign(String? align) =>
-      Tool.string2EnumMap(TextAlign.values, defaultValue: TextAlign.justify)(
-          align);
+/// 获得对齐方式
+TextAlign getAlign(String? align) =>
+    stringToEnumMap(TextAlign.values, defaultValue: TextAlign.justify)(align);
 
-  /// 获取图标组件
-  static Widget? getIconWidget(String icon, [double size = 30]) {
-    final iconWidget = IconWidget(icon, size: size);
+/// 获取图标组件
+Widget? getIconWidget(String icon, [double size = 30]) {
+  final iconWidget = IconWidget(icon, size: size);
 
-    return iconWidget.widget;
-  }
-
-  /// 卡片标题
-  static Widget cardHead(BuildContext context, String text) => Padding(
-        padding: const EdgeInsets.only(top: 8, left: 30, right: 30),
-        child: Text(
-          text,
-          style: Theme.of(context).textTheme.bodyText1,
-        ),
-      );
-
-  /// 卡片脚注
-  static Widget cardFoot(BuildContext context, String text) => Padding(
-        padding: const EdgeInsets.only(left: 30, right: 30, bottom: 8),
-        child: Text(
-          text,
-          style: Theme.of(context).textTheme.caption,
-        ),
-      );
-
-  /// 加载组件
-  static Widget loadingWidget([double margin = 35]) => Padding(
-        padding: EdgeInsets.symmetric(vertical: margin),
-        child: const Center(
-          child: CircularProgressIndicator(),
-        ),
-      );
-
-  /// 加载组件
-  static Widget loadingProgressWidget(double downloadProgress,
-          [double margin = 35]) =>
-      Padding(
-        padding: EdgeInsets.symmetric(vertical: margin),
-        child: Center(
-          child: CircularProgressIndicator(value: downloadProgress),
-        ),
-      );
+  return iconWidget.widget;
 }
+
+/// 卡片标题
+Widget cardHead(BuildContext context, String text) => Padding(
+      padding: const EdgeInsets.only(top: 8, left: 30, right: 30),
+      child: Text(
+        text,
+        style: Theme.of(context).textTheme.bodyText1,
+      ),
+    );
+
+/// 卡片脚注
+Widget cardFoot(BuildContext context, String text) => Padding(
+      padding: const EdgeInsets.only(left: 30, right: 30, bottom: 8),
+      child: Text(
+        text,
+        style: Theme.of(context).textTheme.caption,
+      ),
+    );
+
+/// 加载组件
+Widget loadingWidget([double margin = 35]) => Padding(
+      padding: EdgeInsets.symmetric(vertical: margin),
+      child: const Center(
+        child: CircularProgressIndicator(),
+      ),
+    );
+
+/// 加载组件
+Widget getLoadingProgressWidget(double downloadProgress,
+        [double margin = 35]) =>
+    Padding(
+      padding: EdgeInsets.symmetric(vertical: margin),
+      child: Center(
+        child: CircularProgressIndicator(value: downloadProgress),
+      ),
+    );

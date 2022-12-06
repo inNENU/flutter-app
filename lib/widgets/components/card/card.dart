@@ -6,15 +6,17 @@ part 'card.g.dart';
 
 /// 组件
 @JsonSerializable()
+// TODO(Mister-Hope): add type support
 class CardComponent extends StatelessWidget {
-  // TODO(Mister-Hope): add type support
-  const CardComponent(
-      {required this.cover,
-      required this.title,
-      required this.url,
-      this.desc = '',
-      this.name = '',
-      this.logo = ''});
+  const CardComponent({
+    required this.cover,
+    required this.title,
+    required this.url,
+    this.desc = '',
+    this.name = '',
+    this.logo = '',
+    super.key,
+  });
 
   factory CardComponent.fromJson(Map<String, dynamic> json) =>
       _$CardComponentFromJson(json);

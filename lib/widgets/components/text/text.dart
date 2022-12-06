@@ -46,7 +46,7 @@ enum TextType { info, tip, warning, danger, none }
 
 /// 获得类型
 TextType getTextType(String? type) =>
-    Tool.string2EnumMap(TextType.values, defaultValue: TextType.none)(type);
+    stringToEnumMap(TextType.values, defaultValue: TextType.none)(type);
 
 /// 段落组件
 @JsonSerializable(includeIfNull: false)
@@ -59,6 +59,7 @@ class TextComponent extends StatelessWidget {
     this.selectable = true,
     this.src = '',
     this.desc = '',
+    super.key,
   });
   factory TextComponent.fromJson(Map<String, dynamic> json) =>
       _$TextComponentFromJson(json);
@@ -74,7 +75,7 @@ class TextComponent extends StatelessWidget {
   /// 文字对齐方式
   ///
   /// 只能是 `'left'`, `'right'`, `'center'` 或 `'justify'` 中的一种
-  @JsonKey(fromJson: JSONTools.getAlign)
+  @JsonKey(fromJson: getAlign)
   final TextAlign align;
 
   /// 文字类型

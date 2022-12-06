@@ -5,7 +5,7 @@ import 'package:innenu/utils/path.dart';
 import 'package:innenu/widgets/components/components.dart';
 import 'package:path_provider/path_provider.dart';
 
-class _PathTestState extends State<PathTest> {
+class PathTestState extends State<PathTest> {
   String tempPath = '';
   String appDataPath = '';
   String appFilePath = '';
@@ -66,5 +66,5 @@ class PathTest extends StatefulWidget {
   const PathTest({Key? key}) : super(key: key);
 
   @override
-  _PathTestState createState() => _PathTestState();
+  PathTestState createState() => PathTestState();
 }

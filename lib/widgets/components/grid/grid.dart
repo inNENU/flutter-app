@@ -85,7 +85,7 @@ class GridComponent extends StatelessWidget {
           // 图标
           Container(
             margin: const EdgeInsets.only(top: 8, bottom: 4),
-            child: JSONTools.getIconWidget(config.icon, 40) ??
+            child: getIconWidget(config.icon, 40) ??
                 const Icon(Icons.error, size: 40),
           ),
 
@@ -152,9 +152,9 @@ class GridComponent extends StatelessWidget {
   }
 
   List<Widget> _children(BuildContext context) => [
-        if (header is String) JSONTools.cardHead(context, header as String),
+        if (header is String) cardHead(context, header as String),
         _gridListWidget(context),
-        if (footer.isNotEmpty) JSONTools.cardFoot(context, footer)
+        if (footer.isNotEmpty) cardFoot(context, footer)
       ];
 
   @override

@@ -56,7 +56,12 @@ class ListComponentConfig {
 /// 列表组件
 @JsonSerializable()
 class ListComponent extends StatelessWidget {
-  const ListComponent(this.content, {this.header, this.footer = ''});
+  const ListComponent(
+    this.content, {
+    this.header,
+    this.footer = '',
+    super.key,
+  });
   factory ListComponent.fromJson(Map<String, dynamic> json) =>
       _$ListComponentFromJson(json);
 
@@ -83,7 +88,7 @@ class ListComponent extends StatelessWidget {
   Widget _listTile(BuildContext context, ListComponentConfig config) =>
       ListTile(
         onTap: config.canTap ? config.tapAction(context) : null,
-        leading: JSONTools.getIconWidget(config.icon),
+        leading: getIconWidget(config.icon),
         title: Text(config.text),
         subtitle: config.desc.isEmpty ? null : Text(config.desc),
         trailing: config.canTap ? const Icon(Icons.chevron_right) : null,
@@ -94,7 +99,7 @@ class ListComponent extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
           /// 列表 header
-          if (header is String) JSONTools.cardHead(context, header as String),
+          if (header is String) cardHead(context, header as String),
 
           /// 列表组件
           Card(
@@ -106,7 +111,7 @@ class ListComponent extends StatelessWidget {
               )),
 
           /// 列表 footer
-          if (footer.isNotEmpty) JSONTools.cardFoot(context, footer)
+          if (footer.isNotEmpty) cardFoot(context, footer)
         ],
       );
 }

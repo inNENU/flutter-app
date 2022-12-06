@@ -11,7 +11,11 @@ final _logger = Logger('component.image');
 // TODO(Mister-Hope): add support for 'res' and add preview function
 @JsonSerializable()
 class ImageComponent extends StatelessWidget {
-  const ImageComponent(this.src, [this.desc = '']);
+  const ImageComponent(
+    this.src, {
+    this.desc = '',
+    super.key,
+  });
   factory ImageComponent.fromJson(Map<String, dynamic> json) =>
       _$ImageComponentFromJson(json);
 
@@ -120,7 +124,7 @@ class ImageComponent extends StatelessWidget {
           imageBuilder: (context, imageBuilder) =>
               _imageBuilder(context, imageBuilder, desc),
           progressIndicatorBuilder: (context, url, downloadProgress) =>
-              JSONTools.loadingProgressWidget(downloadProgress.progress ?? 0.5),
+              getLoadingProgressWidget(downloadProgress.progress ?? 0.5),
           errorWidget: (context, url, dynamic error) {
             _logger.warning('Image: load $url fail.');
             return _errorWidget(context);

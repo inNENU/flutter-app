@@ -7,9 +7,8 @@ import 'package:innenu/router/router.dart';
 import 'package:innenu/utils/info.dart';
 import 'package:sp_util/sp_util.dart';
 
-
 class MyApp extends StatelessWidget {
-  MyApp() {
+  MyApp({super.key}) {
     Routes.initRoutes();
   }
 
@@ -40,7 +39,7 @@ class MyApp extends StatelessWidget {
 
         /// 因为使用了 fluro，这里设置主要针对 Web
         onUnknownRoute: (_) => MaterialPageRoute<dynamic>(
-          builder: (context) => NotFoundPage(),
+          builder: (context) => const NotFoundPage(),
         ),
 
         /// 主题设置

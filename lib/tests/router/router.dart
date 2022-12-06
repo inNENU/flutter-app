@@ -49,36 +49,45 @@ class TestRouter implements IRouterProvider {
   void initRouter(FluroRouter router) {
     router
       ..define(mainPage,
-          handler: Handler(handlerFunc: (_, __) => ComponentTest()))
+          handler: Handler(handlerFunc: (_, __) => const ComponentTest()))
       ..define(textThemePage,
-          handler: Handler(handlerFunc: (_, __) => TextThemeTest()))
+          handler: Handler(handlerFunc: (_, __) => const TextThemeTest()))
       ..define(carouselPage,
-          handler: Handler(handlerFunc: (_, __) => CarouselTest()))
+          handler: Handler(handlerFunc: (_, __) => const CarouselTest()))
       ..define(carouselJSONPage,
-          handler: Handler(handlerFunc: (_, __) => CarouselJSONTest()))
-      ..define(docPage, handler: Handler(handlerFunc: (_, __) => DocTest()))
-      ..define(footerPage, handler: Handler(handlerFunc: (_, __) => FootTest()))
+          handler: Handler(handlerFunc: (_, __) => const CarouselJSONTest()))
+      ..define(docPage,
+          handler: Handler(handlerFunc: (_, __) => const DocTest()))
+      ..define(footerPage,
+          handler: Handler(handlerFunc: (_, __) => const FootTest()))
       ..define(footerJSONPage,
-          handler: Handler(handlerFunc: (_, __) => FootJSONTest()))
-      ..define(gridPage, handler: Handler(handlerFunc: (_, __) => GridTest()))
+          handler: Handler(handlerFunc: (_, __) => const FootJSONTest()))
+      ..define(gridPage,
+          handler: Handler(handlerFunc: (_, __) => const GridTest()))
       ..define(gridJSONPage,
-          handler: Handler(handlerFunc: (_, __) => GridJSONTest()))
-      ..define(imagePage, handler: Handler(handlerFunc: (_, __) => ImageTest()))
+          handler: Handler(handlerFunc: (_, __) => const GridJSONTest()))
+      ..define(imagePage,
+          handler: Handler(handlerFunc: (_, __) => const ImageTest()))
       ..define(imageJSONPage,
-          handler: Handler(handlerFunc: (_, __) => ImageJSONTest()))
-      ..define(listPage, handler: Handler(handlerFunc: (_, __) => ListTest()))
+          handler: Handler(handlerFunc: (_, __) => const ImageJSONTest()))
+      ..define(listPage,
+          handler: Handler(handlerFunc: (_, __) => const ListTest()))
       ..define(listJSONPage,
-          handler: Handler(handlerFunc: (_, __) => ListJSONTest()))
-      ..define(navPage, handler: Handler(handlerFunc: (_, __) => HeadTest()))
+          handler: Handler(handlerFunc: (_, __) => const ListJSONTest()))
+      ..define(navPage,
+          handler: Handler(handlerFunc: (_, __) => const HeadTest()))
       ..define(navJSONPage,
-          handler: Handler(handlerFunc: (_, __) => HeadJSONTest()))
-      ..define(titlePage, handler: Handler(handlerFunc: (_, __) => TitleTest()))
+          handler: Handler(handlerFunc: (_, __) => const HeadJSONTest()))
+      ..define(titlePage,
+          handler: Handler(handlerFunc: (_, __) => const TitleTest()))
       ..define(titleJSONPage,
-          handler: Handler(handlerFunc: (_, __) => TitleJSONTest()))
-      ..define(textPage, handler: Handler(handlerFunc: (_, __) => TextTest()))
+          handler: Handler(handlerFunc: (_, __) => const TitleJSONTest()))
+      ..define(textPage,
+          handler: Handler(handlerFunc: (_, __) => const TextTest()))
       ..define(textJSONPage,
-          handler: Handler(handlerFunc: (_, __) => TextJSONTest()))
-      ..define(phonePage, handler: Handler(handlerFunc: (_, __) => PhoneTest()))
+          handler: Handler(handlerFunc: (_, __) => const TextJSONTest()))
+      ..define(phonePage,
+          handler: Handler(handlerFunc: (_, __) => const PhoneTest()))
       ..define(pathPage,
           handler: Handler(handlerFunc: (_, __) => const PathTest()));
   }

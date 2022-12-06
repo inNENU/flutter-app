@@ -27,6 +27,7 @@ class PhoneComponent extends StatelessWidget {
     this.postalCode = '',
     this.title = '',
     this.email = '',
+    super.key,
   });
 
   factory PhoneComponent.fromJson(Map<String, dynamic> json) =>
@@ -104,7 +105,7 @@ class PhoneComponent extends StatelessWidget {
 
   /// 添加联系人
   void _addContact(BuildContext context) {
-    UI.modal<void>(
+    showModal<void>(
       context,
       content: '是否要添加联系人$familyName$givenName?',
       actions: [
@@ -170,10 +171,10 @@ class PhoneComponent extends StatelessWidget {
 
                 newContact.insert().then((contact) {
                   Navigator.pop(context);
-                  UI.tip(context, content: '添加联系人成功');
+                  showTip(context, content: '添加联系人成功');
                 });
               } else {
-                UI.tip(context, content: '授权失败');
+                showTip(context, content: '授权失败');
               }
             });
           },

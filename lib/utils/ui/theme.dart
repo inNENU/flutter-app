@@ -2,15 +2,15 @@ import 'package:flutter/material.dart';
 import '../storage.dart';
 import '../tool.dart';
 
-final _themeModeMap = Tool.string2EnumMap<ThemeMode>(ThemeMode.values,
+final _themeModeMap = stringToEnumMap<ThemeMode>(ThemeMode.values,
     defaultValue: ThemeMode.system);
 
 Future<ThemeMode> getThemeMode() async {
-  final themeType = await Storage.getStringKey('theme') ?? 'system';
+  final themeType = await getStringKey('theme') ?? 'system';
 
   return _themeModeMap(themeType);
 }
 
-Future<void> setThemeMode(String thememode) async {
-  await Storage.setStringKey('theme', thememode);
+Future<void> setThemeMode(String themeMode) async {
+  await setStringKey('theme', themeMode);
 }

@@ -6,7 +6,10 @@ part 'title.g.dart';
 /// 标题组件
 @JsonSerializable()
 class TitleComponent extends StatelessWidget {
-  const TitleComponent(this.text);
+  const TitleComponent(
+    this.text, {
+    super.key,
+  });
   factory TitleComponent.fromJson(Map<String, dynamic> json) =>
       _$TitleComponentFromJson(json);
 
