@@ -52,7 +52,6 @@ class DocComponent extends StatelessWidget {
   final String url;
 
   /// 是否可下载
-  @JsonKey(defaultValue: true)
   final bool downloadable;
 
   Map<String, dynamic> toJson() => _$DocComponentToJson(this);

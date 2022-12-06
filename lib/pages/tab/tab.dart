@@ -92,7 +92,7 @@ class _HomeState extends State<Home> {
 
   /// 刷新页面
   void refreshPage() {
-    const base = 'https://mp.innenu.com/resource/config/wx33acb831ee1831a5';
+    const base = 'https://mp.innenu.com/r/config/wx33acb831ee1831a5';
 
     // 获取最新版本号
     Dio().get<String>('$base/version.json').then((response) {

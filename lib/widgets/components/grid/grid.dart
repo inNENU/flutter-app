@@ -33,7 +33,7 @@ class GridComponentConfig {
   final String url;
 
   /// 是否可点击
-  bool get isTapable => path.isNotEmpty || url.isNotEmpty;
+  bool get canTap => path.isNotEmpty || url.isNotEmpty;
 
   /// 点击动作
   void Function() tapAction(BuildContext context) => () {
@@ -107,7 +107,7 @@ class GridComponent extends StatelessWidget {
       final config = content[index];
 
       return Expanded(
-        child: config.isTapable
+        child: config.canTap
             ? InkWell(
                 onTap: config.tapAction(context),
                 child: _gridWidget(context, config),

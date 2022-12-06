@@ -26,4 +26,4 @@ Future<MyPage> getPage(String url) async {
 
 /// 通过 ID 获得页面对象
 Future<MyPage> getPageFromId(String id) async =>
-    getPage('https://mp.innenu.com/resource/$id.json');
+    getPage('https://mp.innenu.com/r/$id.json');

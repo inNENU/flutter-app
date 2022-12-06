@@ -126,7 +126,7 @@ class OnlinePage extends StatelessWidget {
   final String id;
 
   static Future<Map<String, dynamic>> getPageConfig(String id) => Dio()
-          .get<String>('https://mp.innenu.com/resource/$id.json')
+          .get<String>('https://mp.innenu.com/r/$id.json')
           .then((response) {
         if (response.statusCode == 200) {
           return json.decode(response.data ?? '{}') as Map<String, dynamic>;

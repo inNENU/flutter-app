@@ -6,8 +6,10 @@ import 'package:json_annotation/json_annotation.dart';
 
 part 'account.g.dart';
 
-/// 标题组件
+// TODO(Mister-Hope): add support for qq, wechat, website and email
 @JsonSerializable()
+
+/// 账号组件
 class AccountComponent extends StatelessWidget {
   const AccountComponent(this.name, this.logo, {this.desc = ''});
 

@@ -37,7 +37,7 @@ class ListComponentConfig {
   final String url;
 
   /// 是否可点击
-  bool get isTapable => path.isNotEmpty || url.isNotEmpty;
+  bool get canTap => path.isNotEmpty || url.isNotEmpty;
 
   /// 点击动作
   void Function() tapAction(BuildContext context) => () {
@@ -82,11 +82,11 @@ class ListComponent extends StatelessWidget {
   /// 获取渲染的列表项
   Widget _listTile(BuildContext context, ListComponentConfig config) =>
       ListTile(
-        onTap: config.isTapable ? config.tapAction(context) : null,
+        onTap: config.canTap ? config.tapAction(context) : null,
         leading: JSONTools.getIconWidget(config.icon),
         title: Text(config.text),
         subtitle: config.desc.isEmpty ? null : Text(config.desc),
-        trailing: config.isTapable ? const Icon(Icons.chevron_right) : null,
+        trailing: config.canTap ? const Icon(Icons.chevron_right) : null,
       );
 
   @override

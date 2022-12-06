@@ -23,7 +23,6 @@ class CardComponent extends StatelessWidget {
   final String title;
 
   /// 卡片详情
-  @JsonKey(defaultValue: '')
   final String desc;
 
   /// 卡片图片地址
@@ -33,11 +32,9 @@ class CardComponent extends StatelessWidget {
   final String url;
 
   /// 卡片 logo 名称
-  @JsonKey(defaultValue: '')
   final String name;
 
   /// 卡片 logo 地址
-  @JsonKey(defaultValue: '')
   final String logo;
 
   Map<String, dynamic> toJson() => _$CardComponentToJson(this);

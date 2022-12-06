@@ -12,7 +12,7 @@ final _logger = Logger('component.action');
 @JsonSerializable()
 class ActionComponent extends StatelessWidget {
   const ActionComponent(
-    this.text, {
+    this.content, {
     this.header = '',
   });
 
@@ -23,20 +23,20 @@ class ActionComponent extends StatelessWidget {
   final String header;
 
   /// 动作内容
-  final String text;
+  final String content;
 
   /// 是否是链接
-  bool get isLink => text.startsWith(RegExp('https?://'));
+  bool get isLink => content.startsWith(RegExp('https?://'));
 
-  Future<void> openLink() => canLaunchUrlString(text).then((canLaunch) {
+  Future<void> openLink() => canLaunchUrlString(content).then((canLaunch) {
         if (canLaunch) {
-          launchUrlString(text);
+          launchUrlString(content);
         } else {
-          _logger.warning('Phone: can not make phone call');
+          _logger.warning('Action: can not perform an action');
         }
       });
 
-  Future<void> copyText() => Clipboard.setData(ClipboardData(text: text));
+  Future<void> copyText() => Clipboard.setData(ClipboardData(text: content));
 
   Map<String, dynamic> toJson() => _$ActionComponentToJson(this);
 
@@ -47,14 +47,14 @@ class ActionComponent extends StatelessWidget {
         if (isLink)
           ListTile(
             onTap: openLink,
-            title: Text(text),
+            title: Text(content),
             // trailing:
             //     config.isTapable ? const Icon(Icons.chevron_right) : null,
           )
         else
           ListTile(
             onTap: copyText,
-            title: Text(text),
+            title: Text(content),
             trailing: const Icon(Icons.copy),
           )
       ]));
