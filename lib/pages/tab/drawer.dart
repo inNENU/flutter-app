@@ -9,7 +9,7 @@ Drawer drawerWidget(BuildContext context) => Drawer(
               children: [
                 Text(
                   'in东师，就用in东师',
-                  style: Theme.of(context).textTheme.bodyText2,
+                  style: Theme.of(context).textTheme.bodyMedium,
                 ),
               ],
             ),

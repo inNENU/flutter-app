@@ -60,7 +60,7 @@ class ListComponent extends StatelessWidget {
     this.content, {
     this.header,
     this.footer = '',
-    super.key,
+// super.key,
   });
   factory ListComponent.fromJson(Map<String, dynamic> json) =>
       _$ListComponentFromJson(json);

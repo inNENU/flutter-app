@@ -76,7 +76,7 @@ Widget cardHead(BuildContext context, String text) => Padding(
       padding: const EdgeInsets.only(top: 8, left: 30, right: 30),
       child: Text(
         text,
-        style: Theme.of(context).textTheme.bodyText1,
+        style: Theme.of(context).textTheme.bodyLarge,
       ),
     );
 
@@ -85,7 +85,7 @@ Widget cardFoot(BuildContext context, String text) => Padding(
       padding: const EdgeInsets.only(left: 30, right: 30, bottom: 8),
       child: Text(
         text,
-        style: Theme.of(context).textTheme.caption,
+        style: Theme.of(context).textTheme.bodySmall,
       ),
     );
 

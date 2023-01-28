@@ -15,7 +15,7 @@ class CardComponent extends StatelessWidget {
     this.desc = '',
     this.name = '',
     this.logo = '',
-    super.key,
+// super.key,
   });
 
   factory CardComponent.fromJson(Map<String, dynamic> json) =>
@@ -65,12 +65,12 @@ class CardComponent extends StatelessWidget {
                       children: <Widget>[
                         Text(
                           title,
-                          style: Theme.of(context).textTheme.bodyText1,
+                          style: Theme.of(context).textTheme.bodyLarge,
                         ),
                         if (desc != '')
                           Text(
                             desc,
-                            style: Theme.of(context).textTheme.bodyText2,
+                            style: Theme.of(context).textTheme.bodyMedium,
                           )
                       ],
                     ),
@@ -85,7 +85,7 @@ class CardComponent extends StatelessWidget {
                         if (name != '')
                           Text(
                             name,
-                            style: Theme.of(context).textTheme.caption,
+                            style: Theme.of(context).textTheme.bodySmall,
                           )
                       ],
                     ),

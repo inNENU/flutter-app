@@ -25,13 +25,13 @@ dependencies:
   adaptive_breakpoints: ^0.1.4
 
   # https://github.com/brendan-duncan/archive
-  archive: ^3.3.5
+  archive: ^3.3.6
 
   # https://github.com/Baseflow/flutter_cached_network_image
   cached_network_image: ^3.2.3
 
   # https://github.com/serenader2014/flutter_carousel_slider
-  carousel_slider: ^4.1.1
+  carousel_slider: ^4.2.1
 
   # Dart 常用工具类库 https://github.com/Sky24n/common_utils
   common_utils: ^2.1.0
@@ -58,10 +58,10 @@ dependencies:
   # SVG 支持: https://github.com/dnfield/flutter_svg
   flutter_svg: ^1.1.6
 
-  json_annotation: ^4.7.0
+  json_annotation: ^4.8.0
 
   # https://github.com/dart-lang/logging
-  logging: ^1.1.0
+  logging: ^1.1.1
 
   # https://github.com/OpenFlutter/flutter_oktoast
   oktoast: ^3.3.1
@@ -70,43 +70,43 @@ dependencies:
   path: ^1.8.2
 
   # https://pub.flutter-io.cn/packages/path_provider
-  path_provider: ^2.0.1
+  path_provider: ^2.0.12
 
   # https://github.com/Baseflow/flutter-permission-handler
   permission_handler: ^10.2.0
 
   # https://github.com/rrousselGit/provider
-  provider: ^6.0.4
-  shared_preferences: ^2.0.15
+  provider: ^6.0.5
+  shared_preferences: ^2.0.17
 
   # Flutter shared_preferences plugin util https://github.com/Sky24n/sp_util
   sp_util: ^2.0.3
 
   # https://pub.flutter-io.cn/packages/url_launcher
-  url_launcher: ^6.1.7
+  url_launcher: ^6.1.8
 
   # WebView 插件 https://github.com/flutter/plugins/tree/master/packages/webview_flutter
-  webview_flutter: ^3.0.4
+  webview_flutter: ^4.0.2
 
 dev_dependencies:
   # https://pub.flutter-io.cn/packages/build_runner
-  build_runner: ^2.0.1
+  build_runner: ^2.3.3
 
   # The "flutter_lints" package below contains a set of recommended lints to
   # encourage good coding practices. The lint set provided by the package is
   # activated in the `analysis_options.yaml` file located at the root of your
   # package. See that file for information about deactivating specific lint
   # rules and activating additional ones.
-  flutter_lints: ^2.0.0
+  flutter_lints: ^2.0.1
 
   flutter_test:
     sdk: flutter
 
   # https://pub.flutter-io.cn/packages/json_serializable
-  json_serializable: ^6.0.1
+  json_serializable: ^6.6.0
 
   # https://pub.flutter-io.cn/packages/test
-  test: ^1.17.10
+  test: ^1.22.0
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec

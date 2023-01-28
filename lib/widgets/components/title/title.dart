@@ -7,9 +7,11 @@ part 'title.g.dart';
 @JsonSerializable()
 class TitleComponent extends StatelessWidget {
   const TitleComponent(
-    this.text, {
-    super.key,
-  });
+    this.text,
+    // {
+    // super.key,
+    // }
+  );
   factory TitleComponent.fromJson(Map<String, dynamic> json) =>
       _$TitleComponentFromJson(json);
 
@@ -23,6 +25,6 @@ class TitleComponent extends StatelessWidget {
       padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 8),
       child: SelectableText(
         text,
-        style: Theme.of(context).textTheme.headline6,
+        style: Theme.of(context).textTheme.titleLarge,
       ));
 }

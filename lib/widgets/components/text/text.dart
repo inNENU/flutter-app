@@ -32,12 +32,12 @@ class _TextWidget extends StatelessWidget {
       child: selectable
           ? SelectableText(
               text,
-              style: Theme.of(context).textTheme.bodyText2,
+              style: Theme.of(context).textTheme.bodyMedium,
               textAlign: textAlign,
             )
           : Text(
               text,
-              style: Theme.of(context).textTheme.bodyText2,
+              style: Theme.of(context).textTheme.bodyMedium,
               textAlign: textAlign,
             ));
 }
@@ -59,7 +59,7 @@ class TextComponent extends StatelessWidget {
     this.selectable = true,
     this.src = '',
     this.desc = '',
-    super.key,
+// super.key,
   });
   factory TextComponent.fromJson(Map<String, dynamic> json) =>
       _$TextComponentFromJson(json);
@@ -105,11 +105,11 @@ class TextComponent extends StatelessWidget {
             selectable
                 ? SelectableText(
                     heading,
-                    style: Theme.of(context).textTheme.subtitle1,
+                    style: Theme.of(context).textTheme.titleMedium,
                   )
                 : Text(
                     heading,
-                    style: Theme.of(context).textTheme.subtitle1,
+                    style: Theme.of(context).textTheme.titleMedium,
                   ),
 
           // 段落

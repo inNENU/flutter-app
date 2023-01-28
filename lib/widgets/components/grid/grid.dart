@@ -95,7 +95,7 @@ class GridComponent extends StatelessWidget {
             child: Text(
               config.text,
               textAlign: TextAlign.center,
-              style: Theme.of(context).textTheme.button,
+              style: Theme.of(context).textTheme.labelLarge,
             ),
           ),
         ],

@@ -1,38 +1,26 @@
-import 'dart:async';
-
 import 'package:flutter/material.dart';
 import 'package:webview_flutter/webview_flutter.dart';
 
 class WebViewPageState extends State<WebViewPage> {
-  final Completer<WebViewController> _controller =
-      Completer<WebViewController>();
+  late WebViewController _controller;
 
   @override
-  Widget build(BuildContext context) => FutureBuilder<WebViewController>(
-      future: _controller.future,
-      builder: (context, snapshot) => WillPopScope(
-            onWillPop: () async {
-              if (snapshot.hasData) {
-                final canGoBack = await snapshot.data!.canGoBack();
-                if (canGoBack) {
-                  // 网页可以返回时，优先返回上一页
-                  await snapshot.data!.goBack();
-                  return Future.value(false);
-                }
-              }
-              return Future.value(true);
-            },
-            child: Scaffold(
-              appBar: AppBar(
-                title: Text(widget.title),
-              ),
-              body: WebView(
-                initialUrl: widget.url,
-                javascriptMode: JavascriptMode.unrestricted,
-                onWebViewCreated: _controller.complete,
-              ),
-            ),
-          ));
+  void initState() {
+    super.initState();
+
+    _controller = WebViewController()
+      ..setJavaScriptMode(JavaScriptMode.unrestricted)
+      // ..setBackgroundColor(const Color(0x00000000))
+      ..loadRequest(Uri.parse(widget.url));
+  }
+
+  @override
+  Widget build(BuildContext context) => Scaffold(
+        appBar: AppBar(
+          title: Text(widget.title),
+        ),
+        body: WebViewWidget(controller: _controller),
+      );
 }
 
 class WebViewPage extends StatefulWidget {

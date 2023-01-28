@@ -15,7 +15,7 @@ class AccountComponent extends StatelessWidget {
     this.name,
     this.logo, {
     this.desc = '',
-    super.key,
+// super.key,
   });
 
   factory AccountComponent.fromJson(Map<String, dynamic> json) =>
@@ -68,9 +68,9 @@ class AccountComponent extends StatelessWidget {
                   Padding(
                     padding: const EdgeInsets.symmetric(vertical: 4),
                     child: Text(name,
-                        style: Theme.of(context).textTheme.headline6),
+                        style: Theme.of(context).textTheme.titleLarge),
                   ),
-                  Text(desc, style: Theme.of(context).textTheme.bodyText2),
+                  Text(desc, style: Theme.of(context).textTheme.bodyMedium),
                 ],
               ),
             )

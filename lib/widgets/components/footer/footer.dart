@@ -10,7 +10,7 @@ class FooterComponent extends StatelessWidget {
     this.author = '',
     this.time = '',
     this.desc = '',
-    super.key,
+// super.key,
   });
   factory FooterComponent.fromJson(Map<String, dynamic> json) =>
       _$FooterComponentFromJson(json);

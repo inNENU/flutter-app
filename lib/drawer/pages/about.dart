@@ -15,7 +15,7 @@ class AboutPage extends StatelessWidget {
             Text(
               'in东师',
               textAlign: TextAlign.center,
-              style: Theme.of(context).textTheme.headline4,
+              style: Theme.of(context).textTheme.headlineMedium,
             ),
             const TextComponent(
               text: [

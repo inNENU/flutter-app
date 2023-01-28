@@ -18,7 +18,7 @@ class CarouselComponent extends StatelessWidget {
     this.duration = 500,
     this.circular = true,
     this.vertical = false,
-    super.key,
+// super.key,
   });
   factory CarouselComponent.fromJson(Map<String, dynamic> json) =>
       _$CarouselComponentFromJson(json);

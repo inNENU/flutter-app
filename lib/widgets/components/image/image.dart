@@ -14,7 +14,7 @@ class ImageComponent extends StatelessWidget {
   const ImageComponent(
     this.src, {
     this.desc = '',
-    super.key,
+// super.key,
   });
   factory ImageComponent.fromJson(Map<String, dynamic> json) =>
       _$ImageComponentFromJson(json);
@@ -45,7 +45,7 @@ class ImageComponent extends StatelessWidget {
                   '图片加载失败',
                   style: Theme.of(context)
                       .textTheme
-                      .caption
+                      .bodySmall
                       ?.copyWith(color: Colors.white),
                 ),
               ),
@@ -100,7 +100,7 @@ class ImageComponent extends StatelessWidget {
                   textAlign: TextAlign.center,
                   style: Theme.of(context)
                       .textTheme
-                      .bodyText2
+                      .bodyMedium
                       ?.copyWith(color: Colors.white.withOpacity(0.8)),
                 ),
               ),
