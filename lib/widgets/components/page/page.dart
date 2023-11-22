@@ -6,34 +6,33 @@ import 'package:logging/logging.dart';
 
 final _logger = Logger('page');
 
-// FIXME: convert to StatefulWidget
 class MyPage extends StatelessWidget {
-  MyPage({
+  const MyPage({
     required this.config,
     required this.title,
     required List<Widget> children,
     super.key,
   }) : pageWidgets = children;
 
-  MyPage.fromId()
+  MyPage.fromId({super.key})
       : title = '加载中',
         config = loadingPageConfig,
         pageWidgets = [loadingPageWidgets];
 
   /// 从 JSON 生成 MyPage
-  MyPage.fromJson(this.config)
+  MyPage.fromJson(this.config, {super.key})
       : title = _getTitle(config['title'] as String?,
             hidden: config['hidden'] as bool?),
         pageWidgets = _generateContent(config['content'] as List<dynamic>?);
 
   /// 页面配置
-  Map<String, dynamic> config;
+  final Map<String, dynamic> config;
 
   /// 页面标题
-  String title;
+  final String title;
 
   /// 页面组件
-  List<Widget> pageWidgets;
+  final List<Widget> pageWidgets;
 
   static final loadingPageConfig = <String, dynamic>{
     'title': '加载中',

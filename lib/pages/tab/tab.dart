@@ -138,7 +138,7 @@ class HomeState extends State<Home> {
 }
 
 class Home extends StatefulWidget {
-  Home({super.key});
+  const Home({super.key});
 
   @override
   HomeState createState() => HomeState();
