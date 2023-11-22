@@ -51,7 +51,7 @@ class GridComponentConfig {
 
 @JsonSerializable()
 class GridComponent extends StatelessWidget {
-  const GridComponent(this.content, {this.header, this.footer = ''});
+  const GridComponent(this.content, {this.header, this.footer = '', super.key});
 
   factory GridComponent.fromJson(Map<String, dynamic> json) =>
       _$GridComponentFromJson(json);

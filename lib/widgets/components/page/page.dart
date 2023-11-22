@@ -6,12 +6,13 @@ import 'package:logging/logging.dart';
 
 final _logger = Logger('page');
 
+// FIXME: convert to StatefulWidget
 class MyPage extends StatelessWidget {
   MyPage({
     required this.config,
     required this.title,
     required List<Widget> children,
-    // super.key,
+    super.key,
   }) : pageWidgets = children;
 
   MyPage.fromId()
@@ -122,11 +123,9 @@ class MyPage extends StatelessWidget {
 
 class OnlinePage extends StatelessWidget {
   const OnlinePage(
-    this.id,
-    //{
-// super.key,
-    //}
-  );
+    this.id, {
+    super.key,
+  });
 
   /// 页面 id
   final String id;

@@ -10,9 +10,9 @@ final _logger = Logger('lib.network');
 class Network {
   Network.init(
     String baseUrl, {
-    int connectTimeout = 3000,
-    int receiveTimeout = 3000,
-    int sendTimeout = 3000,
+    Duration connectTimeout = const Duration(seconds: 3),
+    Duration receiveTimeout = const Duration(seconds: 3),
+    Duration sendTimeout = const Duration(seconds: 3),
   }) {
     dio.options.baseUrl = baseUrl;
     dio.options.connectTimeout = connectTimeout;

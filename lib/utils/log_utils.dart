@@ -45,9 +45,10 @@ void _printMap(Map data,
     int tabs = 1,
     bool isListItem = false,
     bool isLast = false}) {
-  final isRoot = tabs == 1;
-  final initialIndent = _indent(tabs);
-  tabs++;
+  int tabNumber = tabs;
+  final isRoot = tabNumber == 1;
+  final initialIndent = _indent(tabNumber);
+  tabNumber += 1;
 
   if (isRoot || isListItem) {
     LogUtil.v('$initialIndent{', tag: tag);
@@ -60,23 +61,24 @@ void _printMap(Map data,
       value = '"$value"';
     } else if (value is Map) {
       if (value.isEmpty) {
-        LogUtil.v('${_indent(tabs)} $key: $value${!isLast ? ',' : ''}',
+        LogUtil.v('${_indent(tabNumber)} $key: $value${!isLast ? ',' : ''}',
             tag: tag);
       } else {
-        LogUtil.v('${_indent(tabs)} $key: {', tag: tag);
-        _printMap(value, tabs: tabs);
+        LogUtil.v('${_indent(tabNumber)} $key: {', tag: tag);
+        _printMap(value, tabs: tabNumber);
       }
     } else if (value is List) {
       if (value.isEmpty) {
-        LogUtil.v('${_indent(tabs)} $key: ${value.toString()}', tag: tag);
+        LogUtil.v('${_indent(tabNumber)} $key: ${value.toString()}', tag: tag);
       } else {
-        LogUtil.v('${_indent(tabs)} $key: [', tag: tag);
-        _printList(value, tabs: tabs);
-        LogUtil.v('${_indent(tabs)} ]${isLast ? '' : ','}', tag: tag);
+        LogUtil.v('${_indent(tabNumber)} $key: [', tag: tag);
+        _printList(value, tabs: tabNumber);
+        LogUtil.v('${_indent(tabNumber)} ]${isLast ? '' : ','}', tag: tag);
       }
     } else {
       final msg = value.toString().replaceAll('\n', '');
-      LogUtil.v('${_indent(tabs)} $key: $msg${!isLast ? ',' : ''}', tag: tag);
+      LogUtil.v('${_indent(tabNumber)} $key: $msg${!isLast ? ',' : ''}',
+          tag: tag);
     }
   });
 

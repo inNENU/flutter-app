@@ -14,7 +14,7 @@ class ActionComponent extends StatelessWidget {
   const ActionComponent(
     this.content, {
     this.header = '',
-// super.key,
+    super.key,
   });
 
   factory ActionComponent.fromJson(Map<String, dynamic> json) =>

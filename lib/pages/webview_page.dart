@@ -24,11 +24,7 @@ class WebViewPageState extends State<WebViewPage> {
 }
 
 class WebViewPage extends StatefulWidget {
-  const WebViewPage({
-    required this.title,
-    required this.url,
-    Key? key,
-  }) : super(key: key);
+  const WebViewPage({required this.title, required this.url, super.key});
 
   final String title;
   final String url;

@@ -30,7 +30,8 @@ class MyApp extends StatelessWidget {
           Locale('en', 'US'),
         ],
         builder: (context, child) => MediaQuery(
-          data: MediaQuery.of(context).copyWith(textScaleFactor: 1),
+          data:
+              MediaQuery.of(context).copyWith(textScaler: TextScaler.noScaling),
           child: child ?? const Center(),
         ),
 

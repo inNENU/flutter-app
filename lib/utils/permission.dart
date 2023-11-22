@@ -42,7 +42,9 @@ final List<String> _permissionNames = [
 Permission permissionFromString(String permissionString) {
   switch (permissionString) {
     case 'calendar':
-      return Permission.calendar;
+      return Permission.calendarWriteOnly;
+    case 'calendar-full':
+      return Permission.calendarFullAccess;
     case 'camera':
       return Permission.camera;
     case 'contact':
@@ -73,12 +75,12 @@ Permission permissionFromString(String permissionString) {
       return Permission.activityRecognition;
     case 'notification':
       return Permission.notification;
-    // case 'location':
-    //   return Permission.location;
-    // case 'locationAlways':
-    //   return Permission.locationAlways;
-    // case 'locationWhenInUse':
-    //   return Permission.locationWhenInUse;
+    case 'location':
+      return Permission.location;
+    case 'locationAlways':
+      return Permission.locationAlways;
+    case 'locationWhenInUse':
+      return Permission.locationWhenInUse;
 
     default:
       _logger.warning('Unknown permission string $permissionString.');
@@ -206,6 +208,15 @@ Future<bool> checkAndAskPermission(
                   )
                 ]);
           },
+        );
+        return false;
+
+      case PermissionStatus.provisional: // 用户选择不再询问
+        showTip(
+          context,
+          content: '您已永久拒绝 $localeString 权限。',
+          actionLabel: '打开',
+          action: openAppSettings,
         );
         return false;
 

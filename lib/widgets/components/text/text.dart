@@ -59,7 +59,7 @@ class TextComponent extends StatelessWidget {
     this.selectable = true,
     this.src = '',
     this.desc = '',
-// super.key,
+    super.key,
   });
   factory TextComponent.fromJson(Map<String, dynamic> json) =>
       _$TextComponentFromJson(json);
@@ -124,13 +124,11 @@ class TextComponent extends StatelessWidget {
             )
           // 多个段落
           else if (text is List)
-            ...(text as List)
-                .map<Widget>((dynamic item) => _TextWidget(
-                      item as String,
-                      align,
-                      selectable: selectable,
-                    ))
-                .toList()
+            ...(text as List).map<Widget>((dynamic item) => _TextWidget(
+                  item as String,
+                  align,
+                  selectable: selectable,
+                ))
         ],
       ));
 }

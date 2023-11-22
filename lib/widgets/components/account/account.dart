@@ -15,7 +15,7 @@ class AccountComponent extends StatelessWidget {
     this.name,
     this.logo, {
     this.desc = '',
-// super.key,
+    super.key,
   });
 
   factory AccountComponent.fromJson(Map<String, dynamic> json) =>

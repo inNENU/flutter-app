@@ -37,7 +37,7 @@ class DocComponent extends StatelessWidget {
     this.url, {
     String? icon,
     this.downloadable = true,
-// super.key,
+    super.key,
   }) : icon = icon ?? _getDocIcon(url);
 
   factory DocComponent.fromJson(Map<String, dynamic> json) =>

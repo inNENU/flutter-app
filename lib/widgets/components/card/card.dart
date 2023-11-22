@@ -15,7 +15,7 @@ class CardComponent extends StatelessWidget {
     this.desc = '',
     this.name = '',
     this.logo = '',
-// super.key,
+    super.key,
   });
 
   factory CardComponent.fromJson(Map<String, dynamic> json) =>

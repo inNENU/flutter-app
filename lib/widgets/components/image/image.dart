@@ -14,7 +14,7 @@ class ImageComponent extends StatelessWidget {
   const ImageComponent(
     this.src, {
     this.desc = '',
-// super.key,
+    super.key,
   });
   factory ImageComponent.fromJson(Map<String, dynamic> json) =>
       _$ImageComponentFromJson(json);

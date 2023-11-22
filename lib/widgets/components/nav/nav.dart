@@ -6,11 +6,9 @@ part 'nav.g.dart';
 @JsonSerializable()
 class NavComponent extends StatelessWidget {
   const NavComponent(
-    this.title,
-    // {
-// super.key,
-    // }
-  );
+    this.title, {
+    super.key,
+  });
   factory NavComponent.fromJson(Map<String, dynamic> json) =>
       _$NavComponentFromJson(json);
 

@@ -63,7 +63,7 @@ class PathTestState extends State<PathTest> {
 }
 
 class PathTest extends StatefulWidget {
-  const PathTest({Key? key}) : super(key: key);
+  const PathTest({super.key});
 
   @override
   PathTestState createState() => PathTestState();

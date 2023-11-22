@@ -27,7 +27,7 @@ class PhoneComponent extends StatelessWidget {
     this.postalCode = '',
     this.title = '',
     this.email = '',
-// super.key,
+    super.key,
   });
 
   factory PhoneComponent.fromJson(Map<String, dynamic> json) =>
