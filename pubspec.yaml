@@ -21,14 +21,14 @@ environment:
   sdk: ">=3.2.0 <4.0.0"
 
 dependencies:
-  # https://github.com/material-components/material-components-flutter-adaptive/tree/develop/adaptive_breakpoints
+  # https://github.com/material-foundation/flutter-packages/blob/main/packages/adaptive_breakpoints
   adaptive_breakpoints: ^0.1.4
 
   # https://github.com/brendan-duncan/archive
-  archive: ^3.3.6
+  archive: ^3.4.10
 
   # https://github.com/Baseflow/flutter_cached_network_image
-  cached_network_image: ^3.2.3
+  cached_network_image: ^3.3.1
 
   # https://github.com/serenader2014/flutter_carousel_slider
   carousel_slider: ^4.2.1
@@ -41,7 +41,10 @@ dependencies:
   cupertino_icons: ^1.0.5
 
   # 网络库 https://github.com/flutterchina/dio
-  dio: ^5.3.4
+  dio: ^5.4.1
+
+  # https://github.com/cfug/dio/tree/main/plugins/cookie_manager
+  dio_cookie_manager: ^3.1.1
 
   # 路由框架 https://github.com/theyakka/fluro
   fluro: ^2.0.4
@@ -56,41 +59,41 @@ dependencies:
     sdk: flutter
 
   # SVG 支持: https://github.com/dnfield/flutter_svg
-  flutter_svg: ^2.0.9
+  flutter_svg: ^2.0.10+1
 
-  json_annotation: ^4.8.0
+  json_annotation: ^4.8.1
 
   # https://github.com/dart-lang/logging
-  logging: ^1.1.1
+  logging: ^1.2.0
 
   # https://github.com/OpenFlutter/flutter_oktoast
-  oktoast: ^3.3.1
+  oktoast: ^3.4.0
 
   # https://github.com/dart-lang/path
-  path: ^1.8.2
+  path: ^1.9.0
 
-  # https://pub.flutter-io.cn/packages/path_provider
-  path_provider: ^2.0.12
+  # https://github.com/flutter/packages/tree/main/packages/path_provider/path_provider
+  path_provider: ^2.1.2
 
   # https://github.com/Baseflow/flutter-permission-handler
-  permission_handler: ^11.1.0
+  permission_handler: ^11.3.0
 
   # https://github.com/rrousselGit/provider
-  provider: ^6.0.5
-  shared_preferences: ^2.0.17
+  provider: ^6.1.2
+  shared_preferences: ^2.2.2
 
   # Flutter shared_preferences plugin util https://github.com/Sky24n/sp_util
   sp_util: ^2.0.3
 
-  # https://pub.flutter-io.cn/packages/url_launcher
-  url_launcher: ^6.1.8
+  # https://github.com/flutter/packages/tree/main/packages/url_launcher/url_launcher
+  url_launcher: ^6.2.5
 
-  # WebView 插件 https://github.com/flutter/plugins/tree/master/packages/webview_flutter
+  # WebView 插件 https://github.com/flutter/packages/tree/main/packages/webview_flutter/webview_flutter
   webview_flutter: ^4.0.2
 
 dev_dependencies:
-  # https://pub.flutter-io.cn/packages/build_runner
-  build_runner: ^2.3.3
+  # https://github.com/dart-lang/build/tree/master/build_runner
+  build_runner: ^2.4.8
 
   # The "flutter_lints" package below contains a set of recommended lints to
   # encourage good coding practices. The lint set provided by the package is
@@ -103,10 +106,10 @@ dev_dependencies:
     sdk: flutter
 
   # https://pub.flutter-io.cn/packages/json_serializable
-  json_serializable: ^6.6.0
+  json_serializable: ^6.7.1
 
   # https://pub.flutter-io.cn/packages/test
-  test: ^1.22.0
+  test: ^1.24.9
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
